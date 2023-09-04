@@ -24,12 +24,12 @@ public class Manager {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Manager manager = (Manager) o;
-        return Objects.equals(id, manager.id) && Objects.equals(firstName, manager.firstName) && Objects.equals(lastName, manager.lastName) && status == manager.status && Objects.equals(description, manager.description) && Objects.equals(createdAt, manager.createdAt);
+        return Objects.equals(id, manager.id) && Objects.equals(firstName, manager.firstName) && Objects.equals(lastName, manager.lastName) && Objects.equals(createdAt, manager.createdAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, status, description, createdAt);
+        return Objects.hash(id, firstName, lastName, createdAt);
     }
 
     @Override

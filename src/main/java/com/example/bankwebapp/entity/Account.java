@@ -30,12 +30,12 @@ public class Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return id == account.id && clientId == account.clientId && Objects.equals(name, account.name) && type == account.type && status == account.status && Objects.equals(balance, account.balance) && currencyCode == account.currencyCode && Objects.equals(createdAt, account.createdAt) && Objects.equals(updatedAt, account.updatedAt);
+        return clientId == account.clientId && Objects.equals(id, account.id) && Objects.equals(name, account.name) && Objects.equals(createdAt, account.createdAt) && Objects.equals(updatedAt, account.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, clientId, name, type, status, balance, currencyCode, createdAt, updatedAt);
+        return Objects.hash(id, clientId, name, createdAt, updatedAt);
     }
 
     @Override

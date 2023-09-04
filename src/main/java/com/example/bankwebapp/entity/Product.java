@@ -18,7 +18,7 @@ public class Product {
     private int managerId;
     private String name;
     private ProductStatus status;
-    private Currencies currencies;
+    private Currencies currencyCode;
     private BigDecimal interestRate;
     private int limit;
     private Timestamp createdAt;
@@ -29,12 +29,12 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return id == product.id && managerId == product.managerId && limit == product.limit && Objects.equals(name, product.name) && status == product.status && currencies == product.currencies && Objects.equals(interestRate, product.interestRate) && Objects.equals(createdAt, product.createdAt) && Objects.equals(updatedAt, product.updatedAt);
+        return managerId == product.managerId && limit == product.limit && Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(createdAt, product.createdAt) && Objects.equals(updatedAt, product.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, managerId, name, status, currencies, interestRate, limit, createdAt, updatedAt);
+        return Objects.hash(id, managerId, name, limit, createdAt, updatedAt);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class Product {
         return "Product[ " +
                 "name: " + name +
                 ", status: " + status +
-                ", currencies: " + currencies +
+                ", currencies: " + currencyCode +
                 ", interestRate: " + interestRate +
                 ", limit: " + limit +
                 ", createdAt: " + createdAt +
