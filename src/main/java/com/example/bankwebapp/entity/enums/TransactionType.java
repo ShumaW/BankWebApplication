@@ -1,5 +1,8 @@
 package com.example.bankwebapp.entity.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum TransactionType {
     NEW(1),
     PENDING(2),

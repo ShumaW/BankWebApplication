@@ -1,6 +1,8 @@
 package com.example.bankwebapp.entity.enums;
 
+import lombok.Getter;
 
+@Getter
 public enum ProductStatus {
 
     ACTIVE(0),

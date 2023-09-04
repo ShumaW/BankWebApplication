@@ -1,5 +1,8 @@
 package com.example.bankwebapp.entity.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum ClientStatus {
     ACTIVE(0),
     PENDING(1),

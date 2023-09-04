@@ -1,5 +1,8 @@
 package com.example.bankwebapp.entity.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum AccountStatus {
     ACTIVE(0),
     PENDING(1),
@@ -10,4 +13,5 @@ public enum AccountStatus {
     AccountStatus(int value) {
         this.value = value;
     }
+
 }

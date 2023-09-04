@@ -1,5 +1,8 @@
 package com.example.bankwebapp.entity.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum AccountType {
     DEPOSIT(1),
     CREDIT(2),
