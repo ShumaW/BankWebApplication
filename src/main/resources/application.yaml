@@ -2,10 +2,17 @@ spring:
   main:
     banner-mode: off
 
-  datasource:
-    url: ${datasource.url}
-    username: ${datasource.username}
-    password: ${datasource.password}
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/testDb
+#    username: root
+#    password: root
+
+    datasource:
+      url: jdbc:h2:mem:test
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+
 
   jpa:
     show-sql: false

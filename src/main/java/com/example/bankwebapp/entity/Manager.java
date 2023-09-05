@@ -1,23 +1,49 @@
 package com.example.bankwebapp.entity;
 
 import com.example.bankwebapp.entity.enums.ManagerStatus;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Timestamp;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
+import static jakarta.persistence.CascadeType.*;
+
+@Entity
+@Table(name = "managers")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Manager {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private UUID id;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "status")
     private ManagerStatus status;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "created_at")
     private Timestamp createdAt;
+
+    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "manager")
+    private Set<Client> clientSet;
+
+    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
+    private Set<Product> productSet;
 
     @Override
     public boolean equals(Object o) {

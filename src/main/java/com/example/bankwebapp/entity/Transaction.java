@@ -1,6 +1,7 @@
 package com.example.bankwebapp.entity;
 
 import com.example.bankwebapp.entity.enums.TransactionType;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -8,18 +9,45 @@ import java.sql.Timestamp;
 import java.util.Objects;
 import java.util.UUID;
 
+import static jakarta.persistence.CascadeType.*;
+
+@Entity
+@Table(name = "transactions")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Transaction {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private UUID id;
+
+    @Column(name = "debit_account_id")
+    @OneToOne(cascade = {MERGE, PERSIST, REFRESH, REMOVE})
     private Account debitAccountId;
+
+    @Column(name = "credit_account_id")
+    @OneToOne(cascade = {MERGE, PERSIST, REFRESH, REMOVE})
     private Account creditAccountId;
+
+    @Column(name = "type")
     private TransactionType type;
+
+    @Column(name = "amount")
     private BigDecimal amount;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "created_at")
     private Timestamp createdAt;
+
+    @ManyToOne(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private Account account;
+
 
     @Override
     public boolean equals(Object o) {
