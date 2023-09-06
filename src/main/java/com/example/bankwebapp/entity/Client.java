@@ -58,7 +58,7 @@ public class Client {
     private Set<Account> accountSet;
 
     @ManyToOne(cascade = {MERGE, PERSIST, REFRESH, REMOVE}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(referencedColumnName = "id")
     private Manager manager;
 
     @Override

@@ -7,6 +7,7 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Objects;
+import java.util.Set;
 
 import static jakarta.persistence.CascadeType.*;
 
@@ -44,8 +45,8 @@ public class Agreement {
     @Column(name = "update_at")
     private Timestamp updatedAt;
 
-    @OneToOne(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
-    private Product product;
+    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
+    private Set<Product> productsSet;
 
     @OneToOne(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
     private Account account;

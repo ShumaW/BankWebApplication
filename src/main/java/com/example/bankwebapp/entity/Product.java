@@ -47,14 +47,14 @@ public class Product {
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @Column(name = "update_at")
+    @Column(name = "updated_at")
     private Timestamp updatedAt;
 
     @ManyToOne(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(referencedColumnName = "id")
     private Manager manager;
 
-    @OneToOne(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
     private Agreement agreement;
 
     @Override
