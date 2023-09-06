@@ -9,7 +9,6 @@ import java.sql.Timestamp;
 import java.util.Objects;
 import java.util.UUID;
 
-import static jakarta.persistence.CascadeType.*;
 
 @Entity
 @Table(name = "transactions")
@@ -25,12 +24,12 @@ public class Transaction {
     private UUID id;
 
     @Column(name = "debit_account_id")
-    @ManyToOne(cascade = {MERGE, PERSIST, REFRESH, REMOVE}, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(referencedColumnName = "id")
     private Account debitAccountId;
 
     @Column(name = "credit_account_id")
-    @ManyToOne(cascade = {MERGE, PERSIST, REFRESH, REMOVE}, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(referencedColumnName = "id")
     private Account creditAccountId;
 

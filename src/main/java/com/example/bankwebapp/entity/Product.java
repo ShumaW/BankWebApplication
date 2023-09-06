@@ -3,15 +3,12 @@ package com.example.bankwebapp.entity;
 import com.example.bankwebapp.entity.enums.Currencies;
 import com.example.bankwebapp.entity.enums.ProductStatus;
 import jakarta.persistence.*;
-import jakarta.security.auth.message.config.ClientAuthContext;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Objects;
 import java.util.UUID;
-
-import static jakarta.persistence.CascadeType.*;
 
 @Entity
 @Table(name = "products")
@@ -50,11 +47,11 @@ public class Product {
     @Column(name = "updated_at")
     private Timestamp updatedAt;
 
-    @ManyToOne(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(referencedColumnName = "id")
     private Manager manager;
 
-    @ManyToOne(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Agreement agreement;
 
     @Override

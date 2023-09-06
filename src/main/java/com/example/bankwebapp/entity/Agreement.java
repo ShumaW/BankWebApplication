@@ -48,7 +48,7 @@ public class Agreement {
     @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
     private Set<Product> productsSet;
 
-    @OneToOne(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     private Account account;
 
     @Override

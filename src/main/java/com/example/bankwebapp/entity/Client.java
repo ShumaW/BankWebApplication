@@ -57,7 +57,7 @@ public class Client {
     @OneToMany(cascade = {MERGE, PERSIST, REFRESH, REMOVE}, mappedBy = "client")
     private Set<Account> accountSet;
 
-    @ManyToOne(cascade = {MERGE, PERSIST, REFRESH, REMOVE}, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(referencedColumnName = "id")
     private Manager manager;
 

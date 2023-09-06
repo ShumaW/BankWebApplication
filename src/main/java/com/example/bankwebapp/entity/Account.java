@@ -5,11 +5,9 @@ import com.example.bankwebapp.entity.enums.AccountType;
 import com.example.bankwebapp.entity.enums.Currencies;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -52,7 +50,7 @@ public class Account {
     @Column(name = "update_at")
     private Timestamp updatedAt;
 
-    @ManyToOne(cascade = {MERGE, PERSIST, REFRESH}, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     private Client client;
 
