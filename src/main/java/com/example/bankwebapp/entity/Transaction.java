@@ -25,11 +25,11 @@ public class Transaction {
     private UUID id;
 
     @Column(name = "debit_account_id")
-    @OneToOne(cascade = {MERGE, PERSIST, REFRESH, REMOVE})
+    @ManyToOne(cascade = {MERGE, PERSIST, REFRESH, REMOVE}, fetch = FetchType.LAZY)
     private Account debitAccountId;
 
     @Column(name = "credit_account_id")
-    @OneToOne(cascade = {MERGE, PERSIST, REFRESH, REMOVE})
+    @ManyToOne(cascade = {MERGE, PERSIST, REFRESH, REMOVE}, fetch = FetchType.LAZY)
     private Account creditAccountId;
 
     @Column(name = "type")
@@ -43,11 +43,6 @@ public class Transaction {
 
     @Column(name = "created_at")
     private Timestamp createdAt;
-
-    @ManyToOne(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    private Account account;
-
 
     @Override
     public boolean equals(Object o) {

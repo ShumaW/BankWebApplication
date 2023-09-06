@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 import static jakarta.persistence.CascadeType.*;
@@ -58,7 +59,10 @@ public class Account {
     private Agreement agreement;
 
     @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "account")
-    private List<Transaction> transactionList;
+    private Set<Transaction> debitTransaction;
+
+    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "account")
+    private Set<Transaction> creditTransaction;
 
     @Override
     public boolean equals(Object o) {
