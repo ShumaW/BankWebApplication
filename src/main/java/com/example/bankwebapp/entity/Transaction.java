@@ -1,6 +1,7 @@
 package com.example.bankwebapp.entity;
 
 import com.example.bankwebapp.entity.enums.TransactionType;
+import io.swagger.v3.oas.annotations.extensions.Extension;
 import jakarta.persistence.*;
 import lombok.*;
 
