@@ -1,6 +1,6 @@
 package com.example.bankwebapp.entity;
 
-import com.example.bankwebapp.entity.enums.AccountStatus;
+import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.entity.enums.AccountType;
 import com.example.bankwebapp.entity.enums.Currencies;
 import jakarta.persistence.*;
@@ -36,7 +36,7 @@ public class Account {
     private AccountType type;
 
     @Column(name = "status")
-    private AccountStatus status;
+    private Status status;
 
     @Column(name = "balance")
     private BigDecimal balance;

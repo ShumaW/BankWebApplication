@@ -1,6 +1,6 @@
 package com.example.bankwebapp.entity;
 
-import com.example.bankwebapp.entity.enums.ClientStatus;
+import com.example.bankwebapp.entity.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,7 +28,7 @@ public class Client {
     private int managerId;
 
     @Column(name = "status")
-    private ClientStatus status;
+    private Status status;
 
     @Column(name = "tax_code")
     private String taxСode;

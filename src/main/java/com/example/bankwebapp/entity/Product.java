@@ -1,7 +1,7 @@
 package com.example.bankwebapp.entity;
 
 import com.example.bankwebapp.entity.enums.Currencies;
-import com.example.bankwebapp.entity.enums.ProductStatus;
+import com.example.bankwebapp.entity.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,7 +30,7 @@ public class Product {
     private String name;
 
     @Column(name = "status")
-    private ProductStatus status;
+    private Status status;
 
     @Column(name = "currency_code")
     private Currencies currencyCode;

@@ -1,6 +1,6 @@
 package com.example.bankwebapp.entity;
 
-import com.example.bankwebapp.entity.enums.AgreementStatus;
+import com.example.bankwebapp.entity.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -34,7 +34,7 @@ public class Agreement {
     private BigDecimal interestRate;
 
     @Column(name = "status")
-    private AgreementStatus status;
+    private Status status;
 
     @Column(name = "sum")
     private BigDecimal sum;
