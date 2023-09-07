@@ -23,9 +23,6 @@ public class Product {
     @Column(name = "id")
     private UUID id;
 
-    @Column(name = "manager_id")
-    private int managerId;
-
     @Column(name = "name")
     private String name;
 
@@ -48,24 +45,12 @@ public class Product {
     private Timestamp updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(referencedColumnName = "id")
+    @JoinColumn(name = "manager_id", referencedColumnName = "id")
     private Manager manager;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Agreement agreement;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return managerId == product.managerId && limit == product.limit && Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(createdAt, product.createdAt) && Objects.equals(updatedAt, product.updatedAt);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, managerId, name, limit, createdAt, updatedAt);
-    }
 
     @Override
     public String toString() {

@@ -24,9 +24,6 @@ public class Client {
     @Column(name = "id")
     private UUID id;
 
-    @Column(name = "manager_id")
-    private int managerId;
-
     @Column(name = "status")
     private Status status;
 
@@ -58,7 +55,7 @@ public class Client {
     private Set<Account> accountSet;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(referencedColumnName = "id")
+    @JoinColumn(name = "manager_id", referencedColumnName = "id")
     private Manager manager;
 
     @Override
@@ -85,7 +82,6 @@ public class Client {
                 ", phone: " + phone +
                 ", status: " + status +
                 ", taxСode: " + taxСode +
-                ", manager_id: " + managerId +
                 ", createdAt: " + createdAt +
                 ", updatedAt: " + updatedAt +
                 "]" + "\n";

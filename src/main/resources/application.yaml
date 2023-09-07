@@ -2,16 +2,16 @@ spring:
   main:
     banner-mode: off
 
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/testDb
-#    username: root
-#    password: root
+    #  datasource:
+    #    url: jdbc:postgresql://localhost:5432/testDb
+    #    username: root
+    #    password: root
 
-    datasource:
-      url: jdbc:h2:mem:test
-      username: sa
-      password:
-      driver-class-name: org.h2.Driver
+  datasource:
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
 
 
   jpa:
@@ -19,9 +19,9 @@ spring:
     hibernate:
       ddl-auto: none
 
-  liquibase:
-    change-log: classpath:/db/changelog/changelog-master.xml
+#  liquibase:
+#    change-log: classpath:/db/changelog/changelog-master.xml
 
-app:
-  server:
-    url: ${app.server.url}
+#app:
+#  server:
+#    url: ${app.server.url}

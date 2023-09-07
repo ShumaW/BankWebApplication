@@ -6,7 +6,6 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Objects;
 import java.util.Set;
 
 import static jakarta.persistence.CascadeType.*;
@@ -24,8 +23,9 @@ public class Agreement {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "account_id")
-    private int accountId;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
+    private Account account;
 
     @Column(name = "product_id")
     private int productId;
@@ -48,27 +48,10 @@ public class Agreement {
     @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
     private Set<Product> productsSet;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private Account account;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Agreement agreement = (Agreement) o;
-        return id == agreement.id && accountId == agreement.accountId && productId == agreement.productId && Objects.equals(sum, agreement.sum) && Objects.equals(createdAt, agreement.createdAt) && Objects.equals(updatedAt, agreement.updatedAt);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, accountId, productId, sum, createdAt, updatedAt);
-    }
-
     @Override
     public String toString() {
         return "Agreement[ " +
                 "id: " + id +
-                ", accountId: " + accountId +
                 ", productId: " + productId +
                 ", interestRate: " + interestRate +
                 ", status: " + status +

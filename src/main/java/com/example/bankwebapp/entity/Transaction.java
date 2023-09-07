@@ -23,14 +23,12 @@ public class Transaction {
     @Column(name = "id")
     private UUID id;
 
-    @Column(name = "debit_account_id")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(referencedColumnName = "id")
+    @JoinColumn(name = "debit_account_id",referencedColumnName = "id")
     private Account debitAccountId;
 
-    @Column(name = "credit_account_id")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(referencedColumnName = "id")
+    @JoinColumn(name = "credit_account_id",referencedColumnName = "id")
     private Account creditAccountId;
 
     @Column(name = "type")
