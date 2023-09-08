@@ -63,12 +63,12 @@ public class Client {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(id, client.id) && Objects.equals(taxСode, client.taxСode) && Objects.equals(email, client.email) && Objects.equals(address, client.address) && Objects.equals(phone, client.phone);
+        return Objects.equals(id, client.id) && Objects.equals(email, client.email) && Objects.equals(address, client.address) && Objects.equals(phone, client.phone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, taxСode, email, address, phone);
+        return Objects.hash(id, email, address, phone);
     }
 
     @Override

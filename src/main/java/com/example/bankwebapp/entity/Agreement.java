@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Objects;
 import java.util.Set;
 
 import static jakarta.persistence.CascadeType.*;
@@ -47,6 +48,19 @@ public class Agreement {
 
     @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
     private Set<Product> productsSet;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Agreement agreement = (Agreement) o;
+        return id == agreement.id && productId == agreement.productId && Objects.equals(account, agreement.account);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, account, productId);
+    }
 
     @Override
     public String toString() {

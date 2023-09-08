@@ -49,12 +49,12 @@ public class Transaction {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
-        return Objects.equals(id, that.id) && Objects.equals(debitAccountId, that.debitAccountId) && Objects.equals(creditAccountId, that.creditAccountId) && Objects.equals(amount, that.amount) && Objects.equals(createdAt, that.createdAt);
+        return Objects.equals(id, that.id) && Objects.equals(debitAccountId, that.debitAccountId) && Objects.equals(creditAccountId, that.creditAccountId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, debitAccountId, creditAccountId, amount, createdAt);
+        return Objects.hash(id, debitAccountId, creditAccountId);
     }
 
     @Override
