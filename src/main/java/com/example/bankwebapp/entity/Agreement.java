@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 import static jakarta.persistence.CascadeType.*;
 
@@ -22,7 +23,7 @@ public class Agreement {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private int id;
+    private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id", referencedColumnName = "id")

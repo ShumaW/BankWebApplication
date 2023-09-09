@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-agreement
+      author: YevgeniyShulimenko
+      changes:
+        - createTable:
+            tableName: agreements
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: account_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: id
+              - column:
+                  name: product_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: id
+              - column:
+                  name: interest_rate
+                  type: numeric(6,4)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sum
+                  type: numeric(15,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: true
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: true
