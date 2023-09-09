@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-account
+      id: create-client
       author: YevgeniyShulimenko
       changes:
         - createTable:
-            tableName: accounts
+            tableName: clients
             columns:
               - column:
                   name: id
@@ -13,20 +13,10 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: client_id
+                  name: manager_id
                   type: int
                   constraints:
                     foreignKeyName: id
-                    nullable: false
-              - column:
-                  name: name
-                  type: varchar(100)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: type
-                  type: int
-                  constraints:
                     nullable: false
               - column:
                   name: status
@@ -34,13 +24,33 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: balance
-                  type: numeric(15,2)
+                  name: tax_code
+                  type: varchar(20)
                   constraints:
                     nullable: false
               - column:
-                  name: currency_code
-                  type: int
+                  name: first_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address
+                  type: varchar(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone
+                  type: varchar(20)
                   constraints:
                     nullable: false
               - column:

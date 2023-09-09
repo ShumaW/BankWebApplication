@@ -48,7 +48,7 @@ public class Client {
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @Column(name = "update_at")
+    @Column(name = "updated_at")
     private Timestamp updatedAt;
 
     @OneToMany(cascade = {MERGE, PERSIST, REFRESH, REMOVE}, mappedBy = "client", orphanRemoval = true)

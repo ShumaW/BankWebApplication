@@ -27,6 +27,10 @@ public class Account {
     @Column(name = "id")
     private UUID id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
+    private Client client;
+
     @Column(name = "name")
     private String name;
 
@@ -47,10 +51,6 @@ public class Account {
 
     @Column(name = "updated_at")
     private Timestamp updatedAt;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
-    private Client client;
 
     @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Agreement> agreement;
