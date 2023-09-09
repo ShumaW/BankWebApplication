@@ -16,7 +16,7 @@ import java.util.UUID;
 import static jakarta.persistence.CascadeType.*;
 
 @Entity
-@Table(name="accounts")
+@Table(name = "accounts")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -52,13 +52,15 @@ public class Account {
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     private Client client;
 
-    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
+    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Agreement> agreement;
 
-    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "debitAccountId")
+    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "debitAccountId",
+            orphanRemoval = true)
     private Set<Transaction> debitTransaction;
 
-    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "creditAccountId")
+    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "creditAccountId",
+            orphanRemoval = true)
     private Set<Transaction> creditTransaction;
 
     @Override

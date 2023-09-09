@@ -51,7 +51,7 @@ public class Client {
     @Column(name = "update_at")
     private Timestamp updatedAt;
 
-    @OneToMany(cascade = {MERGE, PERSIST, REFRESH, REMOVE}, mappedBy = "client")
+    @OneToMany(cascade = {MERGE, PERSIST, REFRESH, REMOVE}, mappedBy = "client", orphanRemoval = true)
     private Set<Account> accountSet;
 
     @ManyToOne(fetch = FetchType.LAZY)

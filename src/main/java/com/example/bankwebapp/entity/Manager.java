@@ -39,10 +39,12 @@ public class Manager {
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "manager")
+    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "manager",
+            orphanRemoval = true)
     private Set<Client> clientSet;
 
-    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "manager")
+    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "manager",
+            orphanRemoval = true)
     private Set<Product> productSet;
 
     @Override

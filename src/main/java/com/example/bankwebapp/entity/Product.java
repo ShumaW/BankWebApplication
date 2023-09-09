@@ -49,6 +49,7 @@ public class Product {
     private Manager manager;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "agreement_id", referencedColumnName = "id")
     private Agreement agreement;
 
     @Override

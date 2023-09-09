@@ -46,7 +46,7 @@ public class Agreement {
     @Column(name = "update_at")
     private Timestamp updatedAt;
 
-    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY)
+    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<Product> productsSet;
 
     @Override
