@@ -44,7 +44,7 @@ public class Agreement {
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @Column(name = "update_at")
+    @Column(name = "updated_at")
     private Timestamp updatedAt;
 
     @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, orphanRemoval = true)

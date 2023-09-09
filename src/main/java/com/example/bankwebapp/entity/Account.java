@@ -42,10 +42,10 @@ public class Account {
     @Column(name = "currency_code")
     private Currencies currencyCode;
 
-    @Column(name = "create_at")
+    @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @Column(name = "update_at")
+    @Column(name = "updated_at")
     private Timestamp updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
