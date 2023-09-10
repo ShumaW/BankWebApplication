@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-account
-      author: YevgeniyShulimenko
+      id: create-products
+      author: YevgeniySjhulimenko
       changes:
         - createTable:
-            tableName: accounts
+            tableName: products
             columns:
               - column:
                   name: id
@@ -13,19 +13,14 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: client_id
+                  name: manager_id
                   type: int
                   constraints:
                     foreignKeyName: id
                     nullable: false
               - column:
                   name: name
-                  type: varchar(100)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: type
-                  type: int
+                  type: varchar(70)
                   constraints:
                     nullable: false
               - column:
@@ -34,13 +29,18 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: balance
-                  type: numeric(15,2)
+                  name: currency_code
+                  type: int
                   constraints:
                     nullable: false
               - column:
-                  name: currency_code
-                  type: int
+                  name: interest_rate
+                  type: numeric(6,4)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: limit
+                  type: numeric(15,2)
                   constraints:
                     nullable: false
               - column:
@@ -52,4 +52,10 @@ databaseChangeLog:
                   name: updated_at
                   type: timestamp
                   constraints:
+                    nullable: false
+              - column:
+                  name: agreement_id
+                  type: int
+                  constraints:
+                    foreignKeyName: id
                     nullable: false

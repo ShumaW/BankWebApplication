@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-account
+      id: create-transactions
       author: YevgeniyShulimenko
       changes:
         - createTable:
-            tableName: accounts
+            tableName: transactions
             columns:
               - column:
                   name: id
@@ -13,14 +13,13 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: client_id
+                  name: debit_account_id
                   type: int
                   constraints:
-                    foreignKeyName: id
                     nullable: false
               - column:
-                  name: name
-                  type: varchar(100)
+                  name: credit_account_id
+                  type: int
                   constraints:
                     nullable: false
               - column:
@@ -29,27 +28,17 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: status
-                  type: int
+                  name: amount
+                  type: numeric(12,5)
                   constraints:
                     nullable: false
               - column:
-                  name: balance
-                  type: numeric(15,2)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: currency_code
-                  type: int
+                  name: description
+                  type: varchar(255)
                   constraints:
                     nullable: false
               - column:
                   name: created_at
-                  type: timestamp
-                  constraints:
-                    nullable: false
-              - column:
-                  name: updated_at
                   type: timestamp
                   constraints:
                     nullable: false

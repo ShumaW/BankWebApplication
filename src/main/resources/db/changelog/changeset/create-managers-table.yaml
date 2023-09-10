@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-agreement
+      id: create-managers
       author: YevgeniyShulimenko
       changes:
         - createTable:
-            tableName: agreements
+            tableName: managers
             columns:
               - column:
                   name: id
@@ -13,20 +13,13 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: account_id
-                  type: int
+                  name: first_name
+                  type: varchar(50)
                   constraints:
                     nullable: false
-                    foreignKeyName: id
               - column:
-                  name: product_id
-                  type: int
-                  constraints:
-                    nullable: false
-                    foreignKeyName: id
-              - column:
-                  name: interest_rate
-                  type: numeric(6,4)
+                  name: last_name
+                  type: varchar(50)
                   constraints:
                     nullable: false
               - column:
@@ -35,17 +28,10 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: sum
-                  type: numeric(15,2)
-                  constraints:
-                    nullable: false
+                  name: description
+                  type: varchar(250)
               - column:
                   name: created_at
-                  type: timestamp
-                  constraints:
-                    nullable: false
-              - column:
-                  name: updated_at
                   type: timestamp
                   constraints:
                     nullable: false
