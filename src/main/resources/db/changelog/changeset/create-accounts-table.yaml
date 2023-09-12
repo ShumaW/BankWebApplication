@@ -8,13 +8,13 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: int
+                  type: binary
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
                   name: client_id
-                  type: int
+                  type: binary
                   constraints:
                     foreignKeyName: client_id
                     referencedTableName: clients

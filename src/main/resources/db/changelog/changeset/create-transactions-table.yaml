@@ -8,18 +8,18 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: int
+                  type: binary
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
                   name: debit_account_id
-                  type: int
+                  type: binary
                   constraints:
                     nullable: false
               - column:
                   name: credit_account_id
-                  type: int
+                  type: binary
                   constraints:
                     nullable: false
               - column:

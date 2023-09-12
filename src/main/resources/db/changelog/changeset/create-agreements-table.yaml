@@ -8,19 +8,19 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: int
+                  type: binary
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
                   name: account_id
-                  type: int
+                  type: binary
                   constraints:
                     nullable: false
                     foreignKeyName: id
               - column:
                   name: product_id
-                  type: int
+                  type: binary
                   constraints:
                     nullable: false
                     foreignKeyName: product_id

@@ -30,7 +30,7 @@ public class Agreement {
     private Account account;
 
     @Column(name = "product_id")
-    private int productId;
+    private UUID productId;
 
     @Column(name = "interest_rate")
     private BigDecimal interestRate;
