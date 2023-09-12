@@ -8,7 +8,10 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
+
+import static jakarta.persistence.CascadeType.*;
 
 @Entity
 @Table(name = "products")
@@ -48,9 +51,8 @@ public class Product {
     @JoinColumn(name = "manager_id", referencedColumnName = "id")
     private Manager manager;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "agreement_id", referencedColumnName = "id")
-    private Agreement agreement;
+    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, orphanRemoval = true)
+    private Set<Agreement> agreement;
 
     @Override
     public boolean equals(Object o) {

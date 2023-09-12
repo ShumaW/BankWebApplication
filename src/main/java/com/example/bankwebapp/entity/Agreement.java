@@ -7,10 +7,7 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Objects;
-import java.util.Set;
 import java.util.UUID;
-
-import static jakarta.persistence.CascadeType.*;
 
 @Entity
 @Table(name = "agreements")
@@ -29,8 +26,9 @@ public class Agreement {
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
 
-    @Column(name = "product_id")
-    private UUID productId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private Product productId;
 
     @Column(name = "interest_rate")
     private BigDecimal interestRate;
@@ -46,9 +44,6 @@ public class Agreement {
 
     @Column(name = "updated_at")
     private Timestamp updatedAt;
-
-    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, orphanRemoval = true)
-    private Set<Product> productsSet;
 
     @Override
     public boolean equals(Object o) {
