@@ -23,7 +23,9 @@ databaseChangeLog:
                   type: int
                   constraints:
                     nullable: false
-                    foreignKeyName: id
+                    foreignKeyName: product_id
+                    referencedTableName: products
+                    referencedColumnNames: id
               - column:
                   name: interest_rate
                   type: numeric(6,4)

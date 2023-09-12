@@ -16,7 +16,9 @@ databaseChangeLog:
                   name: client_id
                   type: int
                   constraints:
-                    foreignKeyName: id
+                    foreignKeyName: client_id
+                    referencedTableName: clients
+                    referencedColumnNames: id
                     nullable: false
               - column:
                   name: name

@@ -16,7 +16,9 @@ databaseChangeLog:
                   name: manager_id
                   type: int
                   constraints:
-                    foreignKeyName: id
+                    foreignKeyName: manager_id
+                    referencedTableName: managers
+                    referencedColumnNames: id
                     nullable: false
               - column:
                   name: name
