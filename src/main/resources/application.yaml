@@ -12,6 +12,7 @@ spring:
     username: ${datasource.username}
     password: ${datasource.password}
 
+
 #  datasource:
 #    url: jdbc:h2:file:./db
 #    username: sa
