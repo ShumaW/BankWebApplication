@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: create-products
-      author: YevgeniySjhulimenko
+      author: YevgeniyShulimenko
       changes:
         - createTable:
             tableName: products
