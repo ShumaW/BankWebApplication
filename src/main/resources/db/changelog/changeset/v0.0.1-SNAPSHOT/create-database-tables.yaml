@@ -1,0 +1,316 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-transactions
+      author: YevgeniyShulimenko
+      changes:
+        - createTable:
+            tableName: transactions
+            columns:
+              - column:
+                  name: id
+                  type: binary
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: debit_account_id
+                  type: binary
+                  constraints:
+                    nullable: false
+              - column:
+                  name: credit_account_id
+                  type: binary
+                  constraints:
+                    nullable: false
+              - column:
+                  name: type
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: numeric(12,5)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: create-managers
+      author: YevgeniyShulimenko
+      changes:
+        - createTable:
+            tableName: managers
+            columns:
+              - column:
+                  name: id
+                  type: binary
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(250)
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: create-clients
+      author: YevgeniyShulimenko
+      changes:
+        - createTable:
+            tableName: clients
+            columns:
+              - column:
+                  name: id
+                  type: binary
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: manager_id
+                  type: binary
+                  constraints:
+                    foreignKeyName: manager_id
+                    referencedTableName: managers
+                    referencedColumnNames: id
+                    nullable: false
+              - column:
+                  name: status
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tax_code
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address
+                  type: varchar(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: create-accounts
+      author: YevgeniyShulimenko
+      changes:
+        - createTable:
+            tableName: accounts
+            columns:
+              - column:
+                  name: id
+                  type: binary
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: client_id
+                  type: binary
+                  constraints:
+                    foreignKeyName: client_id
+                    referencedTableName: clients
+                    referencedColumnNames: id
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: type
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: balance
+                  type: numeric(15,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: currency_code
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: create-products
+      author: YevgeniyShulimenko
+      changes:
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: binary
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: manager_id
+                  type: binary
+                  constraints:
+                    foreignKeyName: manager_id
+                    referencedTableName: managers
+                    referencedColumnNames: id
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(70)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: currency_code
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: interest_rate
+                  type: numeric(6,4)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: limit_sum
+                  type: numeric(15,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: agreement_id
+                  type: int
+                  constraints:
+                    foreignKeyName: id
+                    nullable: false
+  - changeSet:
+      id: create-agreements
+      author: YevgeniyShulimenko
+      changes:
+        - createTable:
+            tableName: agreements
+            columns:
+              - column:
+                  name: id
+                  type: binary
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: account_id
+                  type: binary
+                  constraints:
+                    nullable: false
+                    foreignKeyName: id
+              - column:
+                  name: product_id
+                  type: binary
+                  constraints:
+                    nullable: false
+                    foreignKeyName: product_id
+                    referencedTableName: products
+                    referencedColumnNames: id
+              - column:
+                  name: interest_rate
+                  type: numeric(6,4)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sum
+                  type: numeric(15,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: false

@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: drop-transactions
+      author: YevgeniyShulimenko
+      changes:
+        - dropTable:
+            tableName: transactions
+  - changeSet:
+      id: drop-agreements
+      author: YevgeniyShulimenko
+      changes:
+        - dropTable:
+            tableName: agreements
+  - changeSet:
+      id: drop-products
+      author: YevgeniyShulimenko
+      changes:
+        - dropTable:
+            tableName: products
+  - changeSet:
+      id: drop-accounts
+      author: YevgeniyShulimenko
+      changes:
+        - dropTable:
+            tableName: accounts
+  - changeSet:
+      id: drop-clients
+      author: YevgeniyShulimenko
+      changes:
+        - dropTable:
+            tableName: clients
+  - changeSet:
+      id: drop-managers
+      author: YevgeniyShulimenko
+      changes:
+        - dropTable:
+            tableName: managers

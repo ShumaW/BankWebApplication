@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/v0.0.1-SNAPSHOT/drop-database-tables.yaml
+  - include:
+      file: db/changelog/changeset/v0.0.1-SNAPSHOT/create-database-tables.yaml

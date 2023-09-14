@@ -7,6 +7,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -38,7 +39,7 @@ public class Product {
     @Column(name = "interest_rate")
     private BigDecimal interestRate;
 
-    @Column(name = "limit")
+    @Column(name = "limit_sum")
     private int limit;
 
     @Column(name = "created_at")
@@ -52,7 +53,7 @@ public class Product {
     private Manager manager;
 
     @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, orphanRemoval = true)
-    private Set<Agreement> agreement;
+    private Set<Agreement> agreement = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
