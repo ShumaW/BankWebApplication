@@ -258,7 +258,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: agreement_id
-                  type: int
+                  type: binary
                   constraints:
                     foreignKeyName: id
                     nullable: false
