@@ -21,27 +21,43 @@ databaseChangeLog:
         - dropTable:
             cascadeConstraints:  true
             tableName: agreements
-#  - changeSet:
-#      id: drop-products
-#      author: YevgeniyShulimenko
-#      changes:
-#        - dropTable:
-#            tableName: products
-#  - changeSet:
-#      id: drop-accounts
-#      author: YevgeniyShulimenko
-#      changes:
-#        - dropTable:
-#            tableName: accounts
-#  - changeSet:
-#      id: drop-clients
-#      author: YevgeniyShulimenko
-#      changes:
-#        - dropTable:
-#            tableName: clients
-#  - changeSet:
-#      id: drop-managers
-#      author: YevgeniyShulimenko
-#      changes:
-#        - dropTable:
-#            tableName: managers
+
+  - changeSet:
+      id: drop-products
+      author: YevgeniyShulimenko
+      preConditions:
+        - tableExists:
+            tableName: products
+      rollback:
+        - dropTable:
+            tableName: products
+
+  - changeSet:
+      id: drop-accounts
+      author: YevgeniyShulimenko
+      preConditions:
+        - tableExists:
+            tableName: accounts
+      rollback:
+        - dropTable:
+            tableName: accounts
+
+  - changeSet:
+      id: drop-clients
+      author: YevgeniyShulimenko
+      preConditions:
+        - tableExists:
+            tableName: clients
+      rollback:
+        - dropTable:
+            tableName: clients
+
+  - changeSet:
+      id: drop-managers
+      author: YevgeniyShulimenko
+      preConditions:
+        - tableExists:
+            tableName: managers
+      rollback:
+        - dropTable:
+            tableName: managers
