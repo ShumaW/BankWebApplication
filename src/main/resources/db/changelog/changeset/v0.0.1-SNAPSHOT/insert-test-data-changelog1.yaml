@@ -4,27 +4,48 @@ databaseChangeLog:
       author: YevgeniyShulimenko
       changes:
         - sqlFile:
-            path: db/changelog/changeset/v0.0.1-SNAPSHOT/managers.sql
-  - changeSet:
-      id: sql-input-transactions
-      author: YevgeniyShulimenko
-      changes:
-        - sqlFile:
-            path: db/changelog/changeset/v0.0.1-SNAPSHOT/transactions.sql
+            path: db/changelog/changeset/v0.0.1-SNAPSHOT/test_database.sql
 
-  - changeSet:
-      id: sql-input-clients
-      author: YevgeniyShulimenko
-      changes:
-        - sqlFile:
-            path: db/changelog/changeset/v0.0.1-SNAPSHOT/clients.sql
-
-  - changeSet:
-      id: sql-input-accounts
-      author: YevgeniyShulimenko
-      changes:
-        - sqlFile:
-            path: db/changelog/changeset/v0.0.1-SNAPSHOT/accounts.sql
+#  - changeSet:
+#      id: sql-input-managers
+#      author: YevgeniyShulimenko
+#      changes:
+#        - sqlFile:
+#            path: db/changelog/changeset/v0.0.1-SNAPSHOT/managers.sql
+#  - changeSet:
+#      id: sql-input-transactions
+#      author: YevgeniyShulimenko
+#      changes:
+#        - sqlFile:
+#            path: db/changelog/changeset/v0.0.1-SNAPSHOT/transactions.sql
+#
+#  - changeSet:
+#      id: sql-input-clients
+#      author: YevgeniyShulimenko
+#      changes:
+#        - sqlFile:
+#            path: db/changelog/changeset/v0.0.1-SNAPSHOT/clients.sql
+#
+#  - changeSet:
+#      id: sql-input-accounts
+#      author: YevgeniyShulimenko
+#      changes:
+#        - sqlFile:
+#            path: db/changelog/changeset/v0.0.1-SNAPSHOT/accounts.sql
+#
+#  - changeSet:
+#      id: sql-input-products
+#      author: YevgeniyShulimenko
+#      changes:
+#        - sqlFile:
+#            path: db/changelog/changeset/v0.0.1-SNAPSHOT/products.sql
+#
+#  - changeSet:
+#      id: sql-input-agreements
+#      author: YevgeniyShulimenko
+#      changes:
+#        - sqlFile:
+#            path: db/changelog/changeset/v0.0.1-SNAPSHOT/agreements.sql
 
 #  - changeSet:
 #      id: insert-managers

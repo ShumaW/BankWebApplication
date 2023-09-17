@@ -8,7 +8,6 @@ databaseChangeLog:
       rollback:
         - dropTable:
             cascadeConstraints:  true
-            schemaName: bank_web_app
             tableName: transactions
 
   - changeSet:

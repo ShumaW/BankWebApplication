@@ -42,6 +42,7 @@ databaseChangeLog:
                   type: timestamp
                   constraints:
                     nullable: false
+
   - changeSet:
       id: create-managers
       author: YevgeniyShulimenko
@@ -78,6 +79,7 @@ databaseChangeLog:
                   type: timestamp
                   constraints:
                     nullable: false
+
   - changeSet:
       id: create-clients
       author: YevgeniyShulimenko
@@ -144,6 +146,7 @@ databaseChangeLog:
                   type: timestamp
                   constraints:
                     nullable: false
+
   - changeSet:
       id: create-accounts
       author: YevgeniyShulimenko
@@ -200,6 +203,7 @@ databaseChangeLog:
                   type: timestamp
                   constraints:
                     nullable: false
+
   - changeSet:
       id: create-products
       author: YevgeniyShulimenko
@@ -256,12 +260,7 @@ databaseChangeLog:
                   type: timestamp
                   constraints:
                     nullable: false
-              - column:
-                  name: agreement_id
-                  type: binary
-                  constraints:
-                    foreignKeyName: id
-                    nullable: false
+
   - changeSet:
       id: create-agreements
       author: YevgeniyShulimenko
