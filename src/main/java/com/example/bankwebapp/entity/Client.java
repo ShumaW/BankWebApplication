@@ -25,6 +25,7 @@ public class Client {
     private UUID id;
 
     @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @Column(name = "tax_code")

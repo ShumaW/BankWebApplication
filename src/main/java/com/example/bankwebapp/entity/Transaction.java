@@ -32,6 +32,7 @@ public class Transaction {
     private Account creditAccountId;
 
     @Column(name = "type")
+    @Enumerated(EnumType.STRING)
     private TransactionType type;
 
     @Column(name = "amount")

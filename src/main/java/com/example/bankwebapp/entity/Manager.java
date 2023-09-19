@@ -31,6 +31,7 @@ public class Manager {
     private String lastName;
 
     @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @Column(name = "description")

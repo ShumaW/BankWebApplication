@@ -32,9 +32,11 @@ public class Account {
     private String name;
 
     @Column(name = "type")
+    @Enumerated(EnumType.STRING)
     private AccountType type;
 
     @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @Column(name = "balance")

@@ -31,9 +31,11 @@ public class Product {
     private String name;
 
     @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @Column(name = "currency_code")
+    @Enumerated(EnumType.STRING)
     private Currencies currencyCode;
 
     @Column(name = "interest_rate")

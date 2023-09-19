@@ -34,6 +34,7 @@ public class Agreement {
     private BigDecimal interestRate;
 
     @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @Column(name = "sum")
