@@ -8,18 +8,18 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: binary
+                  type: uuid
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
                   name: debit_account_id
-                  type: binary
+                  type: uuid
                   constraints:
                     nullable: false
               - column:
                   name: credit_account_id
-                  type: binary
+                  type: uuid
                   constraints:
                     nullable: false
               - column:
@@ -52,7 +52,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: binary
+                  type: uuid
                   constraints:
                     primaryKey: true
                     nullable: false
@@ -89,13 +89,13 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: binary
+                  type: uuid
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
                   name: manager_id
-                  type: binary
+                  type: uuid
                   constraints:
                     foreignKeyName: manager_id
                     referencedTableName: managers
@@ -156,13 +156,13 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: binary
+                  type: uuid
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
                   name: client_id
-                  type: binary
+                  type: uuid
                   constraints:
                     foreignKeyName: client_id
                     referencedTableName: clients
@@ -213,13 +213,13 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: binary
+                  type: uuid
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
                   name: manager_id
-                  type: binary
+                  type: uuid
                   constraints:
                     foreignKeyName: manager_id
                     referencedTableName: managers
@@ -270,19 +270,19 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: binary
+                  type: uuid
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
                   name: account_id
-                  type: binary
+                  type: uuid
                   constraints:
                     nullable: false
                     foreignKeyName: id
               - column:
                   name: product_id
-                  type: binary
+                  type: uuid
                   constraints:
                     nullable: false
                     foreignKeyName: product_id

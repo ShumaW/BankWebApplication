@@ -4,10 +4,10 @@ import lombok.Getter;
 
 @Getter
 public enum TransactionType {
-    NEW(1),
-    PENDING(2),
-    APPROVED(3),
-    COMPLETED(4);
+    TRANSFER(1),
+    PAYMENT(2),
+    CASH(3),
+    DEPOSIT(4);
 
     private final int value;
 
@@ -15,3 +15,4 @@ public enum TransactionType {
         this.value = value;
     }
 }
+
