@@ -31,4 +31,9 @@ public class ClientServiceImpl implements ClientService {
         client.setManager(manager);
         return clientRepository.save(client);
     }
+
+    @Override
+    public void deleteClient(UUID id) {
+        clientRepository.deleteById(id);
+    }
 }

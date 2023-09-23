@@ -24,4 +24,10 @@ public class ClientController {
     public Client addClient(@RequestBody Client client, @PathVariable("manager_id") String managerId){
         return clientService.addOrUpdateClient(client, managerId);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteClient(@PathVariable("id") UUID id){
+        System.out.printf("Deleting client with id %s%n", id);
+        clientService.deleteClient(id);
+    }
 }

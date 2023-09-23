@@ -9,4 +9,6 @@ public interface ClientService {
     Optional<Client> getClientById(UUID id);
 
     Client addOrUpdateClient(Client client, String managerId);
+
+    void deleteClient(UUID id);
 }
