@@ -27,7 +27,6 @@ public class ClientController {
 
     @DeleteMapping("/{id}")
     public void deleteClient(@PathVariable("id") UUID id){
-        System.out.printf("Deleting client with id %s%n", id);
         clientService.deleteClient(id);
     }
 }
