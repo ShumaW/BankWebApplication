@@ -1,6 +1,7 @@
 package com.example.bankwebapp.entity;
 
 import com.example.bankwebapp.entity.enums.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,7 +21,7 @@ import static jakarta.persistence.CascadeType.*;
 public class Manager {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
     private UUID id;
 
@@ -42,10 +43,12 @@ public class Manager {
 
     @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "manager",
             orphanRemoval = true)
+    @JsonIgnore
     private Set<Client> clientSet;
 
     @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "manager",
             orphanRemoval = true)
+    @JsonIgnore
     private Set<Product> productSet;
 
     @Override

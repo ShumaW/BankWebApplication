@@ -24,7 +24,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: type
-                  type: int
+                  type: varchar(16)
                   constraints:
                     nullable: false
               - column:
@@ -68,7 +68,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: status
-                  type: int
+                  type: varchar(16)
                   constraints:
                     nullable: false
               - column:
@@ -103,7 +103,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: status
-                  type: int
+                  type: varchar(16)
                   constraints:
                     nullable: false
               - column:
@@ -140,12 +140,12 @@ databaseChangeLog:
                   name: created_at
                   type: timestamp
                   constraints:
-                    nullable: false
+#                    nullable: false
               - column:
                   name: updated_at
                   type: timestamp
                   constraints:
-                    nullable: false
+#                    nullable: false
 
   - changeSet:
       id: create-accounts
@@ -175,12 +175,12 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: type
-                  type: int
+                  type: varchar(16)
                   constraints:
                     nullable: false
               - column:
                   name: status
-                  type: int
+                  type: varchar(16)
                   constraints:
                     nullable: false
               - column:
@@ -190,7 +190,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: currency_code
-                  type: int
+                  type: varchar(16)
                   constraints:
                     nullable: false
               - column:
@@ -232,12 +232,12 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: status
-                  type: int
+                  type: varchar(16)
                   constraints:
                     nullable: false
               - column:
                   name: currency_code
-                  type: int
+                  type: varchar(16)
                   constraints:
                     nullable: false
               - column:
@@ -295,7 +295,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: status
-                  type: int
+                  type: varchar(16)
                   constraints:
                     nullable: false
               - column:

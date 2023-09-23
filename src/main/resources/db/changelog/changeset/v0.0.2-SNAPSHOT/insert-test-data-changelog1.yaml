@@ -4,7 +4,7 @@ databaseChangeLog:
       author: YevgeniyShulimenko
       changes:
         - sqlFile:
-            path: db/changelog/changeset/v0.0.1-SNAPSHOT/test_database.sql
+            path: db/changelog/changeset/v0.0.2-SNAPSHOT/test_database.sql
 
 #  - changeSet:
 #      id: sql-input-managers

@@ -5,7 +5,7 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-master.yaml
-    drop-first: false
+    drop-first: true
 
   datasource:
     driverClassName: org.postgresql.Driver
@@ -16,7 +16,7 @@ spring:
 #  datasource:
 #    url: jdbc:h2:file:./db
 #    username: sa
-#    password:
+#    password: sa
 #    driver-class-name: org.h2.Driver
 
   jpa:

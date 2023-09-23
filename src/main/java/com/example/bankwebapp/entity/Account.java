@@ -3,6 +3,7 @@ package com.example.bankwebapp.entity;
 import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.entity.enums.AccountType;
 import com.example.bankwebapp.entity.enums.Currencies;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,12 +21,13 @@ import static jakarta.persistence.CascadeType.*;
 @NoArgsConstructor
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
     private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id", referencedColumnName = "id")
+    @JsonIgnore
     private Client client;
 
     @Column(name = "name")
@@ -43,6 +45,7 @@ public class Account {
     private BigDecimal balance;
 
     @Column(name = "currency_code")
+    @Enumerated(EnumType.STRING)
     private Currencies currencyCode;
 
     @Column(name = "created_at")
@@ -51,15 +54,18 @@ public class Account {
     @Column(name = "updated_at")
     private Timestamp updatedAt;
 
-    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "account")
+    @JsonIgnore
     private List<Agreement> agreement;
 
     @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "debitAccountId",
             orphanRemoval = true)
+    @JsonIgnore
     private Set<Transaction> debitTransaction;
 
     @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "creditAccountId",
             orphanRemoval = true)
+    @JsonIgnore
     private Set<Transaction> creditTransaction;
 
     @Override
