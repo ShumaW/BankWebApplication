@@ -2,6 +2,8 @@ package com.example.bankwebapp.entity;
 
 import com.example.bankwebapp.entity.enums.Currencies;
 import com.example.bankwebapp.entity.enums.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -42,12 +44,14 @@ public class Product {
     private BigDecimal interestRate;
 
     @Column(name = "limit_sum")
-    private int limit;
+    private double limit;
 
     @Column(name = "created_at")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T' HH:mm:ss.SSS'Z'")
     private Timestamp createdAt;
 
     @Column(name = "updated_at")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T' HH:mm:ss.SSS'Z'")
     private Timestamp updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -55,6 +59,7 @@ public class Product {
     private Manager manager;
 
     @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JsonIgnore
     private Set<Agreement> agreement = new HashSet<>();
 
     @Override
