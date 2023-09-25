@@ -15,6 +15,7 @@ import java.util.UUID;
 public class ProductController {
 
     private final ProductService productService;
+
     @PutMapping("/update")
     public ResponseEntity<Product> updateProduct(@RequestBody Product product){
         UUID productId = product.getId();
