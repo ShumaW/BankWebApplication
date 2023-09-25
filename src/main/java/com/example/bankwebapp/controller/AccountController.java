@@ -1,5 +1,6 @@
 package com.example.bankwebapp.controller;
 
+import com.example.bankwebapp.dto.AccountDto;
 import com.example.bankwebapp.entity.Account;
 import com.example.bankwebapp.service.interfases.AccountService;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -20,7 +20,7 @@ public class AccountController {
     private final AccountService accountService;
 
     @GetMapping("/{id}")
-    public Optional<Account> getAccountById(@PathVariable("id") UUID id){
+    public AccountDto getAccountById(@PathVariable("id") UUID id){
         return accountService.getAccountById(id);
     }
 

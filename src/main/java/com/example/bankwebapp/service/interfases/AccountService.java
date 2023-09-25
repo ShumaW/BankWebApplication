@@ -1,14 +1,14 @@
 package com.example.bankwebapp.service.interfases;
 
+import com.example.bankwebapp.dto.AccountDto;
 import com.example.bankwebapp.entity.Account;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public interface AccountService {
 
-    Optional<Account> getAccountById(UUID id);
+    AccountDto getAccountById(UUID id);
 
     List<Account> getAllAccounts();
 }
