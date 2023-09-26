@@ -17,17 +17,17 @@ public class AccountController {
     private final AccountService accountService;
 
     @GetMapping("/{id}")
-    public AccountDto getAccountById(@PathVariable("id") UUID id){
+    public AccountDto getAccountById(@PathVariable("id") UUID id) {
         return accountService.getAccountById(id);
     }
 
     @GetMapping("/")
-    public List<Account> getAllAccounts(){
+    public List<Account> getAllAccounts() {
         return accountService.getAllAccounts();
     }
 
     @PutMapping("/update")
-    public Account updateAccountById(@RequestBody AccountDto accountDto){
+    public Account updateAccountById(@RequestBody AccountDto accountDto) {
         return accountService.update(accountDto);
     }
 }

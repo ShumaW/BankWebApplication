@@ -9,7 +9,7 @@ public class ClientDto {
 
     String status;
 
-    String taxCode;
+    String taxСode;
 
     String firstName;
 

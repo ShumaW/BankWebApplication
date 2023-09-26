@@ -59,6 +59,7 @@ public class Client {
 
     @ManyToOne(cascade = {MERGE, PERSIST, REFRESH}, fetch = FetchType.LAZY)
     @JoinColumn(name = "manager_id", referencedColumnName = "id")
+    @JsonIgnore
     private Manager manager;
 
     @Override

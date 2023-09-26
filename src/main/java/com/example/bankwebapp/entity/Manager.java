@@ -43,7 +43,6 @@ public class Manager {
 
     @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "manager",
             orphanRemoval = true)
-    @JsonIgnore
     private Set<Client> clientSet;
 
     @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "manager",

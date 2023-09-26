@@ -6,7 +6,6 @@ import com.example.bankwebapp.service.interfases.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -17,10 +16,14 @@ public class ClientController {
     private final ClientService clientService;
 
     @GetMapping("/{id}")
-    public Optional<Client> getClientById(@PathVariable("id") UUID id){
+    public ClientDto getClientById(@PathVariable("id") UUID id){
         return clientService.getClientById(id);
     }
 
+    @PutMapping("/update")
+    public Client updateClientById(@RequestBody ClientDto clientDto){
+        return clientService.update(clientDto);
+    }
     @PostMapping("/add")
     public Client addClient(@RequestBody ClientDto clientDto){
         return clientService.createClient(clientDto);

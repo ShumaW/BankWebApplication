@@ -3,7 +3,9 @@ package com.example.bankwebapp.service.impl;
 import com.example.bankwebapp.dto.ClientDto;
 import com.example.bankwebapp.entity.Client;
 import com.example.bankwebapp.entity.Manager;
+import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.exceptions.NotFoundClientException;
+import com.example.bankwebapp.exceptions.NotFoundManagerException;
 import com.example.bankwebapp.mapper.ClientMapper;
 import com.example.bankwebapp.repository.ClientRepository;
 import com.example.bankwebapp.repository.ManagerRepository;
@@ -12,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 @Service
@@ -26,8 +28,8 @@ public class ClientServiceImpl implements ClientService {
 
     private final ClientMapper clientMapper;
     @Override
-    public Optional<Client> getClientById(UUID id) {
-        return clientRepository.findById(id);
+    public ClientDto getClientById(UUID id) {
+        return clientMapper.mapToDto(clientRepository.findById(id).orElseThrow(NotFoundClientException::new));
     }
 
     @Override
@@ -42,5 +44,22 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void deleteClient(UUID id) {
         clientRepository.deleteById(id);
+    }
+
+    @Override
+    public Client update(ClientDto clientDto) {
+        Manager manager = managerRepository.findById(UUID.fromString(clientDto.getManagerId()))
+                .orElseThrow(NotFoundManagerException::new);
+        Client client = clientRepository.findById(UUID.fromString(clientDto.getId()))
+                .orElseThrow(NotFoundClientException::new);
+        client.setManager(manager);
+        client.setLastName(clientDto.getLastName());
+        client.setStatus(Status.valueOf(clientDto.getStatus()));
+        client.setAddress(clientDto.getAddress());
+        client.setEmail(clientDto.getEmail());
+        client.setPhone(clientDto.getPhone());
+        client.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+        clientRepository.save(client);
+        return client;
     }
 }
