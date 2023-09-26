@@ -1,5 +1,6 @@
 package com.example.bankwebapp.controller;
 
+import com.example.bankwebapp.dto.ClientDto;
 import com.example.bankwebapp.entity.Client;
 import com.example.bankwebapp.service.interfases.ClientService;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +21,9 @@ public class ClientController {
         return clientService.getClientById(id);
     }
 
-    @PostMapping("/{manager_id}")
-    public Client addClient(@RequestBody Client client, @PathVariable("manager_id") String managerId){
-        return clientService.addOrUpdateClient(client, managerId);
+    @PostMapping("/add")
+    public Client addClient(@RequestBody ClientDto clientDto){
+        return clientService.createClient(clientDto);
     }
 
     @DeleteMapping("/{id}")

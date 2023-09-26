@@ -4,10 +4,7 @@ import com.example.bankwebapp.dto.AccountDto;
 import com.example.bankwebapp.entity.Account;
 import com.example.bankwebapp.service.interfases.AccountService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -29,4 +26,8 @@ public class AccountController {
         return accountService.getAllAccounts();
     }
 
+    @PutMapping("/update")
+    public Account updateAccountById(@RequestBody AccountDto accountDto){
+        return accountService.update(accountDto);
+    }
 }

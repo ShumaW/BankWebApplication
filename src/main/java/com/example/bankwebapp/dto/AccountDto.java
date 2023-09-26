@@ -1,16 +1,13 @@
 package com.example.bankwebapp.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-
-import java.sql.Timestamp;
 
 @Data
 public class AccountDto {
 
     String id;
 
-    ClientDto client;
+    String clientId;
 
     String name;
 
@@ -18,14 +15,7 @@ public class AccountDto {
 
     String status;
 
-    String balance;
+    Double balance;
 
     String currencyCode;
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    Timestamp createdAt;
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    Timestamp updatedAt;
-
 }

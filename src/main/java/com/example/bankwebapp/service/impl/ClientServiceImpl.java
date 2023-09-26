@@ -1,7 +1,10 @@
 package com.example.bankwebapp.service.impl;
 
+import com.example.bankwebapp.dto.ClientDto;
 import com.example.bankwebapp.entity.Client;
 import com.example.bankwebapp.entity.Manager;
+import com.example.bankwebapp.exceptions.NotFoundClientException;
+import com.example.bankwebapp.mapper.ClientMapper;
 import com.example.bankwebapp.repository.ClientRepository;
 import com.example.bankwebapp.repository.ManagerRepository;
 import com.example.bankwebapp.service.interfases.ClientService;
@@ -20,14 +23,18 @@ public class ClientServiceImpl implements ClientService {
     private final ClientRepository clientRepository;
 
     private final ManagerRepository managerRepository;
+
+    private final ClientMapper clientMapper;
     @Override
     public Optional<Client> getClientById(UUID id) {
         return clientRepository.findById(id);
     }
 
     @Override
-    public Client addOrUpdateClient(Client client, String managerId) {
-        Manager manager = managerRepository.findById(UUID.fromString(managerId)).orElse(null);
+    public Client createClient(ClientDto clientDto) {
+        Manager manager = managerRepository.findById(UUID.fromString(clientDto.getManagerId()))
+                .orElseThrow(NotFoundClientException::new);
+        Client client = clientMapper.mapToEntity(clientDto);
         client.setManager(manager);
         return clientRepository.save(client);
     }

@@ -4,6 +4,7 @@ import com.example.bankwebapp.dto.AccountDto;
 import com.example.bankwebapp.entity.Account;
 import org.mapstruct.Mapper;
 
+
 import java.util.List;
 
 @Mapper(componentModel = "spring")
