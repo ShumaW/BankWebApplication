@@ -47,4 +47,12 @@ public class AccountServiceImpl implements AccountService {
         accountRepository.save(account);
         return account;
     }
+
+    @Override
+    public List<AccountDto> getAllAccountsWhereStatusIs(String status) {
+        List<Account> list = accountRepository.findAll().stream()
+                .filter(acc -> acc.getStatus().toString().equals(status))
+                .toList();
+        return accountMapper.mapToListDto(list);
+    }
 }

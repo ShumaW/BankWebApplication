@@ -13,4 +13,6 @@ public interface AccountService {
     List<Account> getAllAccounts();
 
     Account update(AccountDto accountDto);
+
+    List<AccountDto> getAllAccountsWhereStatusIs(String status);
 }

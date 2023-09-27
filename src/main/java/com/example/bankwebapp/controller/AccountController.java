@@ -30,4 +30,9 @@ public class AccountController {
     public Account updateAccountById(@RequestBody AccountDto accountDto) {
         return accountService.update(accountDto);
     }
+
+    @GetMapping("/status/{status}")
+    public List<AccountDto> getAllAccountsWhereStatusIs(@PathVariable("status") String status){
+        return accountService.getAllAccountsWhereStatusIs(status);
+    }
 }

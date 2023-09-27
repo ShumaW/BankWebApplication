@@ -28,7 +28,7 @@ public class Agreement {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private Product productId;
+    private Product product;
 
     @Column(name = "interest_rate")
     private BigDecimal interestRate;
@@ -51,19 +51,19 @@ public class Agreement {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Agreement agreement = (Agreement) o;
-        return id == agreement.id && productId == agreement.productId && Objects.equals(account, agreement.account);
+        return Objects.equals(id, agreement.id) && Objects.equals(createdAt, agreement.createdAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, account, productId);
+        return Objects.hash(id, createdAt);
     }
 
     @Override
     public String toString() {
         return "Agreement[ " +
                 "id: " + id +
-                ", productId: " + productId +
+                ", productId: " + product +
                 ", interestRate: " + interestRate +
                 ", status: " + status +
                 ", sum: " + sum +
