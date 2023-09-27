@@ -6,6 +6,8 @@ import com.example.bankwebapp.service.interfases.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -32,5 +34,15 @@ public class ClientController {
     @DeleteMapping("/{id}")
     public void deleteClient(@PathVariable("id") UUID id){
         clientService.deleteClient(id);
+    }
+
+    @GetMapping("/status/{status}")
+    public List<ClientDto> getAllClientsWhereStatusIs(@PathVariable("status") String status){
+        return clientService.getAllClientsWhereStatusIs(status);
+    }
+
+    @GetMapping("/balance_more_than/{sum}")
+    public List<ClientDto> getAllClientsWhereBalanceMoreThan(@PathVariable("sum") BigDecimal sum){
+        return clientService.getAllClientsWhereBalanceMoreThan(sum);
     }
 }

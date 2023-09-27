@@ -14,7 +14,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -61,5 +63,22 @@ public class ClientServiceImpl implements ClientService {
         client.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
         clientRepository.save(client);
         return client;
+    }
+
+    @Override
+    public List<ClientDto> getAllClientsWhereStatusIs(String status) {
+        return clientMapper.mapToListDto(clientRepository.findAll().stream()
+                .filter(client -> client.getStatus().toString().equals(status))
+                .toList());
+    }
+
+    @Override
+    public List<ClientDto> getAllClientsWhereBalanceMoreThan(BigDecimal sum) {
+        List<Client> list = clientRepository.findAll().stream()
+                .filter(client -> client.getAccountSet().stream()
+                        .allMatch(account -> account.getBalance()
+                                .compareTo(sum) > 0))
+                .toList();
+        return clientMapper.mapToListDto(list);
     }
 }
