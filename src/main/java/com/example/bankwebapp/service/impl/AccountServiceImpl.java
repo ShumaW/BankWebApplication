@@ -4,7 +4,6 @@ import com.example.bankwebapp.dto.AccountDto;
 import com.example.bankwebapp.entity.Account;
 import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.exceptions.NotFoundAccountException;
-import com.example.bankwebapp.exceptions.NotFoundClientException;
 import com.example.bankwebapp.mapper.AccountMapper;
 import com.example.bankwebapp.repository.AccountRepository;
 import com.example.bankwebapp.service.interfases.AccountService;
@@ -28,7 +27,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountDto getAccountById(UUID id) {
-        return accountMapper.mapToDto(accountRepository.findById(id).orElseThrow(NotFoundAccountException::new));
+        return accountMapper.mapToDto(accountRepository.findById(id)
+                .orElseThrow(() -> new NotFoundAccountException("Account not found with id " + id)));
     }
 
     @Override
@@ -39,9 +39,9 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account update(AccountDto accountDto) {
         Account account = accountRepository.findById(UUID.fromString(accountDto.getId()))
-                .orElseThrow(NotFoundClientException::new);
+                .orElseThrow(() -> new NotFoundAccountException("Account not found with id " + accountDto.getId()));
         account.setName(accountDto.getName());
-        account.setBalance(new BigDecimal(accountDto.getBalance()));
+        account.setBalance(BigDecimal.valueOf(accountDto.getBalance()));
         account.setStatus(Status.valueOf(accountDto.getStatus()));
         account.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
         accountRepository.save(account);

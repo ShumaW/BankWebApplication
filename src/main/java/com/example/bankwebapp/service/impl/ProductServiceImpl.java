@@ -5,7 +5,7 @@ import com.example.bankwebapp.entity.Manager;
 import com.example.bankwebapp.entity.Product;
 import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.exceptions.NotFoundManagerException;
-import com.example.bankwebapp.exceptions.NotFountProductException;
+import com.example.bankwebapp.exceptions.NotFoundProductException;
 import com.example.bankwebapp.repository.ManagerRepository;
 import com.example.bankwebapp.repository.ProductRepository;
 import com.example.bankwebapp.service.interfases.ProductService;
@@ -28,9 +28,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product update(ProductDto productDto) {
         Manager manager = managerRepository.findById(UUID.fromString(productDto.getManagerId()))
-                .orElseThrow(NotFoundManagerException::new);
+                .orElseThrow(() -> new NotFoundManagerException("Manager not fount with id " + productDto.getManagerId()));
         Product product = productRepository.findById(UUID.fromString(productDto.getId()))
-                .orElseThrow(NotFountProductException::new);
+                .orElseThrow(() -> new NotFoundProductException("Product not found with id " + productDto.getId()));
         product.setManager(manager);
         product.setName(productDto.getName());
         product.setLimit(Double.parseDouble(productDto.getLimit()));

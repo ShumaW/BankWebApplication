@@ -31,13 +31,14 @@ public class ClientServiceImpl implements ClientService {
     private final ClientMapper clientMapper;
     @Override
     public ClientDto getClientById(UUID id) {
-        return clientMapper.mapToDto(clientRepository.findById(id).orElseThrow(NotFoundClientException::new));
+        return clientMapper.mapToDto(clientRepository.findById(id)
+                .orElseThrow(() -> new NotFoundClientException("Client not found with id " + id)));
     }
 
     @Override
     public Client createClient(ClientDto clientDto) {
         Manager manager = managerRepository.findById(UUID.fromString(clientDto.getManagerId()))
-                .orElseThrow(NotFoundClientException::new);
+                .orElseThrow(() -> new NotFoundClientException("Client not found with id " + clientDto.getManagerId()));
         Client client = clientMapper.mapToEntity(clientDto);
         client.setManager(manager);
         return clientRepository.save(client);
@@ -51,9 +52,9 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client update(ClientDto clientDto) {
         Manager manager = managerRepository.findById(UUID.fromString(clientDto.getManagerId()))
-                .orElseThrow(NotFoundManagerException::new);
+                .orElseThrow(() -> new NotFoundManagerException("Manager not found with id " + clientDto.getManagerId()));
         Client client = clientRepository.findById(UUID.fromString(clientDto.getId()))
-                .orElseThrow(NotFoundClientException::new);
+                .orElseThrow(() -> new NotFoundClientException("Client not found with id " + clientDto.getId()));
         client.setManager(manager);
         client.setLastName(clientDto.getLastName());
         client.setStatus(Status.valueOf(clientDto.getStatus()));

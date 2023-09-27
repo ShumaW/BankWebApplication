@@ -22,6 +22,4 @@ public class AgreementController {
     public List<AgreementDto> findAgreementsWhereClientIdIs(@PathVariable("client_id") UUID clientId){
         return agreementService.findAgreementsWhereClientIdIs(clientId);
     }
-
-
 }

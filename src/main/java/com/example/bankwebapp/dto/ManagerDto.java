@@ -12,5 +12,4 @@ public class ManagerDto {
     String lastName;
 
     String status;
-
 }

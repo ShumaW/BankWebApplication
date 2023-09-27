@@ -16,5 +16,4 @@ public class TransactionDto {
     String amount;
 
     String description;
-
 }

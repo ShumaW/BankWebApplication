@@ -15,6 +15,4 @@ public enum Currencies {
     Currencies(int value) {
         this.value = value;
     }
-
 }
-

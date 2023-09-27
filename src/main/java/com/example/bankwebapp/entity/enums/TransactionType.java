@@ -15,4 +15,3 @@ public enum TransactionType {
         this.value = value;
     }
 }
-

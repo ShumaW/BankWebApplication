@@ -14,5 +14,4 @@ public enum Status {
     Status(int value) {
         this.value = value;
     }
-
 }
