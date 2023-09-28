@@ -67,19 +67,12 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public List<ClientDto> getAllClientsWhereStatusIs(String status) {
-        return clientMapper.mapToListDto(clientRepository.findAll().stream()
-                .filter(client -> client.getStatus().toString().equals(status))
-                .toList());
+    public List<ClientDto> getAllClientsWhereStatusIs(Status status) {
+        return clientMapper.mapToListDto(clientRepository.findAllClientWhereStatusIs(status));
     }
 
     @Override
     public List<ClientDto> getAllClientsWhereBalanceMoreThan(BigDecimal sum) {
-        List<Client> list = clientRepository.findAll().stream()
-                .filter(client -> client.getAccountSet().stream()
-                        .allMatch(account -> account.getBalance()
-                                .compareTo(sum) > 0))
-                .toList();
-        return clientMapper.mapToListDto(list);
+        return clientMapper.mapToListDto(clientRepository.findAllClientWhereBalanceMoreThan(sum));
     }
 }

@@ -7,6 +7,7 @@ import com.example.bankwebapp.service.interfases.AgreementService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,8 +22,8 @@ public class AgreementServiceImpl implements AgreementService {
     private final AgreementMapper agreementMapper;
 
     @Override
+    @Transactional
     public List<AgreementDto> findAgreementsWhereClientIdIs(UUID clientId) {
-        return agreementMapper.mapToListDto(agreementRepository.findAll().stream()
-                .filter(agreement -> agreement.getAccount().getClient().getId().equals(clientId)).toList());
+        return agreementMapper.mapToListDto(agreementRepository.findAllAccountByClientId(clientId));
     }
 }

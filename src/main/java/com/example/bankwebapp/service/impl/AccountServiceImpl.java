@@ -49,10 +49,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<AccountDto> getAllAccountsWhereStatusIs(String status) {
-        List<Account> list = accountRepository.findAll().stream()
-                .filter(acc -> acc.getStatus().toString().equals(status))
-                .toList();
-        return accountMapper.mapToListDto(list);
+    public List<AccountDto> getAllAccountsWhereStatusIs(Status status) {
+        return accountMapper.mapToListDto(accountRepository.findAllAccountsWhereStatusIs(status));
     }
 }

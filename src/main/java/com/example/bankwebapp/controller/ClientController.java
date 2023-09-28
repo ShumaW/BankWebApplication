@@ -2,6 +2,7 @@ package com.example.bankwebapp.controller;
 
 import com.example.bankwebapp.dto.ClientDto;
 import com.example.bankwebapp.entity.Client;
+import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.service.interfases.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +38,7 @@ public class ClientController {
     }
 
     @GetMapping("/status/{status}")
-    public List<ClientDto> getAllClientsWhereStatusIs(@PathVariable("status") String status){
+    public List<ClientDto> getAllClientsWhereStatusIs(@PathVariable("status") Status status){
         return clientService.getAllClientsWhereStatusIs(status);
     }
 

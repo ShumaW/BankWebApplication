@@ -2,6 +2,7 @@ package com.example.bankwebapp.service.interfases;
 
 import com.example.bankwebapp.dto.ClientDto;
 import com.example.bankwebapp.entity.Client;
+import com.example.bankwebapp.entity.enums.Status;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -16,7 +17,7 @@ public interface ClientService {
 
     Client update(ClientDto clientDto);
 
-    List<ClientDto> getAllClientsWhereStatusIs(String status);
+    List<ClientDto> getAllClientsWhereStatusIs(Status status);
 
 
     List<ClientDto> getAllClientsWhereBalanceMoreThan(BigDecimal sum);
