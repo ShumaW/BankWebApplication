@@ -32,8 +32,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<Account> getAllAccounts() {
-        return accountRepository.findAll();
+    public List<AccountDto> getAllAccounts() {
+        return accountMapper.mapToListDto(accountRepository.findAll());
     }
 
     @Override
@@ -41,7 +41,7 @@ public class AccountServiceImpl implements AccountService {
         Account account = accountRepository.findById(UUID.fromString(accountDto.getId()))
                 .orElseThrow(() -> new NotFoundAccountException("Account not found with id " + accountDto.getId()));
         account.setName(accountDto.getName());
-        account.setBalance(BigDecimal.valueOf(accountDto.getBalance()));
+        account.setBalance(new BigDecimal(accountDto.getBalance()));
         account.setStatus(Status.valueOf(accountDto.getStatus()));
         account.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
         accountRepository.save(account);

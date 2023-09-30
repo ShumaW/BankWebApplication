@@ -23,7 +23,7 @@ public class AccountController {
     }
 
     @GetMapping("/")
-    public List<Account> getAllAccounts() {
+    public List<AccountDto> getAllAccounts() {
         return accountService.getAllAccounts();
     }
 

@@ -11,7 +11,7 @@ public interface AccountService {
 
     AccountDto getAccountById(UUID id);
 
-    List<Account> getAllAccounts();
+    List<AccountDto> getAllAccounts();
 
     Account update(AccountDto accountDto);
 

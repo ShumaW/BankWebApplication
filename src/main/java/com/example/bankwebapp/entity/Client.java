@@ -62,6 +62,10 @@ public class Client {
     @JsonIgnore
     private Manager manager;
 
+    public Client(UUID id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

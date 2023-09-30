@@ -24,7 +24,7 @@ public class ClientController {
     }
 
     @PutMapping("/update")
-    public Client updateClientById(@RequestBody ClientDto clientDto){
+    public ClientDto updateClientById(@RequestBody ClientDto clientDto){
         return clientService.update(clientDto);
     }
     @PostMapping("/add")

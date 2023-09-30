@@ -1,8 +1,9 @@
 package com.example.bankwebapp.dto;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Setter
+@Value
 public class AccountDto {
 
     String id;
@@ -15,7 +16,7 @@ public class AccountDto {
 
     String status;
 
-    Double balance;
+    String balance;
 
     String currencyCode;
 }

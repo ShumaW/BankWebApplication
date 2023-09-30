@@ -1,8 +1,8 @@
 package com.example.bankwebapp.dto;
 
-import lombok.Data;
+import lombok.Value;
 
-@Data
+@Value
 public class ManagerDto {
 
     String id;

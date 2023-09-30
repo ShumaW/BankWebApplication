@@ -15,7 +15,7 @@ public interface ClientService {
 
     void deleteClient(UUID id);
 
-    Client update(ClientDto clientDto);
+    ClientDto update(ClientDto clientDto);
 
     List<ClientDto> getAllClientsWhereStatusIs(Status status);
 

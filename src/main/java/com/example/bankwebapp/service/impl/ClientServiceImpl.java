@@ -50,7 +50,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client update(ClientDto clientDto) {
+    public ClientDto update(ClientDto clientDto) {
         Manager manager = managerRepository.findById(UUID.fromString(clientDto.getManagerId()))
                 .orElseThrow(() -> new NotFoundManagerException("Manager not found with id " + clientDto.getManagerId()));
         Client client = clientRepository.findById(UUID.fromString(clientDto.getId()))
@@ -63,7 +63,7 @@ public class ClientServiceImpl implements ClientService {
         client.setPhone(clientDto.getPhone());
         client.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
         clientRepository.save(client);
-        return client;
+        return clientMapper.mapToDto(client);
     }
 
     @Override
