@@ -1,7 +1,6 @@
 package com.example.bankwebapp.service.interfases;
 
 import com.example.bankwebapp.dto.ClientDto;
-import com.example.bankwebapp.entity.Client;
 import com.example.bankwebapp.entity.enums.Status;
 
 import java.math.BigDecimal;
@@ -11,7 +10,7 @@ import java.util.UUID;
 public interface ClientService {
     ClientDto getClientById(UUID id);
 
-    Client createClient(ClientDto client);
+    ClientDto createClient(ClientDto client);
 
     void deleteClient(UUID id);
 

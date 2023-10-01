@@ -22,7 +22,7 @@ public class CreatorDto {
     public static ClientDto getClientDto() {
         Client client = CreatorEntity.getClient();
         return new ClientDto(
-                String.valueOf(client.getId()),
+                client.getId().toString(),
                 String.valueOf(client.getStatus()),
                 client.getTaxСode(),
                 client.getFirstName(),
@@ -37,10 +37,35 @@ public class CreatorDto {
     public static ManagerDto getManagerDto() {
         Manager manager = CreatorEntity.getManager();
         return new ManagerDto(
-              manager.getId().toString(),
-              manager.getFirstName(),
-              manager.getLastName(),
-              String.valueOf(manager.getStatus())
+                manager.getId().toString(),
+                manager.getFirstName(),
+                manager.getLastName(),
+                String.valueOf(manager.getStatus())
+        );
+    }
+
+    public static AgreementDto getAgreementDto() {
+        Agreement agreement = CreatorEntity.getAgreement();
+        return new AgreementDto(
+                agreement.getId().toString(),
+                getAccountDto(),
+                getProductDto(),
+                agreement.getInterestRate().toString(),
+                String.valueOf(agreement.getStatus()),
+                String.valueOf(agreement.getSum())
+        );
+    }
+
+    public static ProductDto getProductDto() {
+        Product product = CreatorEntity.getProduct();
+        return new ProductDto(
+                product.getId().toString(),
+                product.getName(),
+                String.valueOf(product.getStatus()),
+                String.valueOf(product.getCurrencyCode()),
+                product.getInterestRate().toString(),
+                String.valueOf(product.getLimit()),
+                getManagerDto().getId()
         );
     }
 }

@@ -19,7 +19,4 @@ public interface AccountMapper {
 
     @IterableMapping(qualifiedByName = "mapAccountToDto")
     List<AccountDto> mapToListDto(List<Account> accounts);
-
-
-
 }

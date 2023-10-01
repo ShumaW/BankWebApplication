@@ -1,7 +1,6 @@
 package com.example.bankwebapp.controller;
 
 import com.example.bankwebapp.dto.ClientDto;
-import com.example.bankwebapp.entity.Client;
 import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.service.interfases.ClientService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +27,7 @@ public class ClientController {
         return clientService.update(clientDto);
     }
     @PostMapping("/add")
-    public Client addClient(@RequestBody ClientDto clientDto){
+    public ClientDto addClient(@RequestBody ClientDto clientDto){
         return clientService.createClient(clientDto);
     }
 

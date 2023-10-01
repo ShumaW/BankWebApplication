@@ -1,15 +1,17 @@
 package com.example.bankwebapp.dto;
 
+import lombok.Setter;
 import lombok.Value;
 
+@Setter
 @Value
 public class AgreementDto {
 
     String id;
 
-    AccountDto accountDto;
+    AccountDto account;
 
-    ProductDto productDto;
+    ProductDto product;
 
     String interestRate;
 

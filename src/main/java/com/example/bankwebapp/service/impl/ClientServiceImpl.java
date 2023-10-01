@@ -36,12 +36,12 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client createClient(ClientDto clientDto) {
+    public ClientDto createClient(ClientDto clientDto) {
         Manager manager = managerRepository.findById(UUID.fromString(clientDto.getManagerId()))
                 .orElseThrow(() -> new NotFoundClientException("Client not found with id " + clientDto.getManagerId()));
         Client client = clientMapper.mapToEntity(clientDto);
         client.setManager(manager);
-        return clientRepository.save(client);
+        return clientMapper.mapToDto(clientRepository.save(client));
     }
 
     @Override

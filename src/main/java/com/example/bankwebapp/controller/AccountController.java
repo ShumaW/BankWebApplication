@@ -1,7 +1,6 @@
 package com.example.bankwebapp.controller;
 
 import com.example.bankwebapp.dto.AccountDto;
-import com.example.bankwebapp.entity.Account;
 import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.service.interfases.AccountService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +27,7 @@ public class AccountController {
     }
 
     @PutMapping("/update")
-    public Account updateAccountById(@RequestBody AccountDto accountDto) {
+    public AccountDto updateAccountById(@RequestBody AccountDto accountDto) {
         return accountService.update(accountDto);
     }
 

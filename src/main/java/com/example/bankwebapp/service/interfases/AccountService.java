@@ -1,7 +1,6 @@
 package com.example.bankwebapp.service.interfases;
 
 import com.example.bankwebapp.dto.AccountDto;
-import com.example.bankwebapp.entity.Account;
 import com.example.bankwebapp.entity.enums.Status;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public interface AccountService {
 
     List<AccountDto> getAllAccounts();
 
-    Account update(AccountDto accountDto);
+    AccountDto update(AccountDto accountDto);
 
     List<AccountDto> getAllAccountsWhereStatusIs(Status status);
 }

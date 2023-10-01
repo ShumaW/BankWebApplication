@@ -13,9 +13,11 @@ import java.util.List;
 @Mapper(componentModel = "spring", uses = {ProductMapper.class, AccountMapper.class})
 public interface AgreementMapper {
 
+
+
     @Named("mapAgreementToDto")
-    @Mapping(target = "accountDto", source = "account", qualifiedByName = "mapAccountToDto")
-    @Mapping(target = "productDto", source = "product", qualifiedByName = "mapProductToDto")
+    @Mapping(target = "account", source = "account", qualifiedByName = "mapAccountToDto")
+    @Mapping(target = "product", source = "product", qualifiedByName = "mapProductToDto")
     AgreementDto mapToDto(Agreement agreement);
 
     @IterableMapping(qualifiedByName = "mapAgreementToDto")

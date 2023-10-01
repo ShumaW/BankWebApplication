@@ -1,8 +1,6 @@
 package com.example.bankwebapp.util;
 
-import com.example.bankwebapp.entity.Account;
-import com.example.bankwebapp.entity.Client;
-import com.example.bankwebapp.entity.Manager;
+import com.example.bankwebapp.entity.*;
 import com.example.bankwebapp.entity.enums.AccountType;
 import com.example.bankwebapp.entity.enums.Currencies;
 import com.example.bankwebapp.entity.enums.Status;
@@ -28,7 +26,7 @@ public class CreatorEntity {
 
     public static Client getClient() {
         Client client = new Client();
-        client.setId(UUID.fromString("9921c0fa-e9ca-4bd8-b763-abb459a00bd9"));
+        client.setId(UUID.fromString("09b90738-b37c-4035-abdc-550b28f43c33"));
         client.setStatus(Status.valueOf("ACTIVE"));
         client.setTaxСode("1234567899");
         client.setFirstName("Chandler");
@@ -47,5 +45,27 @@ public class CreatorEntity {
         manager.setLastName("Smith");
         manager.setStatus(Status.valueOf("ACTIVE"));
         return manager;
+    }
+
+    public static Agreement getAgreement() {
+        Agreement agreement = new Agreement();
+        agreement.setId(UUID.fromString("416c806e-769e-45f9-8aea-8c2527da7fa5"));
+        agreement.setAccount(getAccount());
+        agreement.setProduct(getProduct());
+        agreement.setInterestRate(new BigDecimal("2.7500"));
+        agreement.setStatus(Status.valueOf("PENDING"));
+        agreement.setSum(new BigDecimal("50000.00"));
+        return agreement;
+    }
+
+    public static Product getProduct(){
+        Product product = new Product();
+        product.setId(UUID.fromString("261241cb-f206-4b29-a779-6fe116538763"));
+        product.setName("credit");
+        product.setStatus(Status.valueOf("ACTIVE"));
+        product.setCurrencyCode(Currencies.valueOf("EUR"));
+        product.setInterestRate(new BigDecimal("2.7500"));
+        product.setLimit(100000.00);
+        return product;
     }
 }

@@ -10,6 +10,7 @@ import com.example.bankwebapp.service.interfases.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -37,7 +38,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account update(AccountDto accountDto) {
+    @Transactional
+    public AccountDto update(AccountDto accountDto) {
         Account account = accountRepository.findById(UUID.fromString(accountDto.getId()))
                 .orElseThrow(() -> new NotFoundAccountException("Account not found with id " + accountDto.getId()));
         account.setName(accountDto.getName());
@@ -45,7 +47,7 @@ public class AccountServiceImpl implements AccountService {
         account.setStatus(Status.valueOf(accountDto.getStatus()));
         account.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
         accountRepository.save(account);
-        return account;
+        return accountMapper.mapToDto(account);
     }
 
     @Override
