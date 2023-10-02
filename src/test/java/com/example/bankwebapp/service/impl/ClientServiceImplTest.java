@@ -82,7 +82,7 @@ class ClientServiceImplTest {
     }
 
     @Test
-    void deleteClient() {
+    void deleteClientTest() {
         //given
         Client client = CreatorEntity.getClient();
         //when
@@ -93,13 +93,13 @@ class ClientServiceImplTest {
     }
 
     @Test
-    void update() {
+    void updateTest() {
         //given
         Client client = CreatorEntity.getClient();
         ClientDto clientDto = CreatorDto.getClientDto();
         ClientDto outputClientDto = new ClientDto(
                 client.getId().toString(),
-                client.getStatus().toString(),
+                "BLOCKED",
                 client.getTaxСode(),
                 client.getFirstName(),
                 client.getLastName(),
@@ -121,7 +121,7 @@ class ClientServiceImplTest {
     }
 
     @Test
-    void getAllClientsWhereStatusIs() {
+    void getAllClientsWhereStatusIsTest() {
         //given
         List<ClientDto> clientDtoList = new ArrayList<>();
         ClientDto clientDto = CreatorDto.getClientDto();
@@ -140,7 +140,7 @@ class ClientServiceImplTest {
     }
 
     @Test
-    void getAllClientsWhereBalanceMoreThan() {
+    void getAllClientsWhereBalanceMoreThanTest() {
         //given
         List<Client> clientList = new ArrayList<>();
         Client client = CreatorEntity.getClient();

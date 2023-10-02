@@ -66,6 +66,7 @@ public class CreatorEntity {
         product.setCurrencyCode(Currencies.valueOf("EUR"));
         product.setInterestRate(new BigDecimal("2.7500"));
         product.setLimit(100000.00);
+        product.setManager(new Manager(UUID.fromString("1763f054-5393-11ee-8c99-0242ac120002")));
         return product;
     }
 }
