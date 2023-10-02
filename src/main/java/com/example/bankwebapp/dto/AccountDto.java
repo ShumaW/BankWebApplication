@@ -19,4 +19,5 @@ public class AccountDto {
     String balance;
 
     String currencyCode;
+
 }

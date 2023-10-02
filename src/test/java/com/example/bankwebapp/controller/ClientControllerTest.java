@@ -1,8 +1,14 @@
 package com.example.bankwebapp.controller;
 
 import com.example.bankwebapp.dto.ClientDto;
+import com.example.bankwebapp.entity.Account;
+import com.example.bankwebapp.entity.Client;
+import com.example.bankwebapp.entity.Manager;
+import com.example.bankwebapp.entity.enums.Status;
+import com.example.bankwebapp.repository.ClientRepository;
 import com.example.bankwebapp.service.interfases.ClientService;
 import com.example.bankwebapp.util.CreatorDto;
+import com.example.bankwebapp.util.CreatorEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +18,11 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.UUID;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.*;
 
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -33,6 +42,10 @@ class ClientControllerTest {
 
     @MockBean
     private ClientService clientService;
+
+    @MockBean
+    private ClientRepository clientRepository;
+
 
     @Test
     void getClientByIdTest() throws Exception {
@@ -59,7 +72,48 @@ class ClientControllerTest {
     }
 
     @Test
-    void updateClientById() {
+    void updateClientById() throws Exception {
+        // given
+        ClientDto clientDto = CreatorDto.getClientDto();
+        UUID clientId = UUID.fromString(clientDto.getId());
+
+        Client client = new Client(clientId,
+                Status.valueOf(clientDto.getStatus()),
+                clientDto.getTaxСode(),
+                clientDto.getFirstName(),
+                clientDto.getLastName(),
+                clientDto.getEmail(),
+                clientDto.getAddress(),
+                clientDto.getPhone(),
+                new Timestamp(System.currentTimeMillis()),
+                new Timestamp(System.currentTimeMillis()),
+                Set.of(new Account()),
+                new Manager(UUID.fromString("1763f054-5393-11ee-8c99-0242ac120002"))
+        );
+
+        ClientDto outputClientDto = new ClientDto(
+                client.getId().toString(),
+                client.getStatus().toString(),
+                client.getTaxСode(),
+                client.getFirstName(),
+                client.getLastName(),
+                client.getEmail(),
+                client.getAddress(),
+                client.getPhone(),
+                client.getManager().getId().toString()
+        );
+        //when
+        when(clientRepository.findById(clientId)).thenReturn(Optional.of(client));
+        when(clientService.update(clientDto)).thenReturn(outputClientDto);
+        //then
+        mockMvc.perform(put("/auth/clients/update")
+                        .content(asJsonString(clientDto))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andReturn();
+        verify(clientService, times(1)).update(clientDto);
     }
 
     @Test
@@ -86,14 +140,57 @@ class ClientControllerTest {
     }
 
     @Test
-    void deleteClient() {
+    void deleteClient() throws Exception {
+        //given
+        Client client = CreatorEntity.getClient();
+        UUID clientId = client.getId();
+        //when
+        doNothing().when(clientService).deleteClient(clientId);
+        //then
+        mockMvc.perform(delete("/auth/clients/delete/" + clientId))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andReturn();
+        verify(clientService, times(1)).deleteClient(clientId);
     }
 
     @Test
-    void getAllClientsWhereStatusIs() {
+    void getAllClientsWhereStatusIs() throws Exception {
+        //given
+        List<ClientDto> clientDtoList = new ArrayList<>();
+        ClientDto clientDto = CreatorDto.getClientDto();
+        Status clientStatus = Status.valueOf(clientDto.getStatus());
+        clientDtoList.add(clientDto);
+        //when
+        when(clientService.getAllClientsWhereStatusIs(clientStatus)).thenReturn(clientDtoList);
+        //then
+        mockMvc.perform(get("/auth/clients/status/" + clientStatus))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].id", is(clientDto.getId())))
+                .andExpect(jsonPath("$[0].email", is(clientDto.getEmail())))
+                .andExpect(jsonPath("$[0].address", is(clientDto.getAddress())))
+                .andReturn();
+        verify(clientService, times(1)).getAllClientsWhereStatusIs(clientStatus);
     }
 
     @Test
-    void getAllClientsWhereBalanceMoreThan() {
+    void getAllClientsWhereBalanceMoreThan() throws Exception {
+        //given
+        List<ClientDto> clientDtoList = new ArrayList<>();
+        ClientDto clientDto = CreatorDto.getClientDto();
+        clientDtoList.add(clientDto);
+        BigDecimal sum = new BigDecimal(500);
+        //when
+        when(clientService.getAllClientsWhereBalanceMoreThan(sum)).thenReturn(clientDtoList);
+        //then
+        mockMvc.perform(get("/auth/clients/balance_more_than/" + sum))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].id", is(clientDto.getId())))
+                .andReturn();
+        verify(clientService, times(1)).getAllClientsWhereBalanceMoreThan(sum);
     }
 }

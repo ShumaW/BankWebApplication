@@ -31,7 +31,7 @@ public class ClientController {
         return clientService.createClient(clientDto);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteClient(@PathVariable("id") UUID id){
         clientService.deleteClient(id);
     }

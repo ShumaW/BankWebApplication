@@ -6,6 +6,7 @@ import com.example.bankwebapp.entity.Product;
 import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.exceptions.NotFoundManagerException;
 import com.example.bankwebapp.exceptions.NotFoundProductException;
+import com.example.bankwebapp.mapper.ProductMapper;
 import com.example.bankwebapp.repository.ManagerRepository;
 import com.example.bankwebapp.repository.ProductRepository;
 import com.example.bankwebapp.service.interfases.ProductService;
@@ -25,8 +26,10 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
     private final ManagerRepository managerRepository;
+
+    private final ProductMapper productMapper;
     @Override
-    public Product update(ProductDto productDto) {
+    public ProductDto update(ProductDto productDto) {
         Manager manager = managerRepository.findById(UUID.fromString(productDto.getManagerId()))
                 .orElseThrow(() -> new NotFoundManagerException("Manager not fount with id " + productDto.getManagerId()));
         Product product = productRepository.findById(UUID.fromString(productDto.getId()))
@@ -38,6 +41,6 @@ public class ProductServiceImpl implements ProductService {
         product.setInterestRate(new BigDecimal(productDto.getInterestRate()));
         product.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
         productRepository.save(product);
-        return product;
+        return productMapper.mapToDto(product);
     }
 }

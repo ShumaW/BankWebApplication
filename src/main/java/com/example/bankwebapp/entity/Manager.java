@@ -50,6 +50,10 @@ public class Manager {
     @JsonIgnore
     private Set<Product> productSet;
 
+    public Manager(UUID manager_id) {
+        this.id = manager_id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
