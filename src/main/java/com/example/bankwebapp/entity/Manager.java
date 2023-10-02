@@ -50,8 +50,8 @@ public class Manager {
     @JsonIgnore
     private Set<Product> productSet;
 
-    public Manager(UUID manager_id) {
-        this.id = manager_id;
+    public Manager(UUID managerId) {
+        this.id = managerId;
     }
 
     @Override

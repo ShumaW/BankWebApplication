@@ -107,5 +107,7 @@ class AccountServiceImplTest {
         //then
         List<AccountDto> allAccountsWhereStatusIs = accountService.getAllAccountsWhereStatusIs(account.getStatus());
         assertEquals(1,allAccountsWhereStatusIs.size());
+        assertNotNull(allAccountsWhereStatusIs);
+        verify(accountRepository, times(1)).findAllAccountsWhereStatusIs(account.getStatus());
     }
 }
