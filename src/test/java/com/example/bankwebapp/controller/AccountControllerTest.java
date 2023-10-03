@@ -96,7 +96,7 @@ class AccountControllerTest {
     }
 
     @Test
-    void getAllAccountsWhereStatusIsTest() throws Exception {
+    void testGetAllAccountsWhereStatusIs() throws Exception {
         // given
         List<AccountDto> accountDtoList = new ArrayList<>();
         AccountDto accountDto = CreatorDto.getAccountDto();

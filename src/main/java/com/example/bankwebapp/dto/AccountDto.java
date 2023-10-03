@@ -4,6 +4,9 @@ import lombok.*;
 
 @Setter
 @Value
+@Builder
+@Data
+@AllArgsConstructor
 public class AccountDto {
 
     String id;

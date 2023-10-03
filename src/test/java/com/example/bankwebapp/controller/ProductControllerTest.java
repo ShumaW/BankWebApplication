@@ -41,7 +41,7 @@ class ProductControllerTest {
     private ProductServiceImpl productService;
 
     @Test
-    void updateProductById() throws Exception {
+    void updateProductByIdTest() throws Exception {
         //given
         ProductDto productDto = CreatorDto.getProductDto();
         UUID productId = UUID.fromString(productDto.getId());

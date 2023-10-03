@@ -48,8 +48,8 @@ public class CreatorDto {
         Agreement agreement = CreatorEntity.getAgreement();
         return new AgreementDto(
                 agreement.getId().toString(),
-                getAccountDto(),
-                getProductDto(),
+                agreement.getAccount().getId().toString(),
+                agreement.getProduct().getId().toString(),
                 agreement.getInterestRate().toString(),
                 String.valueOf(agreement.getStatus()),
                 String.valueOf(agreement.getSum())

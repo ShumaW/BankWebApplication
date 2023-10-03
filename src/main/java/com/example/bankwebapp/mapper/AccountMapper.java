@@ -3,14 +3,11 @@ package com.example.bankwebapp.mapper;
 import com.example.bankwebapp.dto.AccountDto;
 import com.example.bankwebapp.entity.Account;
 import com.example.bankwebapp.entity.Client;
-import org.mapstruct.IterableMapping;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
+import org.mapstruct.*;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", imports = {Client.class})
+@Mapper(componentModel = "spring", imports = {Client.class}, uses = {AgreementMapper.class})
 public interface AccountMapper {
 
     @Named("mapAccountToDto")

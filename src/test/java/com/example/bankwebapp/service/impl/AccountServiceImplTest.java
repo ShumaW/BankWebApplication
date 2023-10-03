@@ -47,7 +47,7 @@ class AccountServiceImplTest {
     }
 
     @Test
-    void notFoundAccountByIdException(){
+    void notFoundAccountByIdExceptionTest(){
         UUID random = UUID.randomUUID();
         String expected = "Account not found with id " + random;
         Exception exception = assertThrows(NotFoundAccountException.class, () -> accountService.getAccountById(random));
@@ -93,7 +93,7 @@ class AccountServiceImplTest {
     }
 
     @Test
-    void getAllAccountsWhereStatusIsTest() {
+    void testGetAllAccountsWhereStatusIs() {
         //given
         List<Account> accountList = new ArrayList<>();
         Account account = CreatorEntity.getAccount();

@@ -36,7 +36,7 @@ class AgreementControllerTest {
     private AgreementService agreementService;
 
     @Test
-    void findAgreementsWhereClientIdIsTest() throws Exception {
+    void testFindAgreementsWhereClientIdIs() throws Exception {
         // given
         AgreementDto agreementDto = CreatorDto.getAgreementDto();
         List<AgreementDto> agreementDtoList = new ArrayList<>();

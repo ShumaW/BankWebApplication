@@ -33,7 +33,7 @@ class AgreementServiceImplTest {
     AgreementMapper agreementMapper;
 
     @Test
-    void findAgreementsWhereClientIdIs() {
+    void testFindAgreementsWhereClientIdIs() {
         //given
         List<AgreementDto> agreementDtoList = new ArrayList<>();
         AgreementDto agreementDto = CreatorDto.getAgreementDto();

@@ -121,7 +121,7 @@ class ClientServiceImplTest {
     }
 
     @Test
-    void getAllClientsWhereStatusIsTest() {
+    void testGetAllClientsWhereStatusIs() {
         //given
         List<ClientDto> clientDtoList = new ArrayList<>();
         ClientDto clientDto = CreatorDto.getClientDto();
@@ -140,7 +140,7 @@ class ClientServiceImplTest {
     }
 
     @Test
-    void getAllClientsWhereBalanceMoreThanTest() {
+    void testGetAllClientsWhereBalanceMoreThan() {
         //given
         List<Client> clientList = new ArrayList<>();
         Client client = CreatorEntity.getClient();

@@ -72,7 +72,7 @@ class ClientControllerTest {
     }
 
     @Test
-    void updateClientById() throws Exception {
+    void updateClientByIdTest() throws Exception {
         // given
         ClientDto clientDto = CreatorDto.getClientDto();
         UUID clientId = UUID.fromString(clientDto.getId());
@@ -117,7 +117,7 @@ class ClientControllerTest {
     }
 
     @Test
-    void addClient() throws Exception {
+    void addClientTest() throws Exception {
         // given
         ClientDto clientDto = CreatorDto.getClientDto();
         //when
@@ -140,7 +140,7 @@ class ClientControllerTest {
     }
 
     @Test
-    void deleteClient() throws Exception {
+    void deleteClientTest() throws Exception {
         //given
         Client client = CreatorEntity.getClient();
         UUID clientId = client.getId();
@@ -155,7 +155,7 @@ class ClientControllerTest {
     }
 
     @Test
-    void getAllClientsWhereStatusIs() throws Exception {
+    void testGetAllClientsWhereStatusIs() throws Exception {
         //given
         List<ClientDto> clientDtoList = new ArrayList<>();
         ClientDto clientDto = CreatorDto.getClientDto();
@@ -176,7 +176,7 @@ class ClientControllerTest {
     }
 
     @Test
-    void getAllClientsWhereBalanceMoreThan() throws Exception {
+    void testGetAllClientsWhereBalanceMoreThan() throws Exception {
         //given
         List<ClientDto> clientDtoList = new ArrayList<>();
         ClientDto clientDto = CreatorDto.getClientDto();

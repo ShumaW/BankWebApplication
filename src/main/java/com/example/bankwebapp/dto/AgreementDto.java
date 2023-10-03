@@ -9,9 +9,9 @@ public class AgreementDto {
 
     String id;
 
-    AccountDto account;
+    String accountId;
 
-    ProductDto product;
+    String productId;
 
     String interestRate;
 
