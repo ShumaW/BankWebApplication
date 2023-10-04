@@ -28,6 +28,11 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
+                  name: currency_code
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+              - column:
                   name: amount
                   type: numeric(12,5)
                   constraints:

@@ -1,8 +1,8 @@
 package com.example.bankwebapp.dto;
 
-import lombok.Data;
+import lombok.Value;
 
-@Data
+@Value
 public class TransactionDto {
 
     String id;
@@ -15,5 +15,10 @@ public class TransactionDto {
 
     String amount;
 
+    String currencyCode;
+
     String description;
+
+
+
 }

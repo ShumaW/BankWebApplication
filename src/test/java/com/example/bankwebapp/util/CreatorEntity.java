@@ -4,6 +4,7 @@ import com.example.bankwebapp.entity.*;
 import com.example.bankwebapp.entity.enums.AccountType;
 import com.example.bankwebapp.entity.enums.Currencies;
 import com.example.bankwebapp.entity.enums.Status;
+import com.example.bankwebapp.entity.enums.TransactionType;
 import lombok.experimental.UtilityClass;
 
 import java.math.BigDecimal;
@@ -68,5 +69,17 @@ public class CreatorEntity {
         product.setLimit(100000.00);
         product.setManager(new Manager(UUID.fromString("1763f054-5393-11ee-8c99-0242ac120002")));
         return product;
+    }
+
+    public static Transaction getTransaction() {
+        Transaction transaction = new Transaction();
+        transaction.setId(UUID.fromString("d965c068-4d54-4382-ac62-7f2db627dc6c"));
+        transaction.setDebitAccountId(new Account(UUID.fromString("f3deef15-86da-46ec-9d27-8305dc37e6a4")));
+        transaction.setCreditAccountId(new Account(UUID.fromString("d62c0f9c-50b4-48ab-96b9-7c81dd04ac48")));
+        transaction.setType(TransactionType.TRANSFER);
+        transaction.setCurrencyCode(Currencies.USD);
+        transaction.setAmount(new BigDecimal("4045.12000"));
+        transaction.setDescription("pay");
+        return transaction;
     }
 }

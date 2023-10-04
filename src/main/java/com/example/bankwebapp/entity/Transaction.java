@@ -1,5 +1,6 @@
 package com.example.bankwebapp.entity;
 
+import com.example.bankwebapp.entity.enums.Currencies;
 import com.example.bankwebapp.entity.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.*;
@@ -34,6 +35,9 @@ public class Transaction {
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
     private TransactionType type;
+
+    @Column(name = "currency_code")
+    private Currencies currencyCode;
 
     @Column(name = "amount")
     private BigDecimal amount;

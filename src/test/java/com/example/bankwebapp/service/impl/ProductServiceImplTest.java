@@ -3,6 +3,7 @@ package com.example.bankwebapp.service.impl;
 import com.example.bankwebapp.dto.ProductDto;
 import com.example.bankwebapp.entity.Manager;
 import com.example.bankwebapp.entity.Product;
+import com.example.bankwebapp.exceptions.NotFoundProductException;
 import com.example.bankwebapp.mapper.ProductMapper;
 import com.example.bankwebapp.repository.ManagerRepository;
 import com.example.bankwebapp.repository.ProductRepository;
@@ -15,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -57,5 +59,17 @@ class ProductServiceImplTest {
         ProductDto updateProduct = productService.update(productDto);
         assertNotEquals(productDto.getStatus(),updateProduct.getStatus());
         verify(productRepository, times(1)).save(product);
+    }
+
+    @Test
+    void notFoundProductExceptionTest(){
+        UUID randomProductId = UUID.randomUUID();
+        ProductDto productDto = new ProductDto(
+                randomProductId.toString(), "credit", "ACTIVE","EUR"
+                ,"2.75","100000.00","1763f054-5393-11ee-8c99-0242ac120002"
+        );
+        String expected ="Product not found with id " + randomProductId;
+        Exception exception = assertThrows(NotFoundProductException.class, () -> productService.update(productDto));
+        assertEquals(expected, exception.getMessage());
     }
 }

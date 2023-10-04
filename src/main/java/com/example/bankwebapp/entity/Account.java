@@ -68,6 +68,10 @@ public class Account {
     @JsonIgnore
     private Set<Transaction> creditTransaction;
 
+    public Account(UUID id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

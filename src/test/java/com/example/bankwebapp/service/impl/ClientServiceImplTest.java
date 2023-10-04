@@ -124,8 +124,7 @@ class ClientServiceImplTest {
     void testGetAllClientsWhereStatusIs() {
         //given
         List<ClientDto> clientDtoList = new ArrayList<>();
-        ClientDto clientDto = CreatorDto.getClientDto();
-        clientDtoList.add(clientDto);
+        clientDtoList.add(CreatorDto.getClientDto());
         List<Client> clientList = new ArrayList<>();
         Client client = CreatorEntity.getClient();
         clientList.add(client);
