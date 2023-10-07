@@ -48,7 +48,7 @@ public class Account {
     @Enumerated(EnumType.STRING)
     private Currencies currencyCode;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     private Timestamp createdAt;
 
     @Column(name = "updated_at")

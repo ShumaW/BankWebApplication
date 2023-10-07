@@ -47,7 +47,7 @@ public class Client {
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     private Timestamp createdAt;
 
     @Column(name = "updated_at")

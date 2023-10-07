@@ -2,10 +2,13 @@ package com.example.bankwebapp.service.impl;
 
 import com.example.bankwebapp.dto.AccountDto;
 import com.example.bankwebapp.entity.Account;
+import com.example.bankwebapp.entity.Client;
 import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.exceptions.NotFoundAccountException;
+import com.example.bankwebapp.exceptions.NotFoundClientException;
 import com.example.bankwebapp.mapper.AccountMapper;
 import com.example.bankwebapp.repository.AccountRepository;
+import com.example.bankwebapp.repository.ClientRepository;
 import com.example.bankwebapp.service.interfases.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +28,8 @@ public class AccountServiceImpl implements AccountService {
     private final AccountRepository accountRepository;
 
     private final AccountMapper accountMapper;
+
+    private final ClientRepository clientRepository;
 
     @Override
     public AccountDto getAccountById(UUID id) {
@@ -53,5 +58,25 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<AccountDto> getAllAccountsWhereStatusIs(Status status) {
         return accountMapper.mapToListDto(accountRepository.findAllAccountsWhereStatusIs(status));
+    }
+
+    @Override
+    public AccountDto createAccount(AccountDto accountDto) {
+        Client client = clientRepository.findById(UUID.fromString(accountDto.getClientId()))
+                .orElseThrow(() -> new NotFoundClientException("Client not found with id " + accountDto.getClientId()));
+        Account account = accountMapper.mapToEntity(accountDto);
+        account.setClient(client);
+        account.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+        account.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+        return accountMapper.mapToDto(accountRepository.save(account));
+    }
+
+    @Override
+    public AccountDto updateStatusInAccountByIdToRemoved(UUID id) {
+        Account account = accountRepository.findById(id)
+                .orElseThrow(() -> new NotFoundAccountException("Account not found with id " + id));
+        account.setStatus(Status.REMOVED);
+        account.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+        return accountMapper.mapToDto(accountRepository.save(account));
     }
 }

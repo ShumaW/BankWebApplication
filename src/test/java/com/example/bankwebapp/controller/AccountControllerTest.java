@@ -11,6 +11,7 @@ import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.repository.AccountRepository;
 import com.example.bankwebapp.service.impl.AccountServiceImpl;
 import com.example.bankwebapp.util.CreatorDto;
+import com.example.bankwebapp.util.CreatorEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -152,6 +154,37 @@ class AccountControllerTest {
                 .andDo(print())
                 .andReturn();
         verify(accountService, times(1)).update(accountDto);
+    }
+
+    @Test
+    void createAccountTest() throws Exception {
+        //given
+        AccountDto accountDto = CreatorDto.getAccountDto();
+        //when
+        when(accountService.createAccount(accountDto)).thenReturn(accountDto);
+        //then
+        mockMvc.perform(post("/auth/accounts/create")
+                .content(asJsonString(accountDto))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().is2xxSuccessful());
+        verify(accountService, times(1)).createAccount(accountDto);
+    }
+
+    @Test
+    void deleteAccountByIdTest() throws Exception {
+        //given
+        Account account = CreatorEntity.getAccount();
+        UUID accountId = account.getId();
+        AccountDto accountDto = CreatorDto.getAccountDto();
+        //when
+        when(accountService.updateStatusInAccountByIdToRemoved(accountId)).thenReturn(accountDto);
+        //then
+        mockMvc.perform(put("/auth/accounts/delete/" + accountId))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andReturn();
+        verify(accountService, times(1)).updateStatusInAccountByIdToRemoved(accountId);
     }
 
     public static String asJsonString(AccountDto accountDto) {

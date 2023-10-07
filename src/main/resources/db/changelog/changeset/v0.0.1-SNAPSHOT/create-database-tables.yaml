@@ -47,6 +47,10 @@ databaseChangeLog:
                   type: timestamp
                   constraints:
                     nullable: false
+        -  addDefaultValue:
+             tableName: transactions
+             columnName: created_at
+             defaultValueDate: current_timestamp
 
   - changeSet:
       id: create-managers
@@ -84,6 +88,10 @@ databaseChangeLog:
                   type: timestamp
                   constraints:
                     nullable: false
+        -  addDefaultValue:
+             tableName: managers
+             columnName: created_at
+             defaultValueDate: current_timestamp
 
   - changeSet:
       id: create-clients
@@ -145,12 +153,20 @@ databaseChangeLog:
                   name: created_at
                   type: timestamp
                   constraints:
-#                    nullable: false
+                    nullable: false
               - column:
                   name: updated_at
                   type: timestamp
                   constraints:
-#                    nullable: false
+                    nullable: false
+        -  addDefaultValue:
+             tableName: clients
+             columnName: created_at
+             defaultValueDate: current_timestamp
+        -  addDefaultValue:
+             tableName: clients
+             columnName: updated_at
+             defaultValueDate: current_timestamp
 
   - changeSet:
       id: create-accounts
@@ -208,6 +224,14 @@ databaseChangeLog:
                   type: timestamp
                   constraints:
                     nullable: false
+        -  addDefaultValue:
+             tableName: accounts
+             columnName: created_at
+             defaultValueDate: current_timestamp
+        -  addDefaultValue:
+             tableName: accounts
+             columnName: updated_at
+             defaultValueDate: current_timestamp
 
   - changeSet:
       id: create-products
@@ -259,12 +283,20 @@ databaseChangeLog:
                   name: created_at
                   type: timestamp
                   constraints:
-#                    nullable: false
+                    nullable: false
               - column:
                   name: updated_at
                   type: timestamp
                   constraints:
-#                    nullable: false
+                    nullable: false
+        -  addDefaultValue:
+             tableName: products
+             columnName: created_at
+             defaultValueDate: current_timestamp
+        -  addDefaultValue:
+             tableName: products
+             columnName: updated_at
+             defaultValueDate: current_timestamp
 
   - changeSet:
       id: create-agreements
@@ -318,3 +350,11 @@ databaseChangeLog:
                   type: timestamp
                   constraints:
                     nullable: false
+        -  addDefaultValue:
+             tableName: agreements
+             columnName: created_at
+             defaultValueDate: current_timestamp
+        -  addDefaultValue:
+             tableName: agreements
+             columnName: updated_at
+             defaultValueDate: current_timestamp

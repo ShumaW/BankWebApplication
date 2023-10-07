@@ -37,6 +37,7 @@ public class Transaction {
     private TransactionType type;
 
     @Column(name = "currency_code")
+    @Enumerated(EnumType.STRING)
     private Currencies currencyCode;
 
     @Column(name = "amount")
@@ -45,7 +46,7 @@ public class Transaction {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     private Timestamp createdAt;
 
     @Override

@@ -15,4 +15,8 @@ public interface AccountService {
     AccountDto update(AccountDto accountDto);
 
     List<AccountDto> getAllAccountsWhereStatusIs(Status status);
+
+    AccountDto createAccount(AccountDto accountDto);
+
+    AccountDto updateStatusInAccountByIdToRemoved(UUID id);
 }

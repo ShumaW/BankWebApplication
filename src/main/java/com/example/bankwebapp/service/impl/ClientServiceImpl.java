@@ -38,7 +38,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public ClientDto createClient(ClientDto clientDto) {
         Manager manager = managerRepository.findById(UUID.fromString(clientDto.getManagerId()))
-                .orElseThrow(() -> new NotFoundClientException("Client not found with id " + clientDto.getManagerId()));
+                .orElseThrow(() -> new NotFoundManagerException("Manager not found with id " + clientDto.getManagerId()));
         Client client = clientMapper.mapToEntity(clientDto);
         client.setManager(manager);
         return clientMapper.mapToDto(clientRepository.save(client));
