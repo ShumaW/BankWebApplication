@@ -20,9 +20,9 @@ public class CurrencyController {
 
     private final CurrencyService currencyService;
 
-    @Operation(summary = "Get currency rate from European ")
+    @Operation(summary = "Get currency rate from European Central Bank")
     @GetMapping("/{currency_code}")
-    public BigDecimal getCurrencyRate(@PathVariable("currency_code") Currencies currencyCode){
-        return currencyService.getCurrencyRate(currencyCode);
+    public BigDecimal getCurrencyRate(@PathVariable("currency_code") Currencies currenciesOfTransaction, Currencies creditAccountCurrency){
+        return currencyService.getCurrencyRate(currenciesOfTransaction, creditAccountCurrency);
     }
 }

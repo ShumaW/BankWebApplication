@@ -6,6 +6,8 @@ import com.example.bankwebapp.service.interfases.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,5 +25,10 @@ public class TransactionController {
     @GetMapping("/all/{account_id}")
     public List<TransactionDto> findAllTransactionsWhereAccountIdIs(@PathVariable("account_id") UUID accountId){
         return transactionService.findAllTransactionsWhereAccountIdIs(accountId);
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<TransactionDto> createNewTransaction(@RequestBody TransactionDto transactionDto){
+        return new ResponseEntity<>(transactionService.createNewTransaction(transactionDto), HttpStatus.CREATED);
     }
 }
