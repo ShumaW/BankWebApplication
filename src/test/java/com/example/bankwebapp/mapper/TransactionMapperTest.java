@@ -20,8 +20,8 @@ class TransactionMapperTest {
 
     @Test
     void mapToDtoTest() {
-        Transaction transaction = CreatorEntity.getTransaction();
-        TransactionDto transactionDto = CreatorDto.getTransactionDto();
+        Transaction transaction = CreatorEntity.getTransactionOne();
+        TransactionDto transactionDto = CreatorDto.getTransactionDtoOne();
         TransactionDto outputTransactionDto = transactionMapper.mapToDto(transaction);
 
         compareTwoDto(transactionDto, outputTransactionDto);
@@ -30,9 +30,9 @@ class TransactionMapperTest {
     @Test
     void mapToListDtoTest() {
         List<Transaction> transactionList = new ArrayList<>();
-        transactionList.add(CreatorEntity.getTransaction());
+        transactionList.add(CreatorEntity.getTransactionOne());
         List<TransactionDto> transactionDtoList = new ArrayList<>();
-        transactionDtoList.add(CreatorDto.getTransactionDto());
+        transactionDtoList.add(CreatorDto.getTransactionDtoOne());
 
         List<TransactionDto> outputTransactionDtoList = transactionMapper.mapToListDto(transactionList);
 

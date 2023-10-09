@@ -43,9 +43,9 @@ class TransactionControllerTest {
     void testFindAllTransactionsWhereAccountIdIs() throws Exception {
         //given
         List<TransactionDto> transactionDtoList = new ArrayList<>();
-        TransactionDto transactionDto = CreatorDto.getTransactionDto();
+        TransactionDto transactionDto = CreatorDto.getTransactionDtoOne();
         transactionDtoList.add(transactionDto);
-        Transaction transaction = CreatorEntity.getTransaction();
+        Transaction transaction = CreatorEntity.getTransactionOne();
         UUID debitAccountId = transaction.getDebitAccount().getId();
         UUID creditAccountId = transaction.getCreditAccount().getId();
         //when
@@ -70,7 +70,7 @@ class TransactionControllerTest {
     @Test
     void createNewTransactionTest() throws Exception {
         //given
-        TransactionDto transactionDto = CreatorDto.getTransactionDto();
+        TransactionDto transactionDto = CreatorDto.getTransactionDtoOne();
         //when
         when(transactionService.createNewTransaction(transactionDto)).thenReturn(transactionDto);
         //then

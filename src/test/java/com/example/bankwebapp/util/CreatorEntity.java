@@ -97,7 +97,7 @@ public class CreatorEntity {
         return product;
     }
 
-    public static Transaction getTransaction() {
+    public static Transaction getTransactionOne() {
         Transaction transaction = new Transaction();
         transaction.setId(null);
         transaction.setDebitAccount(new Account(UUID.fromString("0c70afa1-c654-471d-9cb2-437ac289d62c")));
@@ -105,6 +105,18 @@ public class CreatorEntity {
         transaction.setType(TransactionType.TRANSFER);
         transaction.setCurrencyCode(Currencies.USD);
         transaction.setAmount(new BigDecimal("150.4525"));
+        transaction.setDescription("pay");
+        return transaction;
+    }
+
+    public static Transaction getTransactionTwo() {
+        Transaction transaction = new Transaction();
+        transaction.setId(null);
+        transaction.setDebitAccount(getAccountOne());
+        transaction.setCreditAccount(getAccountTwo());
+        transaction.setType(TransactionType.TRANSFER);
+        transaction.setCurrencyCode(Currencies.USD);
+        transaction.setAmount(new BigDecimal("10000"));
         transaction.setDescription("pay");
         return transaction;
     }

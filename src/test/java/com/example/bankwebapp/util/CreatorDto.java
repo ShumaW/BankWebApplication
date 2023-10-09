@@ -69,8 +69,21 @@ public class CreatorDto {
         );
     }
 
-    public static TransactionDto getTransactionDto() {
-        Transaction transaction = CreatorEntity.getTransaction();
+    public static TransactionDto getTransactionDtoOne() {
+        Transaction transaction = CreatorEntity.getTransactionOne();
+        return new TransactionDto(
+                null,
+                transaction.getDebitAccount().getId().toString(),
+                transaction.getCreditAccount().getId().toString(),
+                transaction.getType().toString(),
+                transaction.getAmount().toString(),
+                transaction.getCurrencyCode().toString(),
+                transaction.getDescription()
+        );
+    }
+
+    public static TransactionDto getTransactionDtoTwo() {
+        Transaction transaction = CreatorEntity.getTransactionTwo();
         return new TransactionDto(
                 null,
                 transaction.getDebitAccount().getId().toString(),

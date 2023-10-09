@@ -13,8 +13,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.junit.jupiter.MockitoSettings;
-import org.mockito.quality.Strictness;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,9 +41,9 @@ class TransactionServiceImplTest {
     void testFindAllTransactionsWhereAccountIdIs() {
         //given
         List<TransactionDto> transactionDtoList = new ArrayList<>();
-        transactionDtoList.add(CreatorDto.getTransactionDto());
+        transactionDtoList.add(CreatorDto.getTransactionDtoOne());
         List<Transaction> transactionList = new ArrayList<>();
-        Transaction transaction = CreatorEntity.getTransaction();
+        Transaction transaction = CreatorEntity.getTransactionOne();
         transactionList.add(transaction);
         //when
         when(transactionRepository.findAllByAccountId(transaction.getId())).thenReturn(transactionList);
@@ -59,12 +57,11 @@ class TransactionServiceImplTest {
 
     }
 
-    @MockitoSettings(strictness = Strictness.WARN)
     @Test
     void createNewTransactionTest(){
         //given
-        Transaction transaction = CreatorEntity.getTransaction();
-        TransactionDto transactionDto = CreatorDto.getTransactionDto();
+        Transaction transaction = CreatorEntity.getTransactionOne();
+        TransactionDto transactionDto = CreatorDto.getTransactionDtoOne();
 
         UUID debitAccountId = UUID.fromString(transactionDto.getDebitAccountId());
         UUID creditAccountId = UUID.fromString(transactionDto.getCreditAccountId());
