@@ -42,7 +42,7 @@ class ClientServiceImplTest {
     @Test
     void getClientByIdTest() {
         //given
-        Client client = CreatorEntity.getClient();
+        Client client = CreatorEntity.getClientOne();
         UUID clientId = client.getId();
         ClientDto clientDto = CreatorDto.getClientDto();
         //when
@@ -66,7 +66,7 @@ class ClientServiceImplTest {
     @Test
     void createClientTest() {
         //given
-        Client client = CreatorEntity.getClient();
+        Client client = CreatorEntity.getClientOne();
         ClientDto clientDto = CreatorDto.getClientDto();
         Manager manager = CreatorEntity.getManager();
         //when
@@ -84,7 +84,7 @@ class ClientServiceImplTest {
     @Test
     void deleteClientTest() {
         //given
-        Client client = CreatorEntity.getClient();
+        Client client = CreatorEntity.getClientOne();
         //when
         doNothing().when(clientRepository).deleteById(client.getId());
         //then
@@ -95,7 +95,7 @@ class ClientServiceImplTest {
     @Test
     void updateTest() {
         //given
-        Client client = CreatorEntity.getClient();
+        Client client = CreatorEntity.getClientOne();
         ClientDto clientDto = CreatorDto.getClientDto();
         ClientDto outputClientDto = new ClientDto(
                 client.getId().toString(),
@@ -126,7 +126,7 @@ class ClientServiceImplTest {
         List<ClientDto> clientDtoList = new ArrayList<>();
         clientDtoList.add(CreatorDto.getClientDto());
         List<Client> clientList = new ArrayList<>();
-        Client client = CreatorEntity.getClient();
+        Client client = CreatorEntity.getClientOne();
         clientList.add(client);
         //when
         when(clientRepository.findAllClientWhereStatusIs(client.getStatus())).thenReturn(clientList);
@@ -142,7 +142,7 @@ class ClientServiceImplTest {
     void testGetAllClientsWhereBalanceMoreThan() {
         //given
         List<Client> clientList = new ArrayList<>();
-        Client client = CreatorEntity.getClient();
+        Client client = CreatorEntity.getClientOne();
         clientList.add(client);
         List<ClientDto> clientDtoList = new ArrayList<>();
         ClientDto clientDto = CreatorDto.getClientDto();

@@ -13,19 +13,31 @@ import java.util.UUID;
 @UtilityClass
 public class CreatorEntity {
 
-    public static Account getAccount() {
+    public static Account getAccountOne() {
         Account account = new Account();
         account.setId(UUID.fromString("0c70afa1-c654-471d-9cb2-437ac289d62c"));
-        account.setClient(getClient());
+        account.setClient(getClientOne());
         account.setName("ChandlerSpawforth_debit");
         account.setType(AccountType.DEPOSIT);
         account.setStatus(Status.ACTIVE);
-        account.setBalance(new BigDecimal("2500.98"));
+        account.setBalance(new BigDecimal("100000"));
         account.setCurrencyCode(Currencies.USD);
         return account;
     }
 
-    public static Client getClient() {
+    public static Account getAccountTwo() {
+        Account account = new Account();
+        account.setId(UUID.fromString("8afd7502-1e80-4d11-9cc3-623d00cd73c8"));
+        account.setClient(getClientTwo());
+        account.setName("JimmiePinnere_credit");
+        account.setType(AccountType.CREDIT);
+        account.setStatus(Status.ACTIVE);
+        account.setBalance(new BigDecimal("41000"));
+        account.setCurrencyCode(Currencies.USD);
+        return account;
+    }
+
+    public static Client getClientOne() {
         Client client = new Client();
         client.setId(UUID.fromString("09b90738-b37c-4035-abdc-550b28f43c33"));
         client.setStatus(Status.valueOf("ACTIVE"));
@@ -35,6 +47,20 @@ public class CreatorEntity {
         client.setEmail("cspawforth0@jimdo.com");
         client.setAddress("1782 Artisan Pass");
         client.setPhone("495-203-2229");
+        client.setManager(getManager());
+        return client;
+    }
+
+    public static Client getClientTwo() {
+        Client client = new Client();
+        client.setId(UUID.fromString("53de66be-9648-4545-b399-00970aec0a43"));
+        client.setStatus(Status.valueOf("ACTIVE"));
+        client.setTaxСode("3216549877");
+        client.setFirstName("Jimmie");
+        client.setLastName("Pinnere");
+        client.setEmail("jpinnere1@globo.com");
+        client.setAddress("1143 Coleman Street");
+        client.setPhone("393-236-6107");
         client.setManager(getManager());
         return client;
     }
@@ -51,7 +77,7 @@ public class CreatorEntity {
     public static Agreement getAgreement() {
         Agreement agreement = new Agreement();
         agreement.setId(UUID.fromString("416c806e-769e-45f9-8aea-8c2527da7fa5"));
-        agreement.setAccount(getAccount());
+        agreement.setAccount(getAccountOne());
         agreement.setProduct(getProduct());
         agreement.setInterestRate(new BigDecimal("2.7500"));
         agreement.setStatus(Status.valueOf("PENDING"));
@@ -73,12 +99,12 @@ public class CreatorEntity {
 
     public static Transaction getTransaction() {
         Transaction transaction = new Transaction();
-        transaction.setId(UUID.fromString("d965c068-4d54-4382-ac62-7f2db627dc6c"));
-        transaction.setDebitAccountId(new Account(UUID.fromString("f3deef15-86da-46ec-9d27-8305dc37e6a4")));
-        transaction.setCreditAccountId(new Account(UUID.fromString("d62c0f9c-50b4-48ab-96b9-7c81dd04ac48")));
+        transaction.setId(null);
+        transaction.setDebitAccount(new Account(UUID.fromString("0c70afa1-c654-471d-9cb2-437ac289d62c")));
+        transaction.setCreditAccount(new Account(UUID.fromString("8afd7502-1e80-4d11-9cc3-623d00cd73c8")));
         transaction.setType(TransactionType.TRANSFER);
         transaction.setCurrencyCode(Currencies.USD);
-        transaction.setAmount(new BigDecimal("4045.12000"));
+        transaction.setAmount(new BigDecimal("150.4525"));
         transaction.setDescription("pay");
         return transaction;
     }

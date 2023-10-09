@@ -26,11 +26,11 @@ public class Transaction {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "debit_account_id",referencedColumnName = "id")
-    private Account debitAccountId;
+    private Account debitAccount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "credit_account_id",referencedColumnName = "id")
-    private Account creditAccountId;
+    private Account creditAccount;
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
@@ -54,20 +54,20 @@ public class Transaction {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
-        return Objects.equals(id, that.id) && Objects.equals(debitAccountId, that.debitAccountId) && Objects.equals(creditAccountId, that.creditAccountId);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, debitAccountId, creditAccountId);
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
         return "Transaction[ " +
                 "id: " + id +
-                ", debitAccountId: " + debitAccountId +
-                ", creditAccountId: " + creditAccountId +
+                ", debitAccountId: " + debitAccount +
+                ", creditAccountId: " + creditAccount +
                 ", type: " + type +
                 ", amount: " + amount +
                 ", description: '" + description +

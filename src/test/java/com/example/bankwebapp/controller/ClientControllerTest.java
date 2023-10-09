@@ -142,7 +142,7 @@ class ClientControllerTest {
     @Test
     void deleteClientTest() throws Exception {
         //given
-        Client client = CreatorEntity.getClient();
+        Client client = CreatorEntity.getClientOne();
         UUID clientId = client.getId();
         //when
         doNothing().when(clientService).deleteClient(clientId);

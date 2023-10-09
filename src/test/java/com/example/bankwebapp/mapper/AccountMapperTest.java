@@ -20,7 +20,7 @@ class AccountMapperTest {
 
     @Test
     void mapToDtoTest() {
-        Account account = CreatorEntity.getAccount();
+        Account account = CreatorEntity.getAccountOne();
         AccountDto accountDto = CreatorDto.getAccountDto();
 
         AccountDto outputAccountDto = accountMapper.mapToDto(account);
@@ -33,7 +33,7 @@ class AccountMapperTest {
         List<AccountDto> accountDtoList = new ArrayList<>();
         accountDtoList.add(CreatorDto.getAccountDto());
         List<Account> accountList = new ArrayList<>();
-        accountList.add(CreatorEntity.getAccount());
+        accountList.add(CreatorEntity.getAccountOne());
 
         List<AccountDto> outputListAccountDto = accountMapper.mapToListDto(accountList);
 

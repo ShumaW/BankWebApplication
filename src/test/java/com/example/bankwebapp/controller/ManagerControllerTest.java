@@ -37,8 +37,9 @@ class ManagerControllerTest {
         UUID managerId = UUID.fromString(managerDto.getId());
         //when
         when(managerService.getManager(managerId)).thenReturn(managerDto);
+
         //then
-        mockMvc.perform(get("/auth/managers/all/" + managerId))
+        mockMvc.perform(get("/auth/managers/" + managerId))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andReturn();

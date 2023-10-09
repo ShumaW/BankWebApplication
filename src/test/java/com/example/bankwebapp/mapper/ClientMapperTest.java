@@ -21,14 +21,14 @@ class ClientMapperTest {
     @Test
     void mapToEntityTest() {
         ClientDto clientDto = CreatorDto.getClientDto();
-        Client client = CreatorEntity.getClient();
+        Client client = CreatorEntity.getClientOne();
         Client outputClient = clientMapper.mapToEntity(clientDto);
 
         compareTwoEntity(client, outputClient);
     }
     @Test
     void mapToDtoTest() {
-        Client client = CreatorEntity.getClient();
+        Client client = CreatorEntity.getClientOne();
         ClientDto clientDto = CreatorDto.getClientDto();
         ClientDto outputClientDto = clientMapper.mapToDto(client);
 
@@ -38,7 +38,7 @@ class ClientMapperTest {
     @Test
     void mapToListDtoTest() {
         List<Client> clientList = new ArrayList<>();
-        clientList.add(CreatorEntity.getClient());
+        clientList.add(CreatorEntity.getClientOne());
         List<ClientDto> clientDtoList = new ArrayList<>();
         clientDtoList.add(CreatorDto.getClientDto());
 

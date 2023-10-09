@@ -174,7 +174,7 @@ class AccountControllerTest {
     @Test
     void deleteAccountByIdTest() throws Exception {
         //given
-        Account account = CreatorEntity.getAccount();
+        Account account = CreatorEntity.getAccountOne();
         UUID accountId = account.getId();
         AccountDto accountDto = CreatorDto.getAccountDto();
         //when

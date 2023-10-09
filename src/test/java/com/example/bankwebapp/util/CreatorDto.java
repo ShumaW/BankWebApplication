@@ -8,7 +8,7 @@ import lombok.experimental.UtilityClass;
 public class CreatorDto {
 
     public static AccountDto getAccountDto() {
-        Account account = CreatorEntity.getAccount();
+        Account account = CreatorEntity.getAccountOne();
         return new AccountDto(
                 account.getId().toString(),
                 getClientDto().getId(),
@@ -20,7 +20,7 @@ public class CreatorDto {
     }
 
     public static ClientDto getClientDto() {
-        Client client = CreatorEntity.getClient();
+        Client client = CreatorEntity.getClientOne();
         return new ClientDto(
                 client.getId().toString(),
                 String.valueOf(client.getStatus()),
@@ -72,9 +72,9 @@ public class CreatorDto {
     public static TransactionDto getTransactionDto() {
         Transaction transaction = CreatorEntity.getTransaction();
         return new TransactionDto(
-                transaction.getId().toString(),
-                transaction.getDebitAccountId().getId().toString(),
-                transaction.getCreditAccountId().getId().toString(),
+                null,
+                transaction.getDebitAccount().getId().toString(),
+                transaction.getCreditAccount().getId().toString(),
                 transaction.getType().toString(),
                 transaction.getAmount().toString(),
                 transaction.getCurrencyCode().toString(),

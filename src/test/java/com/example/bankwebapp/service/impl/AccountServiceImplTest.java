@@ -34,7 +34,7 @@ class AccountServiceImplTest {
     @Test
     void getAccountByIdTest() {
         //given
-        Account account = CreatorEntity.getAccount();
+        Account account = CreatorEntity.getAccountOne();
         UUID accountId = account.getId();
         AccountDto accountDto = CreatorDto.getAccountDto();
         //when
@@ -60,7 +60,7 @@ class AccountServiceImplTest {
         List<AccountDto> accountDtoList = new ArrayList<>();
         accountDtoList.add(CreatorDto.getAccountDto());
         List<Account> accountList = new ArrayList<>();
-        accountList.add(CreatorEntity.getAccount());
+        accountList.add(CreatorEntity.getAccountOne());
         //when
         when(accountRepository.findAll()).thenReturn(accountList);
         when(accountMapper.mapToListDto(accountList)).thenReturn(accountDtoList);
@@ -74,7 +74,7 @@ class AccountServiceImplTest {
     void updateTest() {
         //given
         AccountDto accountDto = CreatorDto.getAccountDto();
-        Account account = CreatorEntity.getAccount();
+        Account account = CreatorEntity.getAccountOne();
         AccountDto outpuitAccountDto = new AccountDto(account.getId().toString(),
                 account.getClient().getId().toString(),
                 account.getName(),
@@ -96,7 +96,7 @@ class AccountServiceImplTest {
     void testGetAllAccountsWhereStatusIs() {
         //given
         List<Account> accountList = new ArrayList<>();
-        Account account = CreatorEntity.getAccount();
+        Account account = CreatorEntity.getAccountOne();
         accountList.add(account);
         List<AccountDto> accountDtoList = new ArrayList<>();
         AccountDto accountDto = CreatorDto.getAccountDto();

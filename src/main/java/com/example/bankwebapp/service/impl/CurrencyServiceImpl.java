@@ -18,7 +18,7 @@ import java.util.Scanner;
 @Slf4j
 public class CurrencyServiceImpl implements CurrencyService {
 
-    private static final String EUROPIAN_CENTRAL_BANK = "https://open.er-api.com/v6/latest/";
+    private static final String EXCHANGE_RATE_API = "https://open.er-api.com/v6/latest/";
 
     @Override
     public BigDecimal getCurrencyRate(Currencies currenciesOfTransaction, Currencies creditAccountCurrency) {
@@ -27,10 +27,10 @@ public class CurrencyServiceImpl implements CurrencyService {
         return getRateOfCurrency(currencyCodeToUpperCase, creditAccountCurrencyToUpperCase);
     }
 
-    private static BigDecimal getRateOfCurrency(String currencyCode, String creditAccountCurrency) {
+    private static BigDecimal getRateOfCurrency(String currencyTransactionCode, String creditAccountCurrency) {
         Scanner scanner;
         try {
-            URL url = new URL(EUROPIAN_CENTRAL_BANK + currencyCode);
+            URL url = new URL(EXCHANGE_RATE_API + currencyTransactionCode);
             scanner = new Scanner((InputStream) url.getContent());
         } catch (IOException e) {
             throw new RuntimeException(e);

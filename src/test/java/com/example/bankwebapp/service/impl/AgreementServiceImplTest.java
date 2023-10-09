@@ -43,7 +43,7 @@ class AgreementServiceImplTest {
         Agreement agreement = CreatorEntity.getAgreement();
         agreementList.add(agreement);
 
-        Account account = CreatorEntity.getAccount();
+        Account account = CreatorEntity.getAccountOne();
         UUID clientId = account.getClient().getId();
 
         //when

@@ -58,12 +58,12 @@ public class Account {
     @JsonIgnore
     private List<Agreement> agreement;
 
-    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "debitAccountId",
+    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "debitAccount",
             orphanRemoval = true)
     @JsonIgnore
     private Set<Transaction> debitTransaction;
 
-    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "creditAccountId",
+    @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "creditAccount",
             orphanRemoval = true)
     @JsonIgnore
     private Set<Transaction> creditTransaction;

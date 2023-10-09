@@ -47,24 +47,25 @@ public class TransactionServiceImpl implements TransactionService {
 
         BigDecimal amountOfTransaction = new BigDecimal(transactionDto.getAmount());
 
-        Currencies currenciesOfTransaction = Currencies.valueOf(transactionDto.getCurrencyCode());
+        Currencies currencyCodeOfTransaction = Currencies.valueOf(transactionDto.getCurrencyCode());
 
-        UUID debitAcoountId = UUID.fromString(transactionDto.getDebitAccountId());
+        UUID debitAccountId = UUID.fromString(transactionDto.getDebitAccountId());
         UUID creditAccountId = UUID.fromString(transactionDto.getCreditAccountId());
 
-        Account debitAccount = accountRepository.findById(debitAcoountId)
-                .orElseThrow(() -> new NotFoundAccountException("Account not found with id " + debitAcoountId));
+        Account debitAccount = accountRepository.findById(debitAccountId)
+                .orElseThrow(() -> new NotFoundAccountException("Account not found with id " + debitAccountId));
         Account creditAccount = accountRepository.findById(creditAccountId)
                 .orElseThrow(() -> new NotFoundAccountException("Account not found with id " + creditAccountId));
 
-        if (currenciesOfTransaction.equals(debitAccount.getCurrencyCode())) {
+        if (currencyCodeOfTransaction.equals(creditAccount.getCurrencyCode())) {
             Transaction transaction = saveTransaction(creditAccount, debitAccount, amountOfTransaction, transactionDto);
             return transactionMapper.mapToDto(transaction);
         } else {
-            BigDecimal currencyRate = currencyController.getCurrencyRate(currenciesOfTransaction, creditAccount.getCurrencyCode());
-            BigDecimal multiply = amountOfTransaction.multiply(currencyRate);
-            Transaction transaction = saveTransaction(creditAccount, debitAccount, multiply, transactionDto);
-            return transactionMapper.mapToDto(transaction);
+            BigDecimal currencyRate = currencyController.getCurrencyRate(currencyCodeOfTransaction,
+                    creditAccount.getCurrencyCode());
+            BigDecimal resultAmountOfTransaction = amountOfTransaction.multiply(currencyRate);
+            return transactionMapper.mapToDto(saveTransaction(creditAccount, debitAccount,
+                    resultAmountOfTransaction, transactionDto));
         }
     }
 
@@ -77,15 +78,14 @@ public class TransactionServiceImpl implements TransactionService {
     private Transaction saveTransaction(Account creditAccount, Account debitAccount,
                                         BigDecimal amountOfTransaction, TransactionDto transactionDto){
         checkCreditAccountBalance(creditAccount, amountOfTransaction);
-        creditAccount.setBalance(creditAccount.getBalance().divide(amountOfTransaction, 6, RoundingMode.HALF_DOWN));
+        BigDecimal resultCreditBalance = creditAccount.getBalance().divide(amountOfTransaction, 6, RoundingMode.HALF_DOWN);
+        creditAccount.setBalance(resultCreditBalance);
         accountRepository.save(creditAccount);
         debitAccount.setBalance(debitAccount.getBalance().add(amountOfTransaction));
         accountRepository.save(debitAccount);
         Transaction transaction = new Transaction();
-        transaction.setDebitAccountId(accountRepository.findById(UUID.fromString(transactionDto.getDebitAccountId()))
-                .get());
-        transaction.setCreditAccountId(accountRepository.findById(UUID.fromString(transactionDto.getCreditAccountId()))
-                .get());
+        transaction.setDebitAccount(debitAccount);
+        transaction.setCreditAccount(creditAccount);
         transaction.setType(TransactionType.valueOf(transactionDto.getType()));
         transaction.setAmount(new BigDecimal(transactionDto.getAmount()));
         transaction.setCurrencyCode(Currencies.valueOf(transactionDto.getCurrencyCode()));

@@ -13,10 +13,12 @@ import java.util.List;
 public interface TransactionMapper {
 
     @Named("mapToTransactionDto")
-    @Mapping(target = "debitAccountId", source = "transaction.debitAccountId.id")
-    @Mapping(target = "creditAccountId", source = "transaction.creditAccountId.id")
+    @Mapping(target = "debitAccountId", source = "transaction.debitAccount.id")
+    @Mapping(target = "creditAccountId", source = "transaction.creditAccount.id")
     TransactionDto mapToDto(Transaction transaction);
 
     @IterableMapping(qualifiedByName = "mapToTransactionDto")
     List<TransactionDto> mapToListDto(List<Transaction> transactionList);
+
+    Transaction mapToEntity(TransactionDto transactionDto);
 }
