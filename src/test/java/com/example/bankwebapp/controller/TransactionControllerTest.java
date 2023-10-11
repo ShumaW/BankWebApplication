@@ -75,9 +75,9 @@ class TransactionControllerTest {
         when(transactionService.createNewTransaction(transactionDto)).thenReturn(transactionDto);
         //then
         mockMvc.perform(post("/auth/transactions/create")
-                .content(asJsonString(transactionDto))
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
+                        .content(asJsonString(transactionDto))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful())
                 .andReturn();
         verify(transactionService, times(1)).createNewTransaction(transactionDto);

@@ -20,7 +20,7 @@ public class CreatorEntity {
         account.setName("ChandlerSpawforth_debit");
         account.setType(AccountType.DEPOSIT);
         account.setStatus(Status.ACTIVE);
-        account.setBalance(new BigDecimal("100000"));
+        account.setBalance(new BigDecimal("1000"));
         account.setCurrencyCode(Currencies.USD);
         return account;
     }
@@ -116,7 +116,19 @@ public class CreatorEntity {
         transaction.setCreditAccount(getAccountTwo());
         transaction.setType(TransactionType.TRANSFER);
         transaction.setCurrencyCode(Currencies.USD);
-        transaction.setAmount(new BigDecimal("10000"));
+        transaction.setAmount(new BigDecimal("100000"));
+        transaction.setDescription("pay");
+        return transaction;
+    }
+
+    public static Transaction getTransactionThree() {
+        Transaction transaction = new Transaction();
+        transaction.setId(null);
+        transaction.setDebitAccount(getAccountOne());
+        transaction.setCreditAccount(getAccountTwo());
+        transaction.setType(TransactionType.TRANSFER);
+        transaction.setCurrencyCode(Currencies.EUR);
+        transaction.setAmount(new BigDecimal("100.00"));
         transaction.setDescription("pay");
         return transaction;
     }

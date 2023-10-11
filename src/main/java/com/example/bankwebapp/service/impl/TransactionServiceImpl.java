@@ -56,28 +56,23 @@ public class TransactionServiceImpl implements TransactionService {
                 .orElseThrow(() -> new NotFoundAccountException("Account not found with id " + debitAccountId));
         Account creditAccount = accountRepository.findById(creditAccountId)
                 .orElseThrow(() -> new NotFoundAccountException("Account not found with id " + creditAccountId));
+        BigDecimal resultAmountOfTransaction = amountOfTransaction;
 
-        if (currencyCodeOfTransaction.equals(creditAccount.getCurrencyCode())) {
-            Transaction transaction = saveTransaction(creditAccount, debitAccount, amountOfTransaction, transactionDto);
-            return transactionMapper.mapToDto(transaction);
-        } else {
+        if (!currencyCodeOfTransaction.equals(creditAccount.getCurrencyCode())) {
             BigDecimal currencyRate = currencyController.getCurrencyRate(currencyCodeOfTransaction,
                     creditAccount.getCurrencyCode());
-            BigDecimal resultAmountOfTransaction = amountOfTransaction.multiply(currencyRate);
-            return transactionMapper.mapToDto(saveTransaction(creditAccount, debitAccount,
-                    resultAmountOfTransaction, transactionDto));
+            resultAmountOfTransaction = amountOfTransaction.multiply(currencyRate);
         }
-    }
-
-    private void checkCreditAccountBalance(Account creditAccount, BigDecimal amountOfTransaction) {
         if (creditAccount.getBalance().compareTo(amountOfTransaction) < 0) {
             throw new NotEnoughMoneyException("There is not enough money in the account!");
         }
+        return transactionMapper.mapToDto(saveTransaction(creditAccount, debitAccount,
+                resultAmountOfTransaction, transactionDto));
+
     }
 
     private Transaction saveTransaction(Account creditAccount, Account debitAccount,
                                         BigDecimal amountOfTransaction, TransactionDto transactionDto){
-        checkCreditAccountBalance(creditAccount, amountOfTransaction);
         BigDecimal resultCreditBalance = creditAccount.getBalance().divide(amountOfTransaction, 6, RoundingMode.HALF_DOWN);
         creditAccount.setBalance(resultCreditBalance);
         accountRepository.save(creditAccount);
