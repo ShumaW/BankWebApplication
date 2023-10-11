@@ -40,6 +40,14 @@ class TransactionMapperTest {
 
     }
 
+    @Test
+    void mapToEntityTest(){
+        Transaction transaction = CreatorEntity.getTransactionOne();
+        TransactionDto transactionDto = CreatorDto.getTransactionDtoOne();
+        Transaction outputTransaction = transactionMapper.mapToEntity(transactionDto);
+        compareToEntity(transaction, outputTransaction);
+    }
+
     private void compareTwoDto(TransactionDto transactionDto, TransactionDto outputTransactionDto){
         assertAll(
                 () -> assertEquals(transactionDto.getId(), outputTransactionDto.getId()),
@@ -57,5 +65,15 @@ class TransactionMapperTest {
         for (int i = 0; i < transactionDtoList.size(); i++) {
             compareTwoDto(transactionDtoList.get(i),outputTransactionDtoList.get(i));
         }
+    }
+
+    private void compareToEntity(Transaction transaction, Transaction outputTransaction){
+        assertAll(
+                () -> assertEquals(transaction.getId(), outputTransaction.getId()),
+                () -> assertEquals(transaction.getCurrencyCode(), outputTransaction.getCurrencyCode()),
+                () -> assertEquals(transaction.getType(), outputTransaction.getType()),
+                () -> assertEquals(transaction.getAmount(), outputTransaction.getAmount()),
+                () -> assertEquals(transaction.getDescription(), outputTransaction.getDescription())
+        );
     }
 }

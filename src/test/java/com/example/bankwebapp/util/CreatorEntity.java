@@ -100,8 +100,8 @@ public class CreatorEntity {
     public static Transaction getTransactionOne() {
         Transaction transaction = new Transaction();
         transaction.setId(null);
-        transaction.setDebitAccount(new Account(UUID.fromString("0c70afa1-c654-471d-9cb2-437ac289d62c")));
-        transaction.setCreditAccount(new Account(UUID.fromString("8afd7502-1e80-4d11-9cc3-623d00cd73c8")));
+        transaction.setDebitAccount(getAccountOne());
+        transaction.setCreditAccount(getAccountTwo());
         transaction.setType(TransactionType.TRANSFER);
         transaction.setCurrencyCode(Currencies.USD);
         transaction.setAmount(new BigDecimal("150.4525"));
