@@ -9,7 +9,7 @@ import com.example.bankwebapp.exceptions.NotFoundClientException;
 import com.example.bankwebapp.mapper.AccountMapper;
 import com.example.bankwebapp.repository.AccountRepository;
 import com.example.bankwebapp.repository.ClientRepository;
-import com.example.bankwebapp.service.interfases.AccountService;
+import com.example.bankwebapp.service.interfaсes.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

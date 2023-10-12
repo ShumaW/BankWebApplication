@@ -1,7 +1,7 @@
 package com.example.bankwebapp.controller;
 
 import com.example.bankwebapp.dto.AgreementDto;
-import com.example.bankwebapp.service.interfases.AgreementService;
+import com.example.bankwebapp.service.interfaсes.AgreementService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +20,6 @@ import java.util.UUID;
 public class AgreementController {
 
     private final AgreementService agreementService;
-
-
 
     @Operation(summary = "Get agreement by client id")
     @GetMapping("/client/{client_id}")

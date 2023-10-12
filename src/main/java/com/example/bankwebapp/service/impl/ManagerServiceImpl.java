@@ -4,7 +4,7 @@ import com.example.bankwebapp.dto.ManagerDto;
 import com.example.bankwebapp.exceptions.NotFoundManagerException;
 import com.example.bankwebapp.mapper.ManagerMapper;
 import com.example.bankwebapp.repository.ManagerRepository;
-import com.example.bankwebapp.service.interfases.ManagerService;
+import com.example.bankwebapp.service.interfaсes.ManagerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

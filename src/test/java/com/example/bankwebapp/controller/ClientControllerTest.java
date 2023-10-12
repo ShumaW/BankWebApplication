@@ -6,7 +6,7 @@ import com.example.bankwebapp.entity.Client;
 import com.example.bankwebapp.entity.Manager;
 import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.repository.ClientRepository;
-import com.example.bankwebapp.service.interfases.ClientService;
+import com.example.bankwebapp.service.interfaсes.ClientService;
 import com.example.bankwebapp.util.CreatorDto;
 import com.example.bankwebapp.util.CreatorEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;

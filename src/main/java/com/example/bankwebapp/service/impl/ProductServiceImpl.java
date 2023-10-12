@@ -8,7 +8,7 @@ import com.example.bankwebapp.exceptions.NotFoundProductException;
 import com.example.bankwebapp.mapper.ProductMapper;
 import com.example.bankwebapp.repository.ManagerRepository;
 import com.example.bankwebapp.repository.ProductRepository;
-import com.example.bankwebapp.service.interfases.ProductService;
+import com.example.bankwebapp.service.interfaсes.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

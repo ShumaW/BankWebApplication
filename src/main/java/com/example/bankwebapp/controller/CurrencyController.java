@@ -1,7 +1,7 @@
 package com.example.bankwebapp.controller;
 
 import com.example.bankwebapp.entity.enums.Currencies;
-import com.example.bankwebapp.service.interfases.CurrencyService;
+import com.example.bankwebapp.service.interfaсes.CurrencyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

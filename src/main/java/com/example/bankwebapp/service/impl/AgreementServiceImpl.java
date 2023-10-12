@@ -3,7 +3,7 @@ package com.example.bankwebapp.service.impl;
 import com.example.bankwebapp.dto.AgreementDto;
 import com.example.bankwebapp.mapper.AgreementMapper;
 import com.example.bankwebapp.repository.AgreementRepository;
-import com.example.bankwebapp.service.interfases.AgreementService;
+import com.example.bankwebapp.service.interfaсes.AgreementService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

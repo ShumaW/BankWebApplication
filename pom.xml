@@ -271,6 +271,7 @@
 						<exclude>com/**/util/*</exclude>
 						<exclude>com/**/dto/*</exclude>
 						<exclude>com/**/entity/**</exclude>
+						<exclude>com/**/controller/ResponseExceptionHandler.class</exclude>
 						<exclude>com/**/BankWebAppApplication.class</exclude>
 					</excludes>
 					<destFile>${project.build.directory}/jacoco.exec</destFile>

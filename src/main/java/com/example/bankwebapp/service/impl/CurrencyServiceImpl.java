@@ -1,7 +1,7 @@
 package com.example.bankwebapp.service.impl;
 
 import com.example.bankwebapp.entity.enums.Currencies;
-import com.example.bankwebapp.service.interfases.CurrencyService;
+import com.example.bankwebapp.service.interfaсes.CurrencyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;

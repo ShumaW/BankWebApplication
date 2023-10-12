@@ -11,7 +11,7 @@ import com.example.bankwebapp.exceptions.NotFoundAccountException;
 import com.example.bankwebapp.mapper.TransactionMapper;
 import com.example.bankwebapp.repository.AccountRepository;
 import com.example.bankwebapp.repository.TransactionRepository;
-import com.example.bankwebapp.service.interfases.TransactionService;
+import com.example.bankwebapp.service.interfaсes.TransactionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

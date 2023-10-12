@@ -1,4 +1,4 @@
-package com.example.bankwebapp.service.interfases;
+package com.example.bankwebapp.service.interfaсes;
 
 import com.example.bankwebapp.dto.ClientDto;
 import com.example.bankwebapp.entity.enums.Status;

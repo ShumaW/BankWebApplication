@@ -1,7 +1,7 @@
 package com.example.bankwebapp.controller;
 
 import com.example.bankwebapp.dto.ManagerDto;
-import com.example.bankwebapp.service.interfases.ManagerService;
+import com.example.bankwebapp.service.interfaсes.ManagerService;
 import com.example.bankwebapp.util.CreatorDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

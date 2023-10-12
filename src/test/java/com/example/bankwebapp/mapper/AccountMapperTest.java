@@ -40,6 +40,15 @@ class AccountMapperTest {
         compareTwoListOfAccountDto(accountDtoList, outputListAccountDto);
     }
 
+    @Test
+    void mapToEntityTest(){
+        Account account = CreatorEntity.getAccountOne();
+        AccountDto accountDto = CreatorDto.getAccountDto();
+        Account outputAccount = accountMapper.mapToEntity(accountDto);
+
+        compareToEntity(account, outputAccount);
+    }
+
     private void compareTwoDto(AccountDto accountDto, AccountDto outputAccountDto){
         assertAll(
                 () -> assertEquals(accountDto.getId(), outputAccountDto.getId()),
@@ -57,5 +66,16 @@ class AccountMapperTest {
         for (int i = 0; i < accountDtoList.size(); i++) {
             compareTwoDto(accountDtoList.get(i),outputListAccountDto.get(i));
         }
+    }
+
+    private void compareToEntity(Account account, Account outputAccount){
+        assertAll(
+                () -> assertEquals(account.getId(), outputAccount.getId()),
+                () -> assertEquals(account.getName(), outputAccount.getName()),
+                () -> assertEquals(account.getType(), outputAccount.getType()),
+                () -> assertEquals(account.getStatus(), outputAccount.getStatus()),
+                () -> assertEquals(account.getBalance(), outputAccount.getBalance()),
+                () -> assertEquals(account.getCurrencyCode(), outputAccount.getCurrencyCode())
+        );
     }
 }

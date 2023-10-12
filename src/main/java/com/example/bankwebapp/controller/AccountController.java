@@ -2,7 +2,7 @@ package com.example.bankwebapp.controller;
 
 import com.example.bankwebapp.dto.AccountDto;
 import com.example.bankwebapp.entity.enums.Status;
-import com.example.bankwebapp.service.interfases.AccountService;
+import com.example.bankwebapp.service.interfaсes.AccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package com.example.bankwebapp.controller;
 
 import com.example.bankwebapp.dto.ManagerDto;
-import com.example.bankwebapp.service.interfases.ManagerService;
+import com.example.bankwebapp.service.interfaсes.ManagerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
