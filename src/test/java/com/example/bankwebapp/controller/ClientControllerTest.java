@@ -25,12 +25,14 @@ import java.util.*;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters = false)
 @WebMvcTest({ClientController.class})
 class ClientControllerTest {
 
@@ -55,7 +57,10 @@ class ClientControllerTest {
         // when
         when(clientService.getClientById(clientId)).thenReturn(clientDto);
         // then
-        mockMvc.perform(get("/auth/clients/" + clientId))
+        mockMvc.perform(get("/auth/clients/" + clientId)
+//                        .with(httpBasic("user","password"))
+//                        .with(csrf())
+                )
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(jsonPath("$.id", is(clientDto.getId())))
@@ -108,6 +113,8 @@ class ClientControllerTest {
         //then
         mockMvc.perform(put("/auth/clients/update")
                         .content(asJsonString(clientDto))
+                        .with(httpBasic("user","password"))
+                        .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -126,9 +133,10 @@ class ClientControllerTest {
         mockMvc.perform(post("/auth/clients/add")
                         .content(asJsonString(clientDto))
                         .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
+                        .accept(MediaType.APPLICATION_JSON)
+                        .with(httpBasic("user","password")))
 
-                .andExpect(status().isOk());
+                .andExpect(status().is2xxSuccessful());
     }
 
     public static String asJsonString(ClientDto clientDto) {
