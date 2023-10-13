@@ -6,6 +6,8 @@ import com.example.bankwebapp.service.interfaсes.ClientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -28,14 +30,14 @@ public class ClientController {
 
     @Operation(summary = "Update client")
     @PutMapping("/update")
-    public ClientDto updateClient(@RequestBody ClientDto clientDto){
-        return clientService.update(clientDto);
+    public ResponseEntity<ClientDto> updateClient(@RequestBody ClientDto clientDto){
+        return new ResponseEntity<>(clientService.update(clientDto), HttpStatus.OK);
     }
 
     @Operation(summary = "Create client")
     @PostMapping("/add")
-    public ClientDto addClient(@RequestBody ClientDto clientDto){
-        return clientService.createClient(clientDto);
+    public ResponseEntity<ClientDto> addClient(@RequestBody ClientDto clientDto){
+        return new ResponseEntity<>(clientService.createClient(clientDto), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Delete client")

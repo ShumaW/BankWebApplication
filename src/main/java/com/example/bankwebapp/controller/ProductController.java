@@ -5,6 +5,8 @@ import com.example.bankwebapp.service.interfaсes.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,7 +19,7 @@ public class ProductController {
 
     @Operation(summary = "Update product")
     @PutMapping("/update")
-    public ProductDto updateProduct(@RequestBody ProductDto productDto){
-        return productService.update(productDto);
+    public ResponseEntity<ProductDto> updateProduct(@RequestBody ProductDto productDto){
+        return new ResponseEntity<>(productService.update(productDto), HttpStatus.OK);
     }
 }

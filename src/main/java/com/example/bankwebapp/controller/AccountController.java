@@ -23,14 +23,14 @@ public class AccountController {
 
     @Operation(summary = "Get account by id")
     @GetMapping("/{id}")
-    public ResponseEntity<AccountDto> getAccountById(@PathVariable("id") UUID id) {
-        return new ResponseEntity<>(accountService.getAccountById(id), HttpStatus.OK);
+    public AccountDto getAccountById(@PathVariable("id") UUID id) {
+        return accountService.getAccountById(id);
     }
 
     @Operation(summary = "Get all accounts")
     @GetMapping("/")
-    public ResponseEntity<List<AccountDto>> getAllAccounts() {
-        return new ResponseEntity<>(accountService.getAllAccounts(), HttpStatus.OK);
+    public List<AccountDto> getAllAccounts() {
+        return accountService.getAllAccounts();
     }
 
     @Operation(summary = "Update account")
@@ -41,8 +41,8 @@ public class AccountController {
 
     @Operation(summary = "Get all accounts where status is...")
     @GetMapping("/status/{status}")
-    public ResponseEntity<List<AccountDto>> getAllAccountsWhereStatusIs(@PathVariable("status") Status status){
-        return new ResponseEntity<>(accountService.getAllAccountsWhereStatusIs(status), HttpStatus.OK);
+    public List<AccountDto> getAllAccountsWhereStatusIs(@PathVariable("status") Status status){
+        return accountService.getAllAccountsWhereStatusIs(status);
     }
 
     @Operation(summary = "Create account")

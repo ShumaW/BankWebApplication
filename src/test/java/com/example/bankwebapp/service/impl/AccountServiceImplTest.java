@@ -152,7 +152,7 @@ class AccountServiceImplTest {
                 "REMOVED",
                 account.getBalance().toString(),
                 account.getCurrencyCode().toString());
-        account.setStatus(Status.REMOVED);
+//        account.setStatus(Status.REMOVED);
 
         //when
         when(accountRepository.findById(account.getId())).thenReturn(Optional.of(account));
