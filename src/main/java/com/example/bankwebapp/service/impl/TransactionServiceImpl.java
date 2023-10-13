@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
@@ -73,7 +72,7 @@ public class TransactionServiceImpl implements TransactionService {
 
     private Transaction saveTransaction(Account creditAccount, Account debitAccount,
                                         BigDecimal amountOfTransaction, TransactionDto transactionDto){
-        BigDecimal resultCreditBalance = creditAccount.getBalance().divide(amountOfTransaction, 6, RoundingMode.HALF_DOWN);
+        BigDecimal resultCreditBalance = creditAccount.getBalance().subtract(amountOfTransaction);
         creditAccount.setBalance(resultCreditBalance);
         accountRepository.save(creditAccount);
         debitAccount.setBalance(debitAccount.getBalance().add(amountOfTransaction));
