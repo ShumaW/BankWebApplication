@@ -1,6 +1,5 @@
 package com.example.bankwebapp.mapper;
 
-
 import com.example.bankwebapp.dto.AgreementDto;
 import com.example.bankwebapp.entity.Account;
 import com.example.bankwebapp.entity.Agreement;
