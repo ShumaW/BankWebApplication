@@ -38,6 +38,8 @@ public class ClientDto {
 
     @Schema(description = "Email of client", example = "example@gmail.com")
     @Email
+    @NotNull
+    @NotBlank
     String email;
 
     @Schema(description = "Address of client")
