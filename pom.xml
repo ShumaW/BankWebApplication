@@ -35,6 +35,7 @@
 		<org.jsoup.version>1.16.1</org.jsoup.version>
 		<org.json.version>20231013</org.json.version>
 		<spring-boot-autoconfigure.version>3.1.3</spring-boot-autoconfigure.version>
+		<spring-context-support.version>6.0.13</spring-context-support.version>
 	</properties>
 
 	<dependencies>
@@ -230,7 +231,6 @@
 			<version>${org.slf4j.version}</version>
 		</dependency>
 
-
 		<!-- jsoup -->
 		<dependency>
 			<groupId>org.jsoup</groupId>
@@ -253,6 +253,25 @@
 			<groupId>org.yaml</groupId>
 			<artifactId>snakeyaml</artifactId>
 			<version>${snakeyaml.version}</version>
+		</dependency>
+
+		<!-- spring-context-support -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring-context-support.version}</version>
+		</dependency>
+
+		<!-- thymeleaf -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<version>3.1.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity6</artifactId>
+			<version>3.1.1.RELEASE</version>
 		</dependency>
 
 	</dependencies>
@@ -297,8 +316,7 @@
 						<exclude>com/**/aspect/*</exclude>
 						<exclude>com/**/util/*</exclude>
 						<exclude>com/**/dto/*</exclude>
-						<exclude>com/**/entity/**</exclude>
-						<exclude>com/**/security/**</exclude>
+						<exclude>com/**/security/*</exclude>
 						<exclude>com/**/controller/ResponseExceptionHandler.class</exclude>
 						<exclude>com/**/BankWebAppApplication.class</exclude>
 					</excludes>

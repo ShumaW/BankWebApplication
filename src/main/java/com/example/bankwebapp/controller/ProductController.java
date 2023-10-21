@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,6 +20,7 @@ public class ProductController {
 
     @Operation(summary = "Update product")
     @PutMapping("/update")
+    @PreAuthorize("hasAuthority('user:write')")
     public ResponseEntity<ProductDto> updateProduct(@RequestBody ProductDto productDto){
         return new ResponseEntity<>(productService.update(productDto), HttpStatus.OK);
     }

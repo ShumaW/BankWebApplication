@@ -5,6 +5,7 @@ import com.example.bankwebapp.service.interfaсes.CurrencyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ public class CurrencyController {
 
     @Operation(summary = "Get currency rate from European Central Bank")
     @GetMapping("/{currency_code}")
+    @PreAuthorize("hasAuthority('user:read')")
     public BigDecimal getCurrencyRate(@PathVariable("currency_code") Currencies currenciesOfTransaction, Currencies creditAccountCurrency){
         return currencyService.getCurrencyRate(currenciesOfTransaction, creditAccountCurrency);
     }
