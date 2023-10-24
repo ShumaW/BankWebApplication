@@ -4,6 +4,7 @@ import com.example.bankwebapp.dto.ClientDto;
 import com.example.bankwebapp.entity.Account;
 import com.example.bankwebapp.entity.Client;
 import com.example.bankwebapp.entity.Manager;
+import com.example.bankwebapp.entity.enums.Role;
 import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.repository.ClientRepository;
 import com.example.bankwebapp.service.interfaсes.ClientService;
@@ -88,6 +89,8 @@ class ClientControllerTest {
                 clientDto.getFirstName(),
                 clientDto.getLastName(),
                 clientDto.getEmail(),
+                clientDto.getPassword(),
+                Role.USER,
                 clientDto.getAddress(),
                 clientDto.getPhone(),
                 new Timestamp(System.currentTimeMillis()),
@@ -103,6 +106,7 @@ class ClientControllerTest {
                 client.getFirstName(),
                 client.getLastName(),
                 client.getEmail(),
+                client.getPassword(),
                 client.getAddress(),
                 client.getPhone(),
                 client.getManager().getId().toString()
@@ -133,9 +137,7 @@ class ClientControllerTest {
         mockMvc.perform(post("/auth/clients/add")
                         .content(asJsonString(clientDto))
                         .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON)
-                        .with(httpBasic("user","password")))
-
+                        .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful());
     }
 

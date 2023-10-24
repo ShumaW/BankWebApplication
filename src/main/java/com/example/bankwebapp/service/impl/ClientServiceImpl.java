@@ -3,12 +3,14 @@ package com.example.bankwebapp.service.impl;
 import com.example.bankwebapp.dto.ClientDto;
 import com.example.bankwebapp.entity.Client;
 import com.example.bankwebapp.entity.Manager;
+import com.example.bankwebapp.entity.User;
 import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.exceptions.NotFoundClientException;
 import com.example.bankwebapp.exceptions.NotFoundManagerException;
 import com.example.bankwebapp.mapper.ClientMapper;
 import com.example.bankwebapp.repository.ClientRepository;
 import com.example.bankwebapp.repository.ManagerRepository;
+import com.example.bankwebapp.repository.UserRepository;
 import com.example.bankwebapp.service.interfaсes.ClientService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +30,8 @@ public class ClientServiceImpl implements ClientService {
 
     private final ManagerRepository managerRepository;
 
+    private final UserRepository userRepository;
+
     private final ClientMapper clientMapper;
     @Override
     public ClientDto getClientById(UUID id) {
@@ -40,6 +44,12 @@ public class ClientServiceImpl implements ClientService {
         Manager manager = managerRepository.findById(UUID.fromString(clientDto.getManagerId()))
                 .orElseThrow(() -> new NotFoundManagerException("Manager not found with id " + clientDto.getManagerId()));
         Client client = clientMapper.mapToEntity(clientDto);
+        User user = new User();
+        user.setEmail(client.getEmail());
+        user.setRole(client.getRole());
+        user.setPassword(client.getPassword());
+        user.setStatus(client.getStatus());
+        userRepository.save(user);
         client.setManager(manager);
         return clientMapper.mapToDto(clientRepository.save(client));
     }

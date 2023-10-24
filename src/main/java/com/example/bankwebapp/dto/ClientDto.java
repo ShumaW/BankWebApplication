@@ -42,6 +42,14 @@ public class ClientDto {
     @NotBlank
     String email;
 
+    @Schema(description = "Clients password")
+    @NotNull
+    @NotBlank
+    @Pattern(regexp = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9@#$%]).{8,}",
+            message = "The password must contain uppercase and lowercase letters, " +
+                    "numbers and special characters and be at least 8 characters long.")
+    String password;
+
     @Schema(description = "Address of client")
     @NotNull
     @NotBlank

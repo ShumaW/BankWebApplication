@@ -1,5 +1,6 @@
 package com.example.bankwebapp.entity;
 
+import com.example.bankwebapp.entity.enums.Role;
 import com.example.bankwebapp.entity.enums.Status;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -40,6 +41,13 @@ public class Client {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.USER;
 
     @Column(name = "address")
     private String address;

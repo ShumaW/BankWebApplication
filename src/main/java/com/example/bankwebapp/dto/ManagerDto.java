@@ -1,10 +1,7 @@
 package com.example.bankwebapp.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Value;
 
 @Value
@@ -32,4 +29,18 @@ public class ManagerDto {
     @NotBlank
     @Pattern(regexp = "[A-Z]+", message = "Manager status can be only ACTIVE, PENDING, BLOCKED or REMOVED.")
     String status;
+
+    @Schema(description = "Managers password")
+    @NotNull
+    @NotBlank
+    @Pattern(regexp = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9@#$%]).{8,}",
+            message = "The password must contain uppercase and lowercase letters, " +
+                    "numbers and special characters and be at least 8 characters long.")
+    String password;
+
+    @Schema(description = "Email of manager", example = "example@gmail.com")
+    @Email
+    @NotNull
+    @NotBlank
+    String email;
 }

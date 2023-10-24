@@ -81,6 +81,21 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
+                  name: password
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role
+                  type: varchar(6)
+                  constraints:
+                    nullable: false
+              - column:
                   name: description
                   type: varchar(250)
               - column:
@@ -137,6 +152,16 @@ databaseChangeLog:
               - column:
                   name: email
                   type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role
+                  type: varchar(6)
                   constraints:
                     nullable: false
               - column:
@@ -358,3 +383,36 @@ databaseChangeLog:
              tableName: agreements
              columnName: updated_at
              defaultValueDate: current_timestamp
+  - changeSet:
+      id: create-users-for-security
+      author: Yevgeniy Shulimenko
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role
+                  type: varchar(5)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(20)
+                  constraints:
+                    nullable: false

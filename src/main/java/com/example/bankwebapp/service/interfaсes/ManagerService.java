@@ -8,4 +8,5 @@ public interface ManagerService {
 
     ManagerDto getManager(UUID id);
 
+    ManagerDto createManager(ManagerDto managerDto);
 }

@@ -1,5 +1,6 @@
 package com.example.bankwebapp.entity;
 
+import com.example.bankwebapp.entity.enums.Role;
 import com.example.bankwebapp.entity.enums.Status;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -31,6 +32,12 @@ public class Manager {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -38,7 +45,11 @@ public class Manager {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "created_at",updatable = false)
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.ADMIN;
+
+    @Column(name = "created_at", updatable = false)
     private Timestamp createdAt;
 
     @OneToMany(cascade = {MERGE, REFRESH, PERSIST}, fetch = FetchType.LAZY, mappedBy = "manager",

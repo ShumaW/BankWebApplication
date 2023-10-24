@@ -28,6 +28,7 @@ public class CreatorDto {
                 client.getFirstName(),
                 client.getLastName(),
                 client.getEmail(),
+                client.getPassword(),
                 client.getAddress(),
                 client.getPhone(),
                 getManagerDto().getId()
@@ -40,7 +41,9 @@ public class CreatorDto {
                 manager.getId().toString(),
                 manager.getFirstName(),
                 manager.getLastName(),
-                String.valueOf(manager.getStatus())
+                String.valueOf(manager.getStatus()),
+                manager.getPassword(),
+                manager.getEmail()
         );
     }
 

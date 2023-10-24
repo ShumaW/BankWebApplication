@@ -1,10 +1,7 @@
 package com.example.bankwebapp.util;
 
 import com.example.bankwebapp.entity.*;
-import com.example.bankwebapp.entity.enums.AccountType;
-import com.example.bankwebapp.entity.enums.Currencies;
-import com.example.bankwebapp.entity.enums.Status;
-import com.example.bankwebapp.entity.enums.TransactionType;
+import com.example.bankwebapp.entity.enums.*;
 import lombok.experimental.UtilityClass;
 
 import java.math.BigDecimal;
@@ -45,6 +42,7 @@ public class CreatorEntity {
         client.setFirstName("Chandler");
         client.setLastName("Spawforth");
         client.setEmail("cspawforth0@jimdo.com");
+        client.setPassword("$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u");
         client.setAddress("1782 Artisan Pass");
         client.setPhone("495-203-2229");
         client.setManager(getManager());
@@ -71,6 +69,7 @@ public class CreatorEntity {
         manager.setFirstName("Sem");
         manager.setLastName("Smith");
         manager.setStatus(Status.valueOf("ACTIVE"));
+        manager.setEmail("semsmith@mail.com");
         return manager;
     }
 
@@ -131,5 +130,23 @@ public class CreatorEntity {
         transaction.setAmount(new BigDecimal("100.00"));
         transaction.setDescription("pay");
         return transaction;
+    }
+
+    public static User getUserManager() {
+        User userManager = new User();
+        userManager.setPassword("$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u");
+        userManager.setRole(Role.ADMIN);
+        userManager.setId(null);
+        userManager.setEmail("semsmith@mail.com");
+        return userManager;
+    }
+
+    public static User getUserClient(){
+        User userClient = new User();
+        userClient.setEmail("jpinnere1@globo.com");
+        userClient.setPassword("$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u");
+        userClient.setId(null);
+        userClient.setRole(Role.USER);
+        return userClient;
     }
 }

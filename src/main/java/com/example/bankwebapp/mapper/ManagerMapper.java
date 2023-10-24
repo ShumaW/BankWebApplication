@@ -8,4 +8,6 @@ import org.mapstruct.Mapper;
 public interface ManagerMapper {
 
     ManagerDto mapToDto(Manager manager);
+
+    Manager mapToEntity(ManagerDto managerDto);
 }

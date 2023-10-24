@@ -7,6 +7,7 @@ import com.example.bankwebapp.exceptions.NotFoundClientException;
 import com.example.bankwebapp.mapper.ClientMapper;
 import com.example.bankwebapp.repository.ClientRepository;
 import com.example.bankwebapp.repository.ManagerRepository;
+import com.example.bankwebapp.repository.UserRepository;
 import com.example.bankwebapp.util.CreatorDto;
 import com.example.bankwebapp.util.CreatorEntity;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,9 @@ class ClientServiceImplTest {
 
     @Mock
     ManagerRepository managerRepository;
+
+    @Mock
+    UserRepository userRepository;
 
     @Test
     void getClientByIdTest() {
@@ -104,6 +108,7 @@ class ClientServiceImplTest {
                 client.getFirstName(),
                 client.getLastName(),
                 client.getEmail(),
+                client.getPassword(),
                 client.getAddress(),
                 client.getPhone(),
                 client.getManager().getId().toString()

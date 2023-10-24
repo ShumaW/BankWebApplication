@@ -5,6 +5,7 @@ import com.example.bankwebapp.entity.Manager;
 import com.example.bankwebapp.exceptions.NotFoundManagerException;
 import com.example.bankwebapp.mapper.ManagerMapper;
 import com.example.bankwebapp.repository.ManagerRepository;
+import com.example.bankwebapp.repository.UserRepository;
 import com.example.bankwebapp.util.CreatorDto;
 import com.example.bankwebapp.util.CreatorEntity;
 import org.junit.jupiter.api.Test;
@@ -32,6 +33,9 @@ class ManagerServiceImplTest {
     @Mock
     ManagerMapper managerMapper;
 
+    @Mock
+    UserRepository userRepository;
+
     @Test
     void getManagerByIdTest(){
         Manager manager = CreatorEntity.getManager();
@@ -55,5 +59,19 @@ class ManagerServiceImplTest {
         assertEquals(expected,exception.getMessage());
     }
 
-
+    @Test
+    void createNewManagerTest(){
+        //given
+        Manager manager = CreatorEntity.getManager();
+        ManagerDto managerDto = CreatorDto.getManagerDto();
+        //when
+        when(managerRepository.save(manager)).thenReturn(manager);
+        when(managerMapper.mapToEntity(managerDto)).thenReturn(manager);
+        when(managerMapper.mapToDto(manager)).thenReturn(managerDto);
+        //then
+        ManagerDto outputManager = managerService.createManager(managerDto);
+        assertNotNull(outputManager);
+        assertEquals(managerDto, outputManager);
+        verify(managerRepository, times(1)).save(manager);
+    }
 }
