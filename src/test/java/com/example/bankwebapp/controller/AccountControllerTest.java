@@ -9,6 +9,7 @@ import com.example.bankwebapp.entity.enums.AccountType;
 import com.example.bankwebapp.entity.enums.Currencies;
 import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.repository.AccountRepository;
+import com.example.bankwebapp.security.config.JwtAuthenticationFilter;
 import com.example.bankwebapp.service.impl.AccountServiceImpl;
 import com.example.bankwebapp.util.CreatorDto;
 import com.example.bankwebapp.util.CreatorEntity;
@@ -50,6 +51,10 @@ class AccountControllerTest {
 
     @MockBean
     private AccountRepository accountRepository;
+
+    @MockBean
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
+
 
     @Test
     void getAccountByIdTest() throws Exception {
@@ -144,7 +149,6 @@ class AccountControllerTest {
         //when
         when(accountRepository.findById(accountId)).thenReturn(Optional.of(account));
         when(accountService.update(accountDto)).thenReturn(outpuitAccountDto);
-
         //then
         mockMvc.perform(put("/auth/accounts/update")
                         .content(asJsonString(outpuitAccountDto))

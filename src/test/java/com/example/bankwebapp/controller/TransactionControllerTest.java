@@ -2,6 +2,7 @@ package com.example.bankwebapp.controller;
 
 import com.example.bankwebapp.dto.TransactionDto;
 import com.example.bankwebapp.entity.Transaction;
+import com.example.bankwebapp.security.config.JwtAuthenticationFilter;
 import com.example.bankwebapp.service.impl.TransactionServiceImpl;
 import com.example.bankwebapp.util.CreatorDto;
 import com.example.bankwebapp.util.CreatorEntity;
@@ -38,6 +39,9 @@ class TransactionControllerTest {
 
     @MockBean
     private TransactionServiceImpl transactionService;
+
+    @MockBean
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Test
     void testFindAllTransactionsWhereAccountIdIs() throws Exception {

@@ -1,6 +1,7 @@
 package com.example.bankwebapp.controller;
 
 import com.example.bankwebapp.dto.ManagerDto;
+import com.example.bankwebapp.security.config.JwtAuthenticationFilter;
 import com.example.bankwebapp.service.interfaсes.ManagerService;
 import com.example.bankwebapp.util.CreatorDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,6 +34,9 @@ class ManagerControllerTest {
     @MockBean
     ManagerService managerService;
 
+    @MockBean
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
+
     @Test
     void managerByIdTest() throws Exception {
         //given
@@ -40,7 +44,6 @@ class ManagerControllerTest {
         UUID managerId = UUID.fromString(managerDto.getId());
         //when
         when(managerService.getManager(managerId)).thenReturn(managerDto);
-
         //then
         mockMvc.perform(get("/auth/managers/" + managerId))
                 .andExpect(status().isOk())
