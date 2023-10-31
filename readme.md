@@ -6,7 +6,7 @@
 ___
 
 * [ApiDoc Link](http://localhost:8080/swagger-ui/index.html) 
-* [JACOCO Link](http://localhost:63342/BankProj/target/site/jacoco/index.html)
+* [JACOCO Link](http://localhost:63342/BankWebApp/target/site/jacoco/index.html?_ijt=fthj7nhoeqb244etd5lb9cba13&_ij_reload=RELOAD_ON_SAVE)
 ___
 ## Database structure
 

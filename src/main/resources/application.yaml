@@ -5,7 +5,7 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-master.yaml
-    drop-first: true
+    drop-first: false
 
   datasource:
     driverClassName: org.postgresql.Driver
@@ -29,9 +29,15 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
+jwt:
+  header: ${jwt.header}
+  secret: ${jwt.secret}
+  expiration: ${jwt.expiration}
+
 
 #  h2:
 #    console:
 #      enabled: true
 #      path: /h2-console/
+
 
