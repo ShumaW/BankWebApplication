@@ -4,6 +4,7 @@ import com.example.bankwebapp.dto.ClientDto;
 import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.service.interfaсes.ClientService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,7 @@ public class ClientController {
 
     @Operation(summary = "Update client")
     @PutMapping("/update")
+    @SecurityRequirement(name = "JWT")
     @PreAuthorize("hasAuthority('user:write')")
     public ResponseEntity<ClientDto> updateClient(@RequestBody ClientDto clientDto){
         return new ResponseEntity<>(clientService.update(clientDto), HttpStatus.OK);
@@ -39,6 +41,7 @@ public class ClientController {
 
     @Operation(summary = "Create client")
     @PostMapping("/add")
+    @SecurityRequirement(name = "JWT")
     @PreAuthorize("hasAuthority('user:write')")
     public ResponseEntity<ClientDto> addClient(@RequestBody ClientDto clientDto){
         return new ResponseEntity<>(clientService.createClient(clientDto), HttpStatus.CREATED);
@@ -46,6 +49,7 @@ public class ClientController {
 
     @Operation(summary = "Delete client")
     @DeleteMapping("/delete/{id}")
+    @SecurityRequirement(name = "JWT")
     @PreAuthorize("hasAuthority('user:write')")
     public void deleteClient(@PathVariable("id") UUID id){
         clientService.deleteClient(id);
@@ -53,6 +57,7 @@ public class ClientController {
 
     @Operation(summary = "Get all client where status is ...")
     @GetMapping("/status/{status}")
+    @SecurityRequirement(name = "JWT")
     @PreAuthorize("hasAuthority('user:write')")
     public List<ClientDto> getAllClientsWhereStatusIs(@PathVariable("status") Status status){
         return clientService.getAllClientsWhereStatusIs(status);
@@ -60,6 +65,7 @@ public class ClientController {
 
     @Operation(summary = "Get all clients where balance more than ...")
     @GetMapping("/balance_more_than/{sum}")
+    @SecurityRequirement(name = "JWT")
     @PreAuthorize("hasAuthority('user:write')")
     public List<ClientDto> getAllClientsWhereBalanceMoreThan(@PathVariable("sum") BigDecimal sum){
         return clientService.getAllClientsWhereBalanceMoreThan(sum);

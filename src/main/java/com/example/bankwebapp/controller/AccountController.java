@@ -4,6 +4,7 @@ import com.example.bankwebapp.dto.AccountDto;
 import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.service.interfaсes.AccountService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,7 @@ public class AccountController {
 
     @Operation(summary = "Get all accounts")
     @GetMapping("/")
+    @SecurityRequirement(name = "JWT")
     @PreAuthorize("hasAuthority('user:write')")
     public List<AccountDto> getAllAccounts() {
         return accountService.getAllAccounts();
@@ -38,6 +40,7 @@ public class AccountController {
 
     @Operation(summary = "Update account")
     @PutMapping("/update")
+    @SecurityRequirement(name = "JWT")
     @PreAuthorize("hasAuthority('user:write')")
     public ResponseEntity<AccountDto> updateAccountById(@RequestBody AccountDto accountDto) {
         return new ResponseEntity<>(accountService.update(accountDto),HttpStatus.OK);
@@ -52,6 +55,7 @@ public class AccountController {
 
     @Operation(summary = "Create account")
     @PostMapping("/create")
+    @SecurityRequirement(name = "JWT")
     @PreAuthorize("hasAuthority('user:write')")
     public ResponseEntity<AccountDto> createAccount(@RequestBody AccountDto accountDto) {
         return new ResponseEntity<>(accountService.createAccount(accountDto), HttpStatus.CREATED);
@@ -59,6 +63,7 @@ public class AccountController {
 
     @Operation(summary = "Deleting an account (transfer to REMOVE status)")
     @PutMapping("/delete/{id}")
+    @SecurityRequirement(name = "JWT")
     @PreAuthorize("hasAuthority('user:write')")
     public ResponseEntity<AccountDto> deleteAccountById (@PathVariable("id") UUID id){
         return new ResponseEntity<>(accountService.updateStatusInAccountByIdToRemoved(id),HttpStatus.OK);
