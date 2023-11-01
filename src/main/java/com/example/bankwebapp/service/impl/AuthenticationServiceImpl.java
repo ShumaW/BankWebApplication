@@ -2,17 +2,14 @@ package com.example.bankwebapp.service.impl;
 
 import com.example.bankwebapp.dto.JwtAuthenticationResponse;
 import com.example.bankwebapp.dto.RefreshTokenRequest;
-import com.example.bankwebapp.dto.SignUpRequest;
 import com.example.bankwebapp.dto.SigninRequest;
 import com.example.bankwebapp.entity.User;
-import com.example.bankwebapp.entity.enums.Role;
 import com.example.bankwebapp.repository.UserRepository;
 import com.example.bankwebapp.service.interfaсes.AuthenticationService;
 import com.example.bankwebapp.service.interfaсes.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -23,21 +20,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final UserRepository userRepository;
 
-    private final PasswordEncoder passwordEncoder;
-
     private final AuthenticationManager authenticationManager;
 
     private final JwtService jwtService;
-
-    public User signup(SignUpRequest signUpRequest){
-        User user = new User();
-
-        user.setEmail(signUpRequest.getEmail());
-        user.setRole(Role.USER);
-        user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
-
-        return userRepository.save(user);
-    }
 
     public JwtAuthenticationResponse signin(SigninRequest signinRequest){
         authenticationManager.authenticate(
