@@ -132,21 +132,12 @@ public class CreatorEntity {
         return transaction;
     }
 
-    public static User getUserManager() {
-        User userManager = new User();
-        userManager.setPassword("$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u");
-        userManager.setRole(Role.ADMIN);
-        userManager.setId(null);
-        userManager.setEmail("semsmith@mail.com");
-        return userManager;
-    }
-
-    public static User getUserClient(){
-        User userClient = new User();
-        userClient.setEmail("jpinnere1@globo.com");
-        userClient.setPassword("$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u");
-        userClient.setId(null);
-        userClient.setRole(Role.USER);
-        return userClient;
+    public static User getUser() {
+        User user = new User();
+        user.setEmail("admin@mail.com");
+        user.setPassword("admin");
+        user.setStatus(Status.ACTIVE);
+        user.setRole(Role.ADMIN);
+        return user;
     }
 }
