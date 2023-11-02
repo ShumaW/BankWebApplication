@@ -203,40 +203,6 @@
 			</exclusions>
 		</dependency>
 
-<!--		&lt;!&ndash; springfox-swagger-ui &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>io.springfox</groupId>-->
-<!--			<artifactId>springfox-swagger-ui</artifactId>-->
-<!--			<version>3.0.0</version>-->
-<!--			<exclusions>-->
-<!--				<exclusion>-->
-<!--					<artifactId>slf4j-api</artifactId>-->
-<!--					<groupId>org.slf4j</groupId>-->
-<!--				</exclusion>-->
-<!--			</exclusions>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>io.springfox</groupId>-->
-<!--			<artifactId>springfox-swagger2</artifactId>-->
-<!--			<version>3.0.0</version>-->
-<!--			<exclusions>-->
-<!--				<exclusion>-->
-<!--					<artifactId>mapstruct</artifactId>-->
-<!--					<groupId>org.mapstruct</groupId>-->
-<!--				</exclusion>-->
-<!--				<exclusion>-->
-<!--					<artifactId>slf4j-api</artifactId>-->
-<!--					<groupId>org.slf4j</groupId>-->
-<!--				</exclusion>-->
-<!--				<exclusion>-->
-<!--					<artifactId>swagger-annotations</artifactId>-->
-<!--					<groupId>io.swagger.core.v3</groupId>-->
-<!--				</exclusion>-->
-<!--			</exclusions>-->
-<!--		</dependency>-->
-
-
 		<!--		logback				-->
 		<dependency>
 			<groupId>net.logstash.logback</groupId>

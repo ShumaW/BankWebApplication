@@ -21,11 +21,14 @@ public class JwtServiceImpl implements JwtService {
     @Value("${jwt.secret}")
     private String jwtSecret;
 
+    @Value("${jwt.expiration}")
+    private Long jwtExpiration;
+
     public String generateToken(UserDetails userDetails) {
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+                .setExpiration(new Date(System.currentTimeMillis() + jwtExpiration))
                 .signWith(getSiginKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
@@ -35,7 +38,7 @@ public class JwtServiceImpl implements JwtService {
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 604800))
+                .setExpiration(new Date(System.currentTimeMillis() + jwtExpiration))
                 .signWith(getSiginKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
