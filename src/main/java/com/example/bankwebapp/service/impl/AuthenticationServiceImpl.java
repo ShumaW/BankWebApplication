@@ -12,8 +12,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-
 @Service
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
@@ -31,7 +29,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 () -> new IllegalArgumentException("Invalid email or password")
         );
         String jwt = jwtService.generateToken(user);
-        String refreshToken = jwtService.generateRefreshToken(new HashMap<>(), user);
+        String refreshToken = jwtService.generateRefreshToken(user);
 
         JwtAuthenticationResponse jwtAuthenticationResponse = new JwtAuthenticationResponse();
         jwtAuthenticationResponse.setToken(jwt);

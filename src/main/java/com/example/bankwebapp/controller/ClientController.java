@@ -40,11 +40,12 @@ public class ClientController {
     }
 
     @Operation(summary = "Create client")
-    @PostMapping("/add")
+    @PostMapping("/create")
     @SecurityRequirement(name = "JWT")
     @PreAuthorize("hasAuthority('user:write')")
-    public ResponseEntity<ClientDto> addClient(@RequestBody ClientDto clientDto){
-        return new ResponseEntity<>(clientService.createClient(clientDto), HttpStatus.CREATED);
+    public ResponseEntity<Void> createClient(@RequestBody ClientDto clientDto){
+        clientService.createClient(clientDto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @Operation(summary = "Delete client")

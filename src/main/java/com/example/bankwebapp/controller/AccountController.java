@@ -57,15 +57,17 @@ public class AccountController {
     @PostMapping("/create")
     @SecurityRequirement(name = "JWT")
     @PreAuthorize("hasAuthority('user:write')")
-    public ResponseEntity<AccountDto> createAccount(@RequestBody AccountDto accountDto) {
-        return new ResponseEntity<>(accountService.createAccount(accountDto), HttpStatus.CREATED);
+    public ResponseEntity<Void> createAccount(@RequestBody AccountDto accountDto) {
+        accountService.createAccount(accountDto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @Operation(summary = "Deleting an account (transfer to REMOVE status)")
     @PutMapping("/delete/{id}")
     @SecurityRequirement(name = "JWT")
     @PreAuthorize("hasAuthority('user:write')")
-    public ResponseEntity<AccountDto> deleteAccountById (@PathVariable("id") UUID id){
-        return new ResponseEntity<>(accountService.updateStatusInAccountByIdToRemoved(id),HttpStatus.OK);
+    public ResponseEntity<Void> deleteAccountById (@PathVariable("id") UUID id){
+        accountService.updateStatusInAccountByIdToRemoved(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

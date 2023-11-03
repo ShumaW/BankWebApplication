@@ -31,7 +31,8 @@ public class TransactionController {
     @Operation(summary = "Create new transaction")
     @PostMapping("/create")
     @PreAuthorize("hasAuthority('user:read')")
-    public ResponseEntity<TransactionDto> createNewTransaction(@RequestBody TransactionDto transactionDto){
-        return new ResponseEntity<>(transactionService.createNewTransaction(transactionDto), HttpStatus.CREATED);
+    public ResponseEntity<Void> createNewTransaction(@RequestBody TransactionDto transactionDto){
+        transactionService.createNewTransaction(transactionDto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

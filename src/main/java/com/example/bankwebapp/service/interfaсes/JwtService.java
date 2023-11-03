@@ -2,8 +2,6 @@ package com.example.bankwebapp.service.interfaсes;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Map;
-
 public interface JwtService {
 
     String extractUserName(String token);
@@ -12,5 +10,5 @@ public interface JwtService {
 
     boolean isTokenValid(String token, UserDetails userDetails);
 
-    String generateRefreshToken(Map<String,Object> extraClaims, UserDetails userDetails);
+    String generateRefreshToken(UserDetails userDetails);
 }

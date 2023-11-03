@@ -1,10 +1,10 @@
 insert into managers (id, first_name, last_name, status, description, created_at, password, role, email)
 values ('1763f054-5393-11ee-8c99-0242ac120002', 'Sem', 'Smith', 'ACTIVE', 'manager', '2023-07-07 08:41:08',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'admin', 'admin@mail.com'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'ADMIN', 'admin@mail.com'),
        ('caed40d0-5401-11ee-8c99-0242ac120002', 'Judith', 'Clasen', 'ACTIVE', 'manager', '2023-07-15 08:41:08',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'admin', 'judithclasen@mail.com'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'ADMIN', 'judithclasen@mail.com'),
        ('f74cf29c-5401-11ee-8c99-0242ac120002', 'Eric', 'Rutten', 'ACTIVE', 'manager', '2023-07-21 08:30:21',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'admin', 'ericrutten@mail.com');
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'ADMIN', 'ericrutten@mail.com');
 
 insert into transactions (id, debit_account_id, credit_account_id, type, currency_code, amount, description, created_at)
 values ('7bf29834-a48b-4e2a-b023-d99e35f3e3b8', '9921c0fa-e9ca-4bd8-b763-abb459a00bd9',
@@ -50,34 +50,34 @@ insert into clients (id, manager_id, status, tax_code, first_name, last_name, em
                      updated_at, password, role)
 values ('9921c0fa-e9ca-4bd8-b763-abb459a00bd9', '1763f054-5393-11ee-8c99-0242ac120002', 'ACTIVE', '1234567899', 'Chandler',
         'Spawforth', 'user@mail.com', '1782 Artisan Pass', '495-203-2229', '2022-12-23 18:04:24',
-        '2023-03-24 09:11:11', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user'),
+        '2023-03-24 09:11:11', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER'),
        ('53de66be-9648-4545-b399-00970aec0a43', '1763f054-5393-11ee-8c99-0242ac120002', 'ACTIVE', '3216549877', 'Jimmie',
         'Pinnere', 'jpinnere1@globo.com', '1143 Coleman Street', '393-236-6107', '2022-06-21 15:50:14',
-        '2022-11-17 06:48:05', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user'),
+        '2022-11-17 06:48:05', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER'),
        ('f3deef15-86da-46ec-9d27-8305dc37e6a4', 'caed40d0-5401-11ee-8c99-0242ac120002', 'ACTIVE', '9874563211', 'Cecilla',
         'Tapley', 'ctapley2@bigcartel.com', '94856 Village Green Plaza', '617-320-1724', '2022-11-01 07:28:29',
-        '2023-09-12 06:16:40', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user'),
+        '2023-09-12 06:16:40', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER'),
        ('d62c0f9c-50b4-48ab-96b9-7c81dd04ac48', 'f74cf29c-5401-11ee-8c99-0242ac120002', 'ACTIVE', '2213654789', 'Gabey',
         'Gallelli', 'ggallelli3@telegraph.co.uk', '27766 Declaration Parkway', '554-650-2593', '2022-11-15 22:44:10',
-        '2023-01-26 03:33:37', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user'),
+        '2023-01-26 03:33:37', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER'),
        ('6b6eb8fd-64c5-457f-be98-edb1a54fbbcd', '1763f054-5393-11ee-8c99-0242ac120002', 'ACTIVE', '3321456987', 'Elwin',
         'Huikerby', 'ehuikerby4@pbs.org', '58722 Shasta Trail', '213-963-7709', '2022-11-05 11:30:47',
-        '2023-09-19 23:12:37', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user'),
+        '2023-09-19 23:12:37', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER'),
        ('ea1e1733-bb66-4b6c-ace8-096226960ff1', 'f74cf29c-5401-11ee-8c99-0242ac120002', 'ACTIVE', '5523164987', 'Janos',
         'Wandless', 'jwandless5@github.io', '68614 Loftsgordon Avenue', '629-169-2677', '2022-09-19 15:11:44',
-        '2023-05-26 04:12:51', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user'),
+        '2023-05-26 04:12:51', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER'),
        ('96b99d2e-0621-472b-b354-5e6811605f6e', 'caed40d0-5401-11ee-8c99-0242ac120002', 'PENDING', '6632154987', 'Hew',
         'Foottit', 'hfoottit6@phpbb.com', '278 Sutherland Terrace', '359-900-2486', '2022-12-11 12:26:00',
-        '2023-08-09 06:48:37', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user'),
+        '2023-08-09 06:48:37', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER'),
        ('f68a90a0-d3b0-4479-bda4-4acb7513b0b3', 'caed40d0-5401-11ee-8c99-0242ac120002', 'ACTIVE', '9665874123', 'Katharyn',
         'Dunlop', 'kdunlop7@ning.com', '08470 Judy Street', '362-315-5286', '2022-10-09 00:55:14',
-        '2023-01-27 18:53:04', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user'),
+        '2023-01-27 18:53:04', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER'),
        ('5308ec41-c4c2-46ec-8831-d20e417e0f6c', '1763f054-5393-11ee-8c99-0242ac120002', 'ACTIVE', '8775364129', 'Datha',
         'Undrill', 'dundrill8@buzzfeed.com', '9986 Kingsford Parkway', '978-991-8213', '2022-11-21 10:28:19',
-        '2023-04-28 05:17:16', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user'),
+        '2023-04-28 05:17:16', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER'),
        ('80753c19-2d26-434a-8eef-b13a5caaa5c1', 'f74cf29c-5401-11ee-8c99-0242ac120002', 'ACTIVE', '1159357468', 'Goddart',
         'Collopy', 'gcollopy9@devhub.com', '1 Ryan Circle', '619-596-0826', '2022-10-01 03:08:00',
-        '2023-06-09 16:33:53', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user');
+        '2023-06-09 16:33:53', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER');
 
 insert into accounts (id, client_id, name, type, status, balance, currency_code, created_at, updated_at)
 values ('0c70afa1-c654-471d-9cb2-437ac289d62c', '9921c0fa-e9ca-4bd8-b763-abb459a00bd9', 'ChandlerSpawforth_debit', 'DEPOSIT',
@@ -173,31 +173,31 @@ values ('416c806e-769e-45f9-8aea-8c2527da7fa5', '0c70afa1-c654-471d-9cb2-437ac28
 
 insert into users (id, email, password, role, status)
 values ('dedca426-1008-42ca-9e8e-7afcbce3484e', 'admin@mail.com',
-        '$2a$12$rHcDTMyX6Q5wler2QjjMAOgjc9wKSIpyAlRd6d3vaxZV2EkilbMEC', 'admin', 'ACTIVE'),
+        '$2a$12$rHcDTMyX6Q5wler2QjjMAOgjc9wKSIpyAlRd6d3vaxZV2EkilbMEC', 'ADMIN', 'ACTIVE'),
        ('b4316220-a089-4e43-ab8b-f17a6858c50c', 'judithclasen@mail.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'admin', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'ADMIN', 'ACTIVE'),
        ('a1daad13-aa00-4d1c-8c06-f30d3f0aade4', 'ericrutten@mail.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'admin', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'ADMIN', 'ACTIVE'),
        ('68612cea-b65e-4a40-ba18-5482010cb96d', 'user@mail.com',
-        '$2a$12$XDnyXOxu08VePcFGNKXHsuF52dlb5rOHpTU6gXbuESVNI6j5XH2lK', 'user', 'ACTIVE'),
+        '$2a$12$XDnyXOxu08VePcFGNKXHsuF52dlb5rOHpTU6gXbuESVNI6j5XH2lK', 'USER', 'ACTIVE'),
        ('dc93f0ae-ab19-403c-865d-8e52dcb04751', 'jpinnere1@globo.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE'),
        ('48d26e8c-a41e-44fe-9ff3-c819f4d61503', 'ctapley2@bigcartel.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE'),
        ('24bd9573-f73e-4851-94f9-eed5a4ca6edf', 'ggallelli3@telegraph.co.uk',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE'),
        ('b4bb7b17-c5a1-475e-bb4a-0a6fd50533ba', 'ehuikerby4@pbs.org',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE'),
        ('f661e4cd-8a0f-43d4-acc2-9b2cbe51e0a3', 'jwandless5@github.io',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE'),
        ('fefd6501-8036-479b-b15a-b6951b6fb4a9', 'hfoottit6@phpbb.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'PENDING'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'PENDING'),
        ('6a6b8ffc-eb57-4127-8598-153ad63e117c', 'kdunlop7@ning.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE'),
        ('e6165088-d48a-44b0-9bad-c2123af90035', 'dundrill8@buzzfeed.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE'),
        ('e66a2951-eb3e-4ff4-a9c6-9ad0e5e17fe5', 'gcollopy9@devhub.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE');
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE');
 
 
 

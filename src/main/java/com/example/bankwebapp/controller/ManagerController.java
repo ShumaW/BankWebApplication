@@ -33,7 +33,8 @@ public class ManagerController {
     @PostMapping("/create")
     @SecurityRequirement(name = "JWT")
     @PreAuthorize("hasAuthority('user:write')")
-    public ResponseEntity<ManagerDto> createNewManager(@RequestBody ManagerDto managerDto){
-        return new ResponseEntity<>(managerService.createManager(managerDto),HttpStatus.CREATED);
+    public ResponseEntity<Void> createNewManager(@RequestBody ManagerDto managerDto){
+        managerService.createManager(managerDto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

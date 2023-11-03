@@ -137,7 +137,7 @@ public class CreatorEntity {
         user.setEmail("admin@mail.com");
         user.setPassword("admin");
         user.setStatus(Status.ACTIVE);
-        user.setRole(Role.admin);
+        user.setRole(Role.ADMIN);
         return user;
     }
 }
