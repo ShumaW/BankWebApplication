@@ -47,7 +47,7 @@ public class Client {
 
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    private Role role = Role.USER;
+    private Role role = Role.user;
 
     @Column(name = "address")
     private String address;

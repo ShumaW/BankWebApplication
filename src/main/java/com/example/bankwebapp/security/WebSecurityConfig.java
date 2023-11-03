@@ -5,6 +5,7 @@ import com.example.bankwebapp.service.interfaсes.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -35,7 +36,8 @@ public class WebSecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/auth/**", "/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/auth/**", "/**").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/auth/signin").permitAll()
                         .anyRequest()
                         .authenticated())
                 .formLogin(form -> form.loginPage("/auth/login").permitAll().defaultSuccessUrl("/auth/success"))

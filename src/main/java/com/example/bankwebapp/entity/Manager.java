@@ -47,7 +47,7 @@ public class Manager {
 
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    private Role role = Role.ADMIN;
+    private Role role = Role.admin;
 
     @Column(name = "created_at", updatable = false)
     private Timestamp createdAt;

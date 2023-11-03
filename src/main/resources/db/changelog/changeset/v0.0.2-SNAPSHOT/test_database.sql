@@ -1,6 +1,6 @@
 insert into managers (id, first_name, last_name, status, description, created_at, password, role, email)
 values ('1763f054-5393-11ee-8c99-0242ac120002', 'Sem', 'Smith', 'ACTIVE', 'manager', '2023-07-07 08:41:08',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'admin', 'semsmith@mail.com'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'admin', 'admin@mail.com'),
        ('caed40d0-5401-11ee-8c99-0242ac120002', 'Judith', 'Clasen', 'ACTIVE', 'manager', '2023-07-15 08:41:08',
         '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'admin', 'judithclasen@mail.com'),
        ('f74cf29c-5401-11ee-8c99-0242ac120002', 'Eric', 'Rutten', 'ACTIVE', 'manager', '2023-07-21 08:30:21',
@@ -49,7 +49,7 @@ values ('7bf29834-a48b-4e2a-b023-d99e35f3e3b8', '9921c0fa-e9ca-4bd8-b763-abb459a
 insert into clients (id, manager_id, status, tax_code, first_name, last_name, email, address, phone, created_at,
                      updated_at, password, role)
 values ('9921c0fa-e9ca-4bd8-b763-abb459a00bd9', '1763f054-5393-11ee-8c99-0242ac120002', 'ACTIVE', '1234567899', 'Chandler',
-        'Spawforth', 'cspawforth0@jimdo.com', '1782 Artisan Pass', '495-203-2229', '2022-12-23 18:04:24',
+        'Spawforth', 'user@mail.com', '1782 Artisan Pass', '495-203-2229', '2022-12-23 18:04:24',
         '2023-03-24 09:11:11', '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user'),
        ('53de66be-9648-4545-b399-00970aec0a43', '1763f054-5393-11ee-8c99-0242ac120002', 'ACTIVE', '3216549877', 'Jimmie',
         'Pinnere', 'jpinnere1@globo.com', '1143 Coleman Street', '393-236-6107', '2022-06-21 15:50:14',
@@ -173,31 +173,31 @@ values ('416c806e-769e-45f9-8aea-8c2527da7fa5', '0c70afa1-c654-471d-9cb2-437ac28
 
 insert into users (id, email, password, role, status)
 values ('dedca426-1008-42ca-9e8e-7afcbce3484e', 'admin@mail.com',
-        '$2a$12$rHcDTMyX6Q5wler2QjjMAOgjc9wKSIpyAlRd6d3vaxZV2EkilbMEC', 'ADMIN', 'ACTIVE'),
+        '$2a$12$rHcDTMyX6Q5wler2QjjMAOgjc9wKSIpyAlRd6d3vaxZV2EkilbMEC', 'admin', 'ACTIVE'),
        ('b4316220-a089-4e43-ab8b-f17a6858c50c', 'judithclasen@mail.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'ADMIN', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'admin', 'ACTIVE'),
        ('a1daad13-aa00-4d1c-8c06-f30d3f0aade4', 'ericrutten@mail.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'ADMIN', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'admin', 'ACTIVE'),
        ('68612cea-b65e-4a40-ba18-5482010cb96d', 'user@mail.com',
-        '$2a$12$XDnyXOxu08VePcFGNKXHsuF52dlb5rOHpTU6gXbuESVNI6j5XH2lK', 'USER', 'ACTIVE'),
+        '$2a$12$XDnyXOxu08VePcFGNKXHsuF52dlb5rOHpTU6gXbuESVNI6j5XH2lK', 'user', 'ACTIVE'),
        ('dc93f0ae-ab19-403c-865d-8e52dcb04751', 'jpinnere1@globo.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE'),
        ('48d26e8c-a41e-44fe-9ff3-c819f4d61503', 'ctapley2@bigcartel.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE'),
        ('24bd9573-f73e-4851-94f9-eed5a4ca6edf', 'ggallelli3@telegraph.co.uk',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE'),
        ('b4bb7b17-c5a1-475e-bb4a-0a6fd50533ba', 'ehuikerby4@pbs.org',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE'),
        ('f661e4cd-8a0f-43d4-acc2-9b2cbe51e0a3', 'jwandless5@github.io',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE'),
        ('fefd6501-8036-479b-b15a-b6951b6fb4a9', 'hfoottit6@phpbb.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'PENDING'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'PENDING'),
        ('6a6b8ffc-eb57-4127-8598-153ad63e117c', 'kdunlop7@ning.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE'),
        ('e6165088-d48a-44b0-9bad-c2123af90035', 'dundrill8@buzzfeed.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE'),
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE'),
        ('e66a2951-eb3e-4ff4-a9c6-9ad0e5e17fe5', 'gcollopy9@devhub.com',
-        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'USER', 'ACTIVE');
+        '$2a$12$I4an9qEkoix7pL2FdxJbx.fpCT84jwqmctkNN9xSk3.Nv53zf7f9u', 'user', 'ACTIVE');
 
 
 

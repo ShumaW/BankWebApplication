@@ -93,7 +93,7 @@ class ClientControllerTest {
                 clientDto.getLastName(),
                 clientDto.getEmail(),
                 clientDto.getPassword(),
-                Role.USER,
+                Role.user,
                 clientDto.getAddress(),
                 clientDto.getPhone(),
                 new Timestamp(System.currentTimeMillis()),
