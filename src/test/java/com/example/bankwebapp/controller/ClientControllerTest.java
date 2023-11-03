@@ -131,13 +131,13 @@ class ClientControllerTest {
     }
 
     @Test
-    void addClientTest() throws Exception {
+    void createClientTest() throws Exception {
         // given
         ClientDto clientDto = CreatorDto.getClientDto();
         //when
         when(clientService.createClient(clientDto)).thenReturn(clientDto);
         //then
-        mockMvc.perform(post("/auth/clients/add")
+        mockMvc.perform(post("/auth/clients/create")
                         .content(asJsonString(clientDto))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
