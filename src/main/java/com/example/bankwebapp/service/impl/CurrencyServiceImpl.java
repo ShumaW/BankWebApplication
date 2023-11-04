@@ -22,6 +22,7 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     @Override
     public BigDecimal getCurrencyRate(Currencies currenciesOfTransaction, Currencies creditAccountCurrency) {
+        log.info("Get currency rate.");
         String currencyCodeToUpperCase = currenciesOfTransaction.toString().toUpperCase();
         String creditAccountCurrencyToUpperCase = creditAccountCurrency.toString().toUpperCase();
         return getRateOfCurrency(currencyCodeToUpperCase, creditAccountCurrencyToUpperCase);

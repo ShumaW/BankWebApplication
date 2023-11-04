@@ -35,12 +35,14 @@ public class ClientServiceImpl implements ClientService {
     private final ClientMapper clientMapper;
     @Override
     public ClientDto getClientById(UUID id) {
+        log.info("Get client with id {}.", id);
         return clientMapper.mapToDto(clientRepository.findById(id)
                 .orElseThrow(() -> new NotFoundClientException("Client not found with id " + id)));
     }
 
     @Override
     public ClientDto createClient(ClientDto clientDto) {
+        log.info("Create new client.");
         Manager manager = managerRepository.findById(UUID.fromString(clientDto.getManagerId()))
                 .orElseThrow(() -> new NotFoundManagerException("Manager not found with id " + clientDto.getManagerId()));
         Client client = clientMapper.mapToEntity(clientDto);
@@ -56,11 +58,13 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void deleteClient(UUID id) {
+        log.info("Delete client with id {}", id);
         clientRepository.deleteById(id);
     }
 
     @Override
     public ClientDto update(ClientDto clientDto) {
+        log.info("Update client with id {}", clientDto.getId());
         Manager manager = managerRepository.findById(UUID.fromString(clientDto.getManagerId()))
                 .orElseThrow(() -> new NotFoundManagerException("Manager not found with id " + clientDto.getManagerId()));
         Client client = clientRepository.findById(UUID.fromString(clientDto.getId()))
@@ -78,11 +82,13 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public List<ClientDto> getAllClientsWhereStatusIs(Status status) {
+        log.info("Get all clients, where status is {}.", status);
         return clientMapper.mapToListDto(clientRepository.findAllClientWhereStatusIs(status));
     }
 
     @Override
     public List<ClientDto> getAllClientsWhereBalanceMoreThan(BigDecimal sum) {
+        log.info("Get all clients with balance more then {}.", sum);
         return clientMapper.mapToListDto(clientRepository.findAllClientWhereBalanceMoreThan(sum));
     }
 }

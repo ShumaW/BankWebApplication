@@ -8,10 +8,10 @@ public enum Permission {
     USER_READ("user:read"),
     USER_WRITE("user:write");
 
-    private final String permission;
+    private final String userPermission;
 
-    Permission(String permission) {
-        this.permission = permission;
+    Permission(String userPermission) {
+        this.userPermission = userPermission;
     }
 
 

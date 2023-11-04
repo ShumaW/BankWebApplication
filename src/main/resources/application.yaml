@@ -13,20 +13,6 @@ spring:
     username: ${datasource.username}
     password: ${datasource.password}
 
-#  security:
-#    oauth2:
-#      resource-server:
-#        opaquetoken:
-#          client-id: 41846f33387e9d650259
-#          client-secret: 1351468d08b0e6079f17642e493a666b32f873a2
-
-
-  #  datasource:
-#    url: jdbc:h2:file:./db
-#    username: sa
-#    password: sa
-#    driver-class-name: org.h2.Driver
-
   jpa:
     show-sql: false
     database-platform: org.hibernate.dialect.PostgreSQLDialect
@@ -41,11 +27,3 @@ jwt:
   header: ${jwt.header}
   secret: ${jwt.secret}
   expiration: ${jwt.expiration}
-
-
-#  h2:
-#    console:
-#      enabled: true
-#      path: /h2-console/
-
-

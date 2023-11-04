@@ -29,6 +29,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductMapper productMapper;
     @Override
     public ProductDto update(ProductDto productDto) {
+        log.info("Update product with id {}.", productDto.getId());
         Product product = productRepository.findById(UUID.fromString(productDto.getId()))
                 .orElseThrow(() -> new NotFoundProductException("Product not found with id " + productDto.getId()));
         Manager manager = managerRepository.findById(UUID.fromString(productDto.getManagerId()))

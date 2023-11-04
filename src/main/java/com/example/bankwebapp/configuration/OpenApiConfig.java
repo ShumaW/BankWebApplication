@@ -13,7 +13,7 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
                 contact = @Contact(
                         name = "Yevgeniy Shulimenko",
                         email = "evgeniy.shulimenko@gmail.com",
-                        url = "https://evgeniy.shulimenko.dev"
+                        url = "https://evgeniy.shulimenko.com"
                 )
         )
 )

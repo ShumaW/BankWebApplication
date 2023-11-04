@@ -33,18 +33,21 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountDto getAccountById(UUID id) {
+        log.info("Get account by id {}", id);
         return accountMapper.mapToDto(accountRepository.findById(id)
                 .orElseThrow(() -> new NotFoundAccountException("Account not found with id " + id)));
     }
 
     @Override
     public List<AccountDto> getAllAccounts() {
+        log.info("Get all accounts.");
         return accountMapper.mapToListDto(accountRepository.findAll());
     }
 
     @Override
     @Transactional
     public AccountDto update(AccountDto accountDto) {
+        log.info("Update account with id {}.", accountDto.getClientId());
         Account account = accountRepository.findById(UUID.fromString(accountDto.getId()))
                 .orElseThrow(() -> new NotFoundAccountException("Account not found with id " + accountDto.getId()));
         account.setName(accountDto.getName());
@@ -57,11 +60,13 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public List<AccountDto> getAllAccountsWhereStatusIs(Status status) {
+        log.info("Get all accounts, where status is {}.", status);
         return accountMapper.mapToListDto(accountRepository.findAllAccountsWhereStatusIs(status));
     }
 
     @Override
     public AccountDto createAccount(AccountDto accountDto) {
+        log.info("Create new account.");
         Client client = clientRepository.findById(UUID.fromString(accountDto.getClientId()))
                 .orElseThrow(() -> new NotFoundClientException("Client not found with id " + accountDto.getClientId()));
         Account account = accountMapper.mapToEntity(accountDto);
@@ -73,6 +78,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountDto updateStatusInAccountByIdToRemoved(UUID id) {
+        log.info("Update status to REMOVED with account id {}", id);
         Account account = accountRepository.findById(id)
                 .orElseThrow(() -> new NotFoundAccountException("Account not found with id " + id));
         account.setStatus(Status.REMOVED);

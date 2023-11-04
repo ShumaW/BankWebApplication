@@ -27,12 +27,14 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public ManagerDto getManager(UUID id) {
+        log.info("Get manager with id {}.", id);
         return managerMapper.mapToDto(managerRepository.findById(id)
                 .orElseThrow(() -> new NotFoundManagerException("Manager not found with id " + id)));
     }
 
     @Override
     public ManagerDto createManager(ManagerDto managerDto) {
+        log.info("Create new manager.");
         Manager manager = managerMapper.mapToEntity(managerDto);
         User user = new User();
         user.setEmail(manager.getEmail());

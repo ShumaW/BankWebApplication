@@ -24,6 +24,7 @@ public class AgreementServiceImpl implements AgreementService {
     @Override
     @Transactional
     public List<AgreementDto> findAgreementsWhereClientIdIs(UUID clientId) {
+        log.info("Get agreement, where client id is {}.", clientId);
         return agreementMapper.mapToListDto(agreementRepository.findAllAccountByClientId(clientId));
     }
 }

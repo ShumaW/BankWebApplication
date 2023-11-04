@@ -37,12 +37,14 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public List<TransactionDto> findAllTransactionsWhereAccountIdIs(UUID accountId) {
+        log.info("Get all transactions, where account id is {}.", accountId);
         return transactionMapper.mapToListDto(transactionRepository.findAllByAccountId(accountId));
     }
 
     @Transactional
     @Override
     public TransactionDto createNewTransaction(TransactionDto transactionDto) {
+        log.info("Create new transaction.");
 
         BigDecimal amountOfTransaction = new BigDecimal(transactionDto.getAmount());
 
