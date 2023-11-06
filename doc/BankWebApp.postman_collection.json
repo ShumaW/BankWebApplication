@@ -1,0 +1,611 @@
+{
+	"info": {
+		"_postman_id": "06473be1-35e6-43b5-acdd-1a12ccb43e79",
+		"name": "BankWebApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26625081"
+	},
+	"item": [
+		{
+			"name": "Account Controller",
+			"item": [
+				{
+					"name": "localhost:8080/auth/accounts/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"clientId\" : \"53de66be-9648-4545-b399-00970aec0a43\",\r\n    \"name\" : \"Jimmie_Pinnere_debit_account\",\r\n    \"type\" : \"DEPOSIT\",\r\n    \"status\" : \"ACTIVE\",\r\n    \"balance\" : \"5000\",\r\n    \"currencyCode\" : \"EUR\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/accounts/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"accounts",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/auth/accounts/b9f69f21-b390-4783-b5f1-3c700be89bc4",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/auth/accounts/b9f69f21-b390-4783-b5f1-3c700be89bc4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"accounts",
+								"b9f69f21-b390-4783-b5f1-3c700be89bc4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/auth/accounts/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/auth/accounts/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"accounts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/auth/accounts/status/ACTIVE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/auth/accounts/status/ACTIVE",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"accounts",
+								"status",
+								"ACTIVE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/auth/accounts/update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"0c70afa1-c654-471d-9cb2-437ac289d62c\",\r\n    \"name\": \"ChandlerSpawforth_debit\",\r\n    \"status\": \"ACTIVE\",\r\n    \"balance\": 2500.00\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/accounts/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"accounts",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/auth/accounts/update/dcad79c4-ad82-4e46-af53-728cfd92c22e",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/accounts/delete/dcad79c4-ad82-4e46-af53-728cfd92c22e",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"accounts",
+								"delete",
+								"dcad79c4-ad82-4e46-af53-728cfd92c22e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agreement Controller",
+			"item": [
+				{
+					"name": "localhost:8080/auth/agreements/client/f3deef15-86da-46ec-9d27-8305dc37e6a4",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/auth/agreements/client/f3deef15-86da-46ec-9d27-8305dc37e6a4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"agreements",
+								"client",
+								"f3deef15-86da-46ec-9d27-8305dc37e6a4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client Controller",
+			"item": [
+				{
+					"name": "localhost:8080/auth/clients/d62c0f9c-50b4-48ab-96b9-7c81dd04ac48",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/auth/clients/d62c0f9c-50b4-48ab-96b9-7c81dd04ac48",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"clients",
+								"d62c0f9c-50b4-48ab-96b9-7c81dd04ac48"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/auth/clients/balance_more_than/6000",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/auth/clients/balance_more_than/6000",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"clients",
+								"balance_more_than",
+								"6000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/auth/clients/status/PENDING",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/auth/clients/status/PENDING",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"clients",
+								"status",
+								"PENDING"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/auth/clients/update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"9921c0fa-e9ca-4bd8-b763-abb459a00bd9\",\r\n    \"managerId\" : \"1763f054-5393-11ee-8c99-0242ac120002\",\r\n    \"lastName\": \"Spawforth\",\r\n    \"status\": \"ACTIVE\",\r\n    \"address\": \"1788 Artisan Pass\",\r\n    \"email\": \"cspawforth0@jimdo.com\",\r\n    \"phone\": \"500-500-5000\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/clients/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"clients",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/auth/clients/add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"status\": \"ACTIVE\",\r\n  \"taxСode\": \"1159357468\",\r\n  \"firstName\": \"Goddart\",\r\n  \"lastName\": \"Collopy\",\r\n  \"email\": \"gcollopy9@devhub.com\",\r\n  \"address\": \"1 Ryan Circle\",\r\n  \"phone\": \"619-596-0826\",\r\n  \"managerId\" : \"f74cf29c-5401-11ee-8c99-0242ac120002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/clients/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"clients",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/auth/clients/delete/7cb86638-85cd-406f-a428-d0a74584b565",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/auth/clients/delete/7cb86638-85cd-406f-a428-d0a74584b565",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"clients",
+								"delete",
+								"7cb86638-85cd-406f-a428-d0a74584b565"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Currency Controller",
+			"item": [
+				{
+					"name": "https://open.er-api.com/v6/latest/EUR",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://open.er-api.com/v6/latest/EUR",
+							"protocol": "https",
+							"host": [
+								"open",
+								"er-api",
+								"com"
+							],
+							"path": [
+								"v6",
+								"latest",
+								"EUR"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
+							"protocol": "https",
+							"host": [
+								"www",
+								"ecb",
+								"europa",
+								"eu"
+							],
+							"path": [
+								"stats",
+								"eurofxref",
+								"eurofxref-daily.xml"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Manager Controller",
+			"item": [
+				{
+					"name": "localhost:8080/auth/managers/caed40d0-5401-11ee-8c99-0242ac120002",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/auth/managers/caed40d0-5401-11ee-8c99-0242ac120002",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"managers",
+								"caed40d0-5401-11ee-8c99-0242ac120002"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product Controller",
+			"item": [
+				{
+					"name": "localhost:8080/auth/products/update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"261241cb-f206-4b29-a779-6fe116538763\",\r\n    \"managerId\" : \"1763f054-5393-11ee-8c99-0242ac120002\",\r\n    \"name\" : \"credit\",\r\n    \"status\" : \"ACTIVE\",\r\n    \"currencyCode\" : \"EUR\",\r\n    \"interestRate\" : \"2.7500\",\r\n    \"limit\" : \"200000.00\",\r\n    \"createdAt\" : \"2023-03-20 03:07:52.0000\",\r\n    \"updatedAt\" : \"2023-05-18 13:14:42.0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/products/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"products",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction Controller",
+			"item": [
+				{
+					"name": "localhost:8080/auth/transactions/all/6b6eb8fd-64c5-457f-be98-edb1a54fbbcd",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/auth/transactions/all/6b6eb8fd-64c5-457f-be98-edb1a54fbbcd",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"transactions",
+								"all",
+								"6b6eb8fd-64c5-457f-be98-edb1a54fbbcd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/auth/transactions/all/5308ec41-c4c2-46ec-8831-d20e417e0f6c",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/auth/transactions/all/5308ec41-c4c2-46ec-8831-d20e417e0f6c",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"transactions",
+								"all",
+								"5308ec41-c4c2-46ec-8831-d20e417e0f6c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/auth/transactions/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"debitAccountId\" : \"0c70afa1-c654-471d-9cb2-437ac289d62c\",\r\n    \"creditAccountId\" : \"b9f69f21-b390-4783-b5f1-3c700be89bc4\",\r\n    \"type\" : \"TRANSFER\",\r\n    \"amount\" : \"150000.00\",\r\n    \"currencyCode\" : \"USD\",\r\n    \"description\" : \"pay\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/transactions/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"transactions",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/auth/transactions/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"debitAccountId\" : \"0c70afa1-c654-471d-9cb2-437ac289d62c\",\r\n    \"creditAccountId\" : \"fea5f09c-3079-4bb7-ad16-f131575311a1\",\r\n    \"type\" : \"TRANSFER\",\r\n    \"amount\" : \"150.00\",\r\n    \"currencyCode\" : \"EUR\",\r\n    \"description\" : \"pay\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/transactions/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"transactions",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "localhost:8080/auth/signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@mail.com\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/signin",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/auth/refresh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTY5ODc2ODQ3OCwiZXhwIjoxNjk4NzY5OTE4fQ.6sofcvB8B1gSMqmJDgswPDK_ec47p2a4YABi3sbVB84\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/refresh",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
