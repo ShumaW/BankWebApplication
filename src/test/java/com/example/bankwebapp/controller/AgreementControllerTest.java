@@ -1,7 +1,7 @@
 package com.example.bankwebapp.controller;
 
 import com.example.bankwebapp.dto.AgreementDto;
-import com.example.bankwebapp.security.config.JwtAuthenticationFilter;
+import com.example.bankwebapp.security.filters.JwtAuthenticationFilter;
 import com.example.bankwebapp.service.interfaсes.AgreementService;
 import com.example.bankwebapp.util.CreatorDto;
 import org.junit.jupiter.api.Test;

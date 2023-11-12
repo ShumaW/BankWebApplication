@@ -1,6 +1,6 @@
-package com.example.bankwebapp.service.impl;
+package com.example.bankwebapp.security.service.impl;
 
-import com.example.bankwebapp.service.interfaсes.JwtService;
+import com.example.bankwebapp.security.service.JwtService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

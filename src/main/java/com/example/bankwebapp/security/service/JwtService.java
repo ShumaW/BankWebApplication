@@ -1,4 +1,4 @@
-package com.example.bankwebapp.service.interfaсes;
+package com.example.bankwebapp.security.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 

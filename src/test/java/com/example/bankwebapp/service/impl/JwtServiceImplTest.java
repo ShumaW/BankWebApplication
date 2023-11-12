@@ -2,9 +2,9 @@ package com.example.bankwebapp.service.impl;
 
 import com.example.bankwebapp.controller.AuthenticationController;
 import com.example.bankwebapp.entity.User;
-import com.example.bankwebapp.security.config.JwtAuthenticationFilter;
-import com.example.bankwebapp.service.interfaсes.AuthenticationService;
-import com.example.bankwebapp.service.interfaсes.JwtService;
+import com.example.bankwebapp.security.filters.JwtAuthenticationFilter;
+import com.example.bankwebapp.security.service.AuthenticationService;
+import com.example.bankwebapp.security.service.JwtService;
 import com.example.bankwebapp.util.CreatorEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

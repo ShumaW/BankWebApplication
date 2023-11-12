@@ -6,7 +6,7 @@ import com.example.bankwebapp.entity.Manager;
 import com.example.bankwebapp.entity.Product;
 import com.example.bankwebapp.entity.enums.Currencies;
 import com.example.bankwebapp.entity.enums.Status;
-import com.example.bankwebapp.security.config.JwtAuthenticationFilter;
+import com.example.bankwebapp.security.filters.JwtAuthenticationFilter;
 import com.example.bankwebapp.service.impl.ProductServiceImpl;
 import com.example.bankwebapp.util.CreatorDto;
 import com.fasterxml.jackson.databind.ObjectMapper;

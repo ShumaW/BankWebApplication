@@ -9,7 +9,7 @@ import com.example.bankwebapp.entity.enums.AccountType;
 import com.example.bankwebapp.entity.enums.Currencies;
 import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.repository.AccountRepository;
-import com.example.bankwebapp.security.config.JwtAuthenticationFilter;
+import com.example.bankwebapp.security.filters.JwtAuthenticationFilter;
 import com.example.bankwebapp.service.impl.AccountServiceImpl;
 import com.example.bankwebapp.util.CreatorDto;
 import com.example.bankwebapp.util.CreatorEntity;

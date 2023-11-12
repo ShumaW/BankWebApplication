@@ -3,7 +3,7 @@ package com.example.bankwebapp.controller;
 import com.example.bankwebapp.dto.JwtAuthenticationResponse;
 import com.example.bankwebapp.dto.RefreshTokenRequest;
 import com.example.bankwebapp.dto.SigninRequest;
-import com.example.bankwebapp.service.interfaсes.AuthenticationService;
+import com.example.bankwebapp.security.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

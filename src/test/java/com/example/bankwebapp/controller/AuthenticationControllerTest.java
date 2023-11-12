@@ -2,9 +2,9 @@ package com.example.bankwebapp.controller;
 
 import com.example.bankwebapp.dto.SigninRequest;
 import com.example.bankwebapp.entity.User;
-import com.example.bankwebapp.security.config.JwtAuthenticationFilter;
-import com.example.bankwebapp.service.interfaсes.AuthenticationService;
-import com.example.bankwebapp.service.interfaсes.JwtService;
+import com.example.bankwebapp.security.filters.JwtAuthenticationFilter;
+import com.example.bankwebapp.security.service.AuthenticationService;
+import com.example.bankwebapp.security.service.JwtService;
 import com.example.bankwebapp.util.CreatorEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;

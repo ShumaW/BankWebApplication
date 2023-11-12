@@ -1,6 +1,6 @@
-package com.example.bankwebapp.security;
+package com.example.bankwebapp.security.config;
 
-import com.example.bankwebapp.security.config.JwtAuthenticationFilter;
+import com.example.bankwebapp.security.filters.JwtAuthenticationFilter;
 import com.example.bankwebapp.service.interfaсes.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

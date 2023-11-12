@@ -1,7 +1,7 @@
 package com.example.bankwebapp.controller;
 
 import com.example.bankwebapp.entity.enums.Currencies;
-import com.example.bankwebapp.security.config.JwtAuthenticationFilter;
+import com.example.bankwebapp.security.filters.JwtAuthenticationFilter;
 import com.example.bankwebapp.service.interfaсes.CurrencyService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package com.example.bankwebapp.security.config;
+package com.example.bankwebapp.security.filters;
 
-import com.example.bankwebapp.service.interfaсes.JwtService;
+import com.example.bankwebapp.security.service.JwtService;
 import com.example.bankwebapp.service.interfaсes.UserService;
 import io.micrometer.common.util.StringUtils;
 import jakarta.servlet.FilterChain;

@@ -7,7 +7,7 @@ import com.example.bankwebapp.entity.Manager;
 import com.example.bankwebapp.entity.enums.Role;
 import com.example.bankwebapp.entity.enums.Status;
 import com.example.bankwebapp.repository.ClientRepository;
-import com.example.bankwebapp.security.config.JwtAuthenticationFilter;
+import com.example.bankwebapp.security.filters.JwtAuthenticationFilter;
 import com.example.bankwebapp.service.interfaсes.ClientService;
 import com.example.bankwebapp.util.CreatorDto;
 import com.example.bankwebapp.util.CreatorEntity;

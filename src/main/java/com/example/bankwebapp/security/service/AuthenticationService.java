@@ -1,4 +1,4 @@
-package com.example.bankwebapp.service.interfaсes;
+package com.example.bankwebapp.security.service;
 
 import com.example.bankwebapp.dto.JwtAuthenticationResponse;
 import com.example.bankwebapp.dto.RefreshTokenRequest;

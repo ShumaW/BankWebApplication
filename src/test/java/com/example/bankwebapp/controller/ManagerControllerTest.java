@@ -1,7 +1,7 @@
 package com.example.bankwebapp.controller;
 
 import com.example.bankwebapp.dto.ManagerDto;
-import com.example.bankwebapp.security.config.JwtAuthenticationFilter;
+import com.example.bankwebapp.security.filters.JwtAuthenticationFilter;
 import com.example.bankwebapp.service.interfaсes.ManagerService;
 import com.example.bankwebapp.util.CreatorDto;
 import com.fasterxml.jackson.databind.ObjectMapper;

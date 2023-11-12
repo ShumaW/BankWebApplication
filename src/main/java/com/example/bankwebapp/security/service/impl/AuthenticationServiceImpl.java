@@ -1,12 +1,12 @@
-package com.example.bankwebapp.service.impl;
+package com.example.bankwebapp.security.service.impl;
 
 import com.example.bankwebapp.dto.JwtAuthenticationResponse;
 import com.example.bankwebapp.dto.RefreshTokenRequest;
 import com.example.bankwebapp.dto.SigninRequest;
 import com.example.bankwebapp.entity.User;
 import com.example.bankwebapp.repository.UserRepository;
-import com.example.bankwebapp.service.interfaсes.AuthenticationService;
-import com.example.bankwebapp.service.interfaсes.JwtService;
+import com.example.bankwebapp.security.service.AuthenticationService;
+import com.example.bankwebapp.security.service.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -21,11 +21,9 @@
 		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
 		<springdoc-openapi.version>1.7.0</springdoc-openapi.version>
 		<swagger.version>2.2.9</swagger.version>
-		<logstash-logback-encoder.version>7.4</logstash-logback-encoder.version>
 		<postgresql.version>42.6.0</postgresql.version>
 		<liquibase.version>4.23.1</liquibase.version>
 		<liquibase-maven-plugin.version>3.8.0</liquibase-maven-plugin.version>
-		<openjfx.version>19</openjfx.version>
 		<jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
 		<jacoco.version>0.8.10</jacoco.version>
 		<springdoc.version>2.2.0</springdoc.version>
@@ -210,29 +208,6 @@
 			</exclusions>
 		</dependency>
 
-		<!--		logback				-->
-		<dependency>
-			<groupId>net.logstash.logback</groupId>
-			<artifactId>logstash-logback-encoder</artifactId>
-			<version>${logstash-logback-encoder.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>slf4j-api</artifactId>
-					<groupId>org.slf4j</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx-graphics</artifactId>
-			<version>${openjfx.version}</version>
-		</dependency>
-
 		<!-- test -->
         <dependency>
             <groupId>junit</groupId>
@@ -372,7 +347,7 @@
 						<exclude>com/**/aspect/*</exclude>
 						<exclude>com/**/util/*</exclude>
 						<exclude>com/**/dto/*</exclude>
-						<exclude>com/**/security/*</exclude>
+						<exclude>com/**/security/**</exclude>
 						<exclude>com/**/controller/ResponseExceptionHandler.class</exclude>
 						<exclude>com/**/BankWebAppApplication.class</exclude>
 					</excludes>
