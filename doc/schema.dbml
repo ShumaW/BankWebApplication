@@ -1,0 +1,89 @@
+// https://dbdocs.io/wulyashuma/BankWebApp
+
+Project BankWebApp {
+  database_type: 'PostgreSQL'
+  Note: 'Description of the project'
+}
+
+Table clients {
+  id bigint [primary key, increment, not null, ref: < accounts.clients_id] // OneToMany
+  manager_id binary(16) [not null, ref: > managers.id] // ManyToOne
+  status int [not null, ref: <> user.status, note: 'Status']
+  tax_code varchar(20) [not null]
+  first_name varchar(50) [not null]
+  last_name varchar(50) [not null]
+  email varchar(60) [not null, unique, ref: <> user.email] // ManyToMany
+  password varchar(100) [not null, unique, ref: <> user.password] // ManyToMany
+  role varchar(50) [not null, ref: <> user.role, note: 'Role'] // ManyToMany
+  address varchar(80) [not null]
+  phone varchar(20) [not null]
+  created_at timestamp [default: `now()`]
+  update_at timestamp [default: `now()`]
+}
+
+Table accounts {
+  id bigint [primary key, increment, not null, ref: < agreement.account_id,
+                                    ref: < transaction.debit_account,
+                                    ref: < transaction.credit_account] // OneToMany
+  client_id binary(16) [not null]
+  name varchar(100) [not null]
+  type int [not null, note: 'Type']
+  status int [not null, note: 'Status']
+  balance numeric(15,2) [not null]
+  currency_code int [not null, note: 'CurrencyCode']
+  created_at timestamp [default: `now()`]
+  update_at timestamp [default: `now()`]
+}
+
+Table products {
+  id bigint [primary key, increment, not null, ref: > agreement.productId] // ManyToOne
+  manager_id int [not null]
+  name varchar(50) [not null]
+  status int [not null, note: 'Status']
+  currency_code int [not null, note: 'CurrencyCode']
+  interest_rate numeric(6,4) [not null]
+  limit numeric(15,2) [not null]
+  created_at timestamp [default: `now()`]
+  update_at timestamp [default: `now()`]
+}
+
+Table agreements {
+  id bigint [primary key, increment, not null]
+  account_id binary(16) [not null]
+  product_id int [not null]
+  interest_rate numeric(6,4) [not null]
+  status int [not null, note: 'Status']
+  sum numeric(15,2) [not null]
+  created_at timestamp [default: `now()`]
+  update_at timestamp [default: `now()`]
+}
+
+Table transactions{
+  id bigint [primary key, increment, not null]
+  debit_account_id binary(16) [not null]
+  credit_account_id binary(16) [not null]
+  type int [not null, note: 'Type']
+  amount numeric(12,2) [not null]
+  description varchar(255)
+  created_at timestamp [default: `now()`]
+}
+
+Table managers {
+  id bigint [primary key, increment, not null, ref: < client.manager_id] // OneToMany
+  first_name varchar(50) [not null]
+  last_name varchar(50) [not null]
+  status int [not null, ref: <> user.status, note: 'Status'] // ManyToMany
+  description varchar(255)
+  created_at timestamp [default: `now()`]
+  email varchar(60) [not null, unique, ref: <> user.email] // ManyToMany
+  password varchar(100) [not null, unique, ref: <> user.password] // ManyToMany
+  role varchar(50) [not null, ref: <> user.role, note: 'Role'] // ManyToMany
+}
+
+Table users {
+  id bigint [primary key, increment, not null]
+  role varchar(10) [not null, note: 'Role']
+  email varchar(50) [not null, unique]
+  password varchar(100) [not null, unique]
+  status varchar(10) [not null, note: 'Status']
+}
