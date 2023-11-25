@@ -25,6 +25,11 @@ public class ManagerServiceImpl implements ManagerService {
 
     private final UserRepository userRepository;
 
+    /**
+     * This public method allows you to get information about a manager by his ID number in the database.
+     * @param id
+     * @return managerDto
+     */
     @Override
     public ManagerDto getManager(UUID id) {
         log.info("Get manager with id {}.", id);
@@ -32,6 +37,11 @@ public class ManagerServiceImpl implements ManagerService {
                 .orElseThrow(() -> new NotFoundManagerException("Manager not found with id " + id)));
     }
 
+    /**
+     * This public method allows you to save information about the new manager to the database.
+     * @param managerDto
+     * @return managerDto
+     */
     @Override
     public ManagerDto createManager(ManagerDto managerDto) {
         log.info("Create new manager.");

@@ -20,6 +20,13 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     private static final String EXCHANGE_RATE_API = "https://open.er-api.com/v6/latest/";
 
+    /**
+     * This public method allows you to find out the exchange rate depending on the currency of the recipient and payer.
+     * This uses the Open API https://open.er-api.com/v6/latest/
+     * @param currenciesOfTransaction
+     * @param creditAccountCurrency
+     * @return currencyRate
+     */
     @Override
     public BigDecimal getCurrencyRate(Currencies currenciesOfTransaction, Currencies creditAccountCurrency) {
         log.info("Get currency rate.");

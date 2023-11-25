@@ -35,12 +35,24 @@ public class TransactionServiceImpl implements TransactionService {
 
     private final CurrencyController currencyController;
 
+    /**
+     * This public method allows you to find all transactions in the database by account ID.
+     * @param accountId
+     * @return List<TransactionDto>
+     */
     @Override
     public List<TransactionDto> findAllTransactionsWhereAccountIdIs(UUID accountId) {
         log.info("Get all transactions, where account id is {}.", accountId);
         return transactionMapper.mapToListDto(transactionRepository.findAllByAccountId(accountId));
     }
 
+    /**
+     * This public method creates a transaction in which funds are transferred from one account to another in the recipient's currency.
+     * If at least one of the conditions for creating a transaction is not met, the transaction will not be created.
+     * This is achieved by using the @Transactional annotation.
+     * @param transactionDto
+     * @return transactionDto
+     */
     @Transactional
     @Override
     public TransactionDto createNewTransaction(TransactionDto transactionDto) {

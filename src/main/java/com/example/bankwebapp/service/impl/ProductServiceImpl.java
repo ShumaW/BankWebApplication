@@ -27,6 +27,12 @@ public class ProductServiceImpl implements ProductService {
     private final ManagerRepository managerRepository;
 
     private final ProductMapper productMapper;
+
+    /**
+     * This public method allows you to update information about a banking product.
+     * @param productDto
+     * @return productDto
+     */
     @Override
     public ProductDto update(ProductDto productDto) {
         log.info("Update product with id {}.", productDto.getId());

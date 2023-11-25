@@ -33,6 +33,12 @@ public class ClientServiceImpl implements ClientService {
     private final UserRepository userRepository;
 
     private final ClientMapper clientMapper;
+
+    /**
+     * This public method allows you to find out information about a client by his ID in the database.
+     * @param id
+     * @return cloientDto
+     */
     @Override
     public ClientDto getClientById(UUID id) {
         log.info("Get client with id {}.", id);
@@ -40,6 +46,11 @@ public class ClientServiceImpl implements ClientService {
                 .orElseThrow(() -> new NotFoundClientException("Client not found with id " + id)));
     }
 
+    /**
+     * This public method allows you to save information about the new client to the database.
+     * @param clientDto
+     * @return clientDto
+     */
     @Override
     public ClientDto createClient(ClientDto clientDto) {
         log.info("Create new client.");
@@ -56,12 +67,21 @@ public class ClientServiceImpl implements ClientService {
         return clientMapper.mapToDto(clientRepository.save(client));
     }
 
+    /**
+     * This public method allows you to delete information about a client from the database by his ID.
+     * @param id
+     */
     @Override
     public void deleteClient(UUID id) {
         log.info("Delete client with id {}", id);
         clientRepository.deleteById(id);
     }
 
+    /**
+     * This public method allows you to update information about a client in the database by his ID.
+     * @param clientDto
+     * @return clientDto
+     */
     @Override
     public ClientDto update(ClientDto clientDto) {
         log.info("Update client with id {}", clientDto.getId());
@@ -80,12 +100,22 @@ public class ClientServiceImpl implements ClientService {
         return clientMapper.mapToDto(client);
     }
 
+    /**
+     * This public method allows you to get a list of all clients with a given status.
+     * @param status
+     * @return List<ClientDto>
+     */
     @Override
     public List<ClientDto> getAllClientsWhereStatusIs(Status status) {
         log.info("Get all clients, where status is {}.", status);
         return clientMapper.mapToListDto(clientRepository.findAllClientWhereStatusIs(status));
     }
 
+    /**
+     * This public method allows you to get a list of all clients whose account balance is greater than a given amount.
+     * @param sum
+     * @return List<ClientDto>
+     */
     @Override
     public List<ClientDto> getAllClientsWhereBalanceMoreThan(BigDecimal sum) {
         log.info("Get all clients with balance more then {}.", sum);

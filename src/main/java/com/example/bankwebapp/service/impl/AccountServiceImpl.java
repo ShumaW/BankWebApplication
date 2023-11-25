@@ -31,6 +31,11 @@ public class AccountServiceImpl implements AccountService {
 
     private final ClientRepository clientRepository;
 
+    /**
+     * This public method allows you to get information about account by ID in the database.
+     * @param id
+     * @return accountDto
+     */
     @Override
     public AccountDto getAccountById(UUID id) {
         log.info("Get account by id {}", id);
@@ -38,12 +43,21 @@ public class AccountServiceImpl implements AccountService {
                 .orElseThrow(() -> new NotFoundAccountException("Account not found with id " + id)));
     }
 
+    /**
+     * This public method allows you to get information about all account in the database.
+     * @return List<AccountDto>
+     */
     @Override
     public List<AccountDto> getAllAccounts() {
         log.info("Get all accounts.");
         return accountMapper.mapToListDto(accountRepository.findAll());
     }
 
+    /**
+     * This public method allows you to update information about account in the database by ID.
+     * @param accountDto
+     * @return accountDto
+     */
     @Override
     @Transactional
     public AccountDto update(AccountDto accountDto) {
@@ -58,12 +72,22 @@ public class AccountServiceImpl implements AccountService {
         return accountMapper.mapToDto(account);
     }
 
+    /**
+     * This public method allows you to get a list of all accounts with a given status.
+     * @param status
+     * @return List<AccountDto>
+     */
     @Override
     public List<AccountDto> getAllAccountsWhereStatusIs(Status status) {
         log.info("Get all accounts, where status is {}.", status);
         return accountMapper.mapToListDto(accountRepository.findAllAccountsWhereStatusIs(status));
     }
 
+    /**
+     * This public method allows you to save information about the new account to the database.
+     * @param accountDto
+     * @return accountDto
+     */
     @Override
     public AccountDto createAccount(AccountDto accountDto) {
         log.info("Create new account.");
@@ -76,6 +100,12 @@ public class AccountServiceImpl implements AccountService {
         return accountMapper.mapToDto(accountRepository.save(account));
     }
 
+    /**
+     * This public method allows you to update information about account in the database by ID
+     * and made this account with status REMOVED.
+     * @param id
+     * @return accountDto
+     */
     @Override
     public AccountDto updateStatusInAccountByIdToRemoved(UUID id) {
         log.info("Update status to REMOVED with account id {}", id);

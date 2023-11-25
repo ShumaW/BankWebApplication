@@ -21,6 +21,11 @@ public class AgreementServiceImpl implements AgreementService {
 
     private final AgreementMapper agreementMapper;
 
+    /**
+     * This public method allows you to find all client agreements in the database by client ID.
+     * @param clientId
+     * @return List<AgreementDto>
+     */
     @Override
     @Transactional
     public List<AgreementDto> findAgreementsWhereClientIdIs(UUID clientId) {
