@@ -29,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductMapper productMapper;
 
     /**
-     * This public method allows you to update information about a banking product.
+     * This public method allows you to update information about a banking product by ID.
      * @param productDto
      * @return productDto
      */

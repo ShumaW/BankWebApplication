@@ -1,12 +1,29 @@
 version: '3'
 
 services:
-  postgres:
-    image: 'postgres:13'
-    container_name: 'java-postgres'
-    ports:
-      - 5432:5432
+  app:
+    image: 'com.example/bank_web_app:0.0.1-SNAPSHOT'
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
     environment:
-      - 'POSTGRES_USER=sa'
-      - 'POSTGRES_HOST_AUTH_METHOD=trust'
-      - 'POSTGRES_DB=java'
+      DATASOURCE_URL: ${DATASOURCE_URL}
+      DATASOURCE_USERNAME: ${DATASOURCE_USERNAME}
+      DATASOURCE_PASSWORD: ${DATASOURCE_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION: ${JWT_EXPIRATION}
+      JWT_HEADER: ${JWT_HEADER}
+    ports:
+      - "8080:8080"
+
+  db:
+    image: 'postgres:16.0'
+    container_name: bank_web_app
+    environment:
+      - POSTGRES_USER=${DATASOURCE_USERNAME}
+      - POSTGRES_PASSWORD=${DATASOURCE_PASSWORD}
+      - POSTGRES_DB=bank_web_app
+    ports:
+      - "5432:5432"

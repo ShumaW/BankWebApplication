@@ -19,7 +19,7 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @Operation(summary = "Update product")
+    @Operation(summary = "Update product by id")
     @PutMapping("/update")
     @SecurityRequirement(name = "JWT")
     @PreAuthorize("hasAuthority('user:write')")

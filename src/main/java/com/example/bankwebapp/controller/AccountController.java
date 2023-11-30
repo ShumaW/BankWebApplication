@@ -38,7 +38,7 @@ public class AccountController {
         return accountService.getAllAccounts();
     }
 
-    @Operation(summary = "Update account")
+    @Operation(summary = "Update account by id")
     @PutMapping("/update")
     @SecurityRequirement(name = "JWT")
     @PreAuthorize("hasAuthority('user:write')")
