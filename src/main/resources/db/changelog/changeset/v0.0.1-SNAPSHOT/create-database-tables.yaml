@@ -1,6 +1,4 @@
 databaseChangeLog:
-  - preConditions:
-      - onFail: MARK_RAN
   - changeSet:
       id: create-transactions
       author: YevgeniyShulimenko
